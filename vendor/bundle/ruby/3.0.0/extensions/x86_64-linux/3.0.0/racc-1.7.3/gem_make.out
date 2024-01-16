@@ -1,0 +1,15 @@
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/racc-1.7.3/ext/racc/cparse
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240116-6637-ad3h2c sitelibdir\=./.gem.20240116-6637-ad3h2c clean
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240116-6637-ad3h2c sitelibdir\=./.gem.20240116-6637-ad3h2c
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240116-6637-ad3h2c sitelibdir\=./.gem.20240116-6637-ad3h2c install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20240116-6637-ad3h2c/racc

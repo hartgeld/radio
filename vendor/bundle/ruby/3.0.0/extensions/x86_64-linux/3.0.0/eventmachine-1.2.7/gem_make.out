@@ -1,0 +1,16 @@
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240116-106477-b34bkq sitelibdir\=./.gem.20240116-106477-b34bkq clean
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240116-106477-b34bkq sitelibdir\=./.gem.20240116-106477-b34bkq
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= sitearchdir\=./.gem.20240116-106477-b34bkq sitelibdir\=./.gem.20240116-106477-b34bkq install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20240116-106477-b34bkq

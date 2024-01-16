@@ -1,0 +1,13 @@
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/json-2.7.1/ext/json
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240116-7198-zjkdfv sitelibdir\=./.gem.20240116-7198-zjkdfv clean
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240116-7198-zjkdfv sitelibdir\=./.gem.20240116-7198-zjkdfv
+make: Nothing to be done for 'all'.
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/json-2.7.1/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240116-7198-zjkdfv sitelibdir\=./.gem.20240116-7198-zjkdfv install

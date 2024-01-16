@@ -1,0 +1,16 @@
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+creating Makefile
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240116-106477-k7krl5 sitelibdir\=./.gem.20240116-106477-k7krl5 clean
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240116-106477-k7krl5 sitelibdir\=./.gem.20240116-106477-k7krl5
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.so
+
+current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= sitearchdir\=./.gem.20240116-106477-k7krl5 sitelibdir\=./.gem.20240116-106477-k7krl5 install
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20240116-106477-k7krl5

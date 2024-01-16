@@ -1,10 +1,12 @@
+
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.2.0"
-gem "minima", "~> 2.0"
+gem "jekyll"
+gem "minima"
+gem "jekyll-mentions"
+gem "webrick"
+gem "json"
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.15"
+  gem "jekyll-feed"
 end
-
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
