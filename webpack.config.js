@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development', 
@@ -15,4 +16,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'node_modules/uikit/dist/js/uikit-icons.min.js', to: 'js' }
+      ],
+    })
+  ],
 };

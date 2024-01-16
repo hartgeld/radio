@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/hartgeld/radio#readme",
   "dependencies": {
+    "copy-webpack-plugin": "^6.4.1",
     "uikit": "^3.17.11"
   },
   "devDependencies": {
