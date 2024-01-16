@@ -7,9 +7,10 @@ url: ""
 github_username: hartgeld
 
 markdown: kramdown
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 exclude:
   - Gemfile
