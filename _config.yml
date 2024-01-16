@@ -24,6 +24,6 @@ exclude:
   - vendor/bundle
   - vendor/cache
   - vendor/gems
-  - vendor/ruby
+  - vendor/bundle/ruby
   - .git
   - _site
