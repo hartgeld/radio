@@ -1,17 +1,33 @@
 import $ from 'jquery';
 import 'jplayer';
 
+function debug(obj) {
+    console.log(obj);
+}
+
 export async function initializePlayer() {
     // Fetch the station data
     const response = await fetch('https://167.172.176.229/api/nowplaying/klo_radio_');
     const data = await response.json();
 
-    // Initialize the player with the station's listen_url
+    // Find the URLs of the MP3 and Ogg streams
+    let mp3Url, oggUrl;
+    for (let mount of data.station.mounts) {
+        if (mount.format === 'mp3') {
+            mp3Url = mount.url;
+        } else if (mount.format === 'ogg') {
+            oggUrl = mount.url;
+        }
+    }
+
+    // Initialize the player with the MP3 and Ogg stream URLs
     $("#jquery_jplayer_1").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                mp3: data.station.listen_url
+                mp3: mp3Url,
+                oga: oggUrl
             });
+            debug($(this));
         },
         pause: function() {
             $(this).jPlayer("clearMedia"); // Stop downloading when not in use
@@ -20,13 +36,14 @@ export async function initializePlayer() {
             if(event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
                 // Setup the media stream again.
                 $(this).jPlayer("setMedia", {
-                    mp3: data.station.listen_url
+                    mp3: mp3Url,
+                    oga: oggUrl
                 });
             }
         },
-        swfPath: '../dist/jplayer',
+        swfPath: 'client/js',
         solution: 'html, flash',
-        supplied: 'mp3',
+        supplied: 'mp3, oga',
         wmode: "window",
         useStateClassSkin: true,
         autoBlur: false,
