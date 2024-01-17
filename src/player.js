@@ -35,12 +35,14 @@ export async function initializePlayer() {
         remainingDuration: true,
         toggleDuration: true
     });
-
-    // Play the stream
-    $("#jquery_jplayer_1").jPlayer("play");
 }
 
-// Call initializePlayer when the "Start Playback" button is clicked
-$('#start-playback').click(function() {
+// Call initializePlayer when the page loads
+$(document).ready(function() {
     initializePlayer();
+});
+
+// Start playing when the "Start Playback" button is clicked
+$('#start-playback').click(function() {
+    $("#jquery_jplayer_1").jPlayer("play");
 });
