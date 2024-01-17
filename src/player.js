@@ -59,7 +59,13 @@ $(document).ready(function() {
     initializePlayer();
 });
 
-// Start playing when the "Start Playback" button is clicked
-$('#start-playback').click(function() {
-    $("#jquery_jplayer_1").jPlayer("play");
+$(document).ready(function() {
+    $('#start-playback').click(function() {
+        console.log('Start playback clicked');
+        try {
+            $("#jquery_jplayer_1").jPlayer("play");
+        } catch (error) {
+            console.error('Error playing jPlayer', error);
+        }
+    });
 });
