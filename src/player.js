@@ -12,7 +12,7 @@ export async function initializePlayer() {
         ready: function () {
             $(this).jPlayer("setMedia", {
                 mp3: data.station.listen_url
-            }).jPlayer("play");  // Play the audio here
+            });
         },
         supplied: "mp3",
         wmode: "window",
@@ -31,4 +31,5 @@ export async function initializePlayer() {
 // Call initializePlayer when the "Start Playback" button is clicked
 $('#start-playback').click(function() {
     initializePlayer();
+    $("#jquery_jplayer_1").jPlayer("play");
 });
