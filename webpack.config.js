@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -17,6 +18,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
+    }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'node_modules/uikit/dist/js/uikit-icons.min.js', to: 'js' }

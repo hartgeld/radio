@@ -1,4 +1,3 @@
-// src/player.js
 import $ from 'jquery';
 import 'jplayer';
 
@@ -14,35 +13,31 @@ export async function initializePlayer() {
                 mp3: data.station.listen_url
             });
         },
+        pause: function() {
+            $(this).jPlayer("clearMedia"); // Stop downloading when not in use
+        },
+        error: function(event) {
+            if(event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+                // Setup the media stream again.
+                $(this).jPlayer("setMedia", {
+                    mp3: data.station.listen_url
+                });
+            }
+        },
         swfPath: '../dist/jplayer',
         solution: 'html, flash',
         supplied: 'mp3',
-        preload: 'none',
-        volume: 0.8,
-        muted: false,
-        backgroundColor: '#000000',
-        cssSelectorAncestor: '#jp_container_1',
         wmode: "window",
         useStateClassSkin: true,
         autoBlur: false,
         smoothPlayBar: true,
         keyEnabled: true,
-        errorAlerts: false,
-        warningAlerts: false,
-        error: function(event) {
-            if(event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-                // Setup the media stream again and play it.
-                $(this).jPlayer("setMedia", {
-                    mp3: data.station.listen_url
-                }).jPlayer("play");
-            }
-        }
+        remainingDuration: true,
+        toggleDuration: true
     });
 
-    // Add a click event listener to the play button
-    $('.jp-play').click(function() {
-        $("#jquery_jplayer_1").jPlayer("play");
-    });
+    // Play the stream
+    $("#jquery_jplayer_1").jPlayer("play");
 }
 
 // Call initializePlayer when the "Start Playback" button is clicked
