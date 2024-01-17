@@ -6,6 +6,7 @@ function debug(obj) {
 }
 
 export async function initializePlayer() {
+    /*
     // Fetch the station data
     const response = await fetch('https://167.172.176.229/api/nowplaying/klo_radio_');
     const data = await response.json();
@@ -19,6 +20,10 @@ export async function initializePlayer() {
             oggUrl = mount.url;
         }
     }
+    */
+    const mp3Url = 'https://cdn.freesound.org/previews/718/718689_5674468-lq.mp3';
+    const oggUrl = 'https://cdn.freesound.org/previews/718/718689_5674468-lq.ogg';
+ 
 
     // Initialize the player with the MP3 and Ogg stream URLs
     $("#jquery_jplayer_1").jPlayer({
