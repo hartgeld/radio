@@ -27,3 +27,8 @@ export async function initializePlayer() {
         $("#jquery_jplayer_1").jPlayer("play");
     });
 }
+
+// Call initializePlayer when the "Start Playback" button is clicked
+$('#start-playback').click(function() {
+    initializePlayer();
+});
