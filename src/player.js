@@ -21,8 +21,8 @@ export async function initializePlayer() {
         }
     }
     */
-    const mp3Url = 'https://cdn.freesound.org/previews/718/718689_5674468-lq.mp3';
-    const oggUrl = 'https://cdn.freesound.org/previews/718/718689_5674468-lq.ogg';
+    const mp3Url = 'https://167.172.176.229:8000/radio.mp3';
+    const oggUrl = 'https://167.172.176.229:8000/radio.ogg';
  
 
     // Initialize the player with the MP3 and Ogg stream URLs
@@ -55,7 +55,10 @@ export async function initializePlayer() {
         smoothPlayBar: true,
         keyEnabled: true,
         remainingDuration: true,
-        toggleDuration: true
+        toggleDuration: true,
+        nativeSupport: true,
+        oggSupport: true,
+        customCssIds: true
     });
 }
 
