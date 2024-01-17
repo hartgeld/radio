@@ -14,12 +14,29 @@ export async function initializePlayer() {
                 mp3: data.station.listen_url
             });
         },
-        supplied: "mp3",
+        swfPath: '../dist/jplayer',
+        solution: 'html, flash',
+        supplied: 'mp3',
+        preload: 'none',
+        volume: 0.8,
+        muted: false,
+        backgroundColor: '#000000',
+        cssSelectorAncestor: '#jp_container_1',
         wmode: "window",
         useStateClassSkin: true,
         autoBlur: false,
         smoothPlayBar: true,
         keyEnabled: true,
+        errorAlerts: false,
+        warningAlerts: false,
+        error: function(event) {
+            if(event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+                // Setup the media stream again and play it.
+                $(this).jPlayer("setMedia", {
+                    mp3: data.station.listen_url
+                }).jPlayer("play");
+            }
+        }
     });
 
     // Add a click event listener to the play button
@@ -31,5 +48,4 @@ export async function initializePlayer() {
 // Call initializePlayer when the "Start Playback" button is clicked
 $('#start-playback').click(function() {
     initializePlayer();
-    $("#jquery_jplayer_1").jPlayer("play");
 });
