@@ -1,79 +1,26 @@
-import $ from 'jquery';
-import 'jplayer';
+const playBtn = document.querySelector('.play');
+const muteBtn = document.querySelector('.mute');
+const unmuteBtn = document.querySelector('.unmute');
 
-function debug(obj) {
-    console.log(obj);
-}
+let id;
 
-export async function initializePlayer() {
-    /*
-    // Fetch the station data
-    const response = await fetch('https://167.172.176.229/api/nowplaying/klo_radio_');
-    const data = await response.json();
 
-    // Find the URLs of the MP3 and Ogg streams
-    let mp3Url, oggUrl;
-    for (let mount of data.station.mounts) {
-        if (mount.format === 'mp3') {
-            mp3Url = mount.url;
-        } else if (mount.format === 'ogg') {
-            oggUrl = mount.url;
-        }
-    }
-    */
-    const mp3Url = 'https://167.172.176.229:8000/radio.mp3';
-    const oggUrl = 'https://167.172.176.229:8000/radio.ogg';
- 
 
-    // Initialize the player with the MP3 and Ogg stream URLs
-    $("#jquery_jplayer_1").jPlayer({
-        ready: function () {
-            $(this).jPlayer("setMedia", {
-                mp3: mp3Url,
-                oga: oggUrl
-            });
-            debug($(this));
-        },
-        pause: function() {
-            $(this).jPlayer("clearMedia"); // Stop downloading when not in use
-        },
-        error: function(event) {
-            if(event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
-                // Setup the media stream again.
-                $(this).jPlayer("setMedia", {
-                    mp3: mp3Url,
-                    oga: oggUrl
-                });
-            }
-        },
-        swfPath: 'client/js',
-        solution: 'html, flash',
-        supplied: 'mp3, oga',
-        wmode: "window",
-        useStateClassSkin: true,
-        autoBlur: false,
-        smoothPlayBar: true,
-        keyEnabled: true,
-        remainingDuration: true,
-        toggleDuration: true,
-        nativeSupport: true,
-        oggSupport: true,
-        customCssIds: true
-    });
-}
 
-// Call initializePlayer when the page loads
-$(document).ready(function() {
-    initializePlayer();
+let sound= new Howl({
+    src: 'https://167.172.176.229:8000/radio.mp3', // https://167.172.176.229:8000/radio.mp3
+    html5: true, // A live stream can only be played through HTML5 Audio.
+    format: ['mp3', 'aac']
 });
 
-$(document).ready(function() {
-    $('#start-playback').click(function() {
-        console.log('Start playback clicked');
-        try {
-            $("#jquery_jplayer_1").jPlayer("play");
-        } catch (error) {
-            console.error('Error playing jPlayer', error);
-        }
-    });
-});
+
+console.log("play");
+
+
+
+playBtn.onclick = function() { id = sound.play(); }
+muteBtn.onclick = function() { sound.mute(true, id); }
+unmuteBtn.onclick = function() { sound.mute(false, id); }
+
+sound.on('end', function(){ playBtn.disabled = false; });
+sound.on('play', function(){ playBtn.disabled = true; });
