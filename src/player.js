@@ -5,9 +5,13 @@ const unmuteBtn = document.querySelector('.unmute');
 let id;
 
 let sound= new Howl({
-    src: 'http://65.109.84.248:8100/oldschool.mp3', // https://167.172.176.229:8000/radio.mp3
+    src: [
+        'https://167.172.176.229/listen/klo_radio_/radio.mp3',
+        'https://167.172.176.229/listen/klo_radio_/radio.aac',
+        'https://167.172.176.229/listen/klo_radio_/radio.ogg'
+    ],
     html5: true, // A live stream can only be played through HTML5 Audio.
-    format: ['mp3', 'aac']
+    format: ['mp3', 'aac', 'ogg']
 });
 
 console.log("play");
