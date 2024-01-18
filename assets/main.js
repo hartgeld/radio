@@ -177,7 +177,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
   \***********************/
 /***/ (() => {
 
-eval("const playBtn = document.querySelector('.play');\nconst muteBtn = document.querySelector('.mute');\nconst unmuteBtn = document.querySelector('.unmute');\n\nlet id;\n\nlet sound= new Howl({\n    src: 'https://stream-relay-geo.ntslive.net/stream', // https://167.172.176.229:8000/radio.mp3\n    html5: true, // A live stream can only be played through HTML5 Audio.\n    format: ['mp3', 'aac']\n});\n\nconsole.log(\"play\");\n\nplayBtn.onclick = function() { id = sound.play(); }\nmuteBtn.onclick = function() { sound.mute(true, id); }\nunmuteBtn.onclick = function() { sound.mute(false, id); }\n\nsound.on('end', function(){ playBtn.disabled = false; });\nsound.on('play', function(){ playBtn.disabled = true; });\n\n\n//# sourceURL=webpack://radio/./src/player.js?");
+eval("const playBtn = document.querySelector('.play');\nconst muteBtn = document.querySelector('.mute');\nconst unmuteBtn = document.querySelector('.unmute');\n\nlet id;\n\nlet sound= new Howl({\n    src: 'http://65.109.84.248:8100/oldschool.mp3', // https://167.172.176.229:8000/radio.mp3\n    html5: true, // A live stream can only be played through HTML5 Audio.\n    format: ['mp3', 'aac']\n});\n\nconsole.log(\"play\");\n\nplayBtn.onclick = function() { id = sound.play(); }\nmuteBtn.onclick = function() { sound.mute(true, id); }\nunmuteBtn.onclick = function() { sound.mute(false, id); }\n\nsound.on('end', function(){ playBtn.disabled = false; });\nsound.on('play', function(){ playBtn.disabled = true; });\n\n\n//# sourceURL=webpack://radio/./src/player.js?");
 
 /***/ }),
 
