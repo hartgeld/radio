@@ -4,19 +4,13 @@ const unmuteBtn = document.querySelector('.unmute');
 
 let id;
 
-
-
-
 let sound= new Howl({
-    src: 'https://167.172.176.229:8000/radio.mp3', // https://167.172.176.229:8000/radio.mp3
+    src: 'https://stream-relay-geo.ntslive.net/stream', // https://167.172.176.229:8000/radio.mp3
     html5: true, // A live stream can only be played through HTML5 Audio.
     format: ['mp3', 'aac']
 });
 
-
 console.log("play");
-
-
 
 playBtn.onclick = function() { id = sound.play(); }
 muteBtn.onclick = function() { sound.mute(true, id); }
