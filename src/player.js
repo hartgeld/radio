@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
       
             self.index = index;
-          }, 1000); // Delay of 1 second
+          }, 100); // Delay of 1 second
         }, 
-        
-        pause: function() {
+
+        stop: function() {
           var self = this;
           var sound = self.playlist[self.index].howl;
-          sound.pause();
+          sound.stop();
           playBtn.style.display = 'block';
           pauseBtn.style.display = 'none';
         }
@@ -75,7 +75,7 @@ fetch('https://azura.holgerardelt.de/api/nowplaying/klo_radio_')
         player.play();
       });
       pauseBtn.addEventListener('click', function() {
-        player.pause();
+        player.stop();
       });
       
     });
