@@ -1,35 +1,83 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-
-    const playBtn = document.querySelector('.play');
-    const muteBtn = document.querySelector('.mute');
-    const unmuteBtn = document.querySelector('.unmute');
-
-    let id;
-
-    let sound= new Howl({
-        src: [
-            'https://azura.holgerardelt.de/listen/klo_radio_/radio.mp3',
-            'https://azura.holgerardelt.de/listen/klo_radio_/radio.aac',
-            'https://azura.holgerardelt.de/listen/klo_radio_/radio.ogg'
-        ],
-        html5: true, // A live stream can only be played through HTML5 Audio.
-        format: ['mp3', 'aac', 'ogg']
+    var elms = ['playBtn', 'pauseBtn'];
+    elms.forEach(function(elm) {
+      window[elm] = document.getElementById(elm);
     });
+    var Player = function(playlist) {
+      this.playlist = playlist;
+      this.index = 0;
+    };
+    Player.prototype = {
+        play: function(index) {
+          var self = this;
+          var sound;
+      
+          index = typeof index === 'number' ? index : self.index;
+          var data = self.playlist[index];
+      
+          if (data.howl) {
+            sound = data.howl;
+          } else {
+            sound = data.howl = new Howl({
+              src: data.src,
+              html5: data.html5,
+              format: data.format
+            });
+          }
+      
+          setTimeout(function() {
+            sound.play();
+      
+            if (sound.state() === 'loaded') {
+              playBtn.style.display = 'none';
+              pauseBtn.style.display = 'block';
+            } else {
+              playBtn.style.display = 'none';
+              pauseBtn.style.display = 'block';
+            }
+      
+            self.index = index;
+          }, 1000); // Delay of 1 second
+        }, 
+        
+        pause: function() {
+          var self = this;
+          var sound = self.playlist[self.index].howl;
+          sound.pause();
+          playBtn.style.display = 'block';
+          pauseBtn.style.display = 'none';
+        }
+      };
 
-    console.log("play");
 
-    playBtn.onclick = function() { id = sound.play(); }
-    muteBtn.onclick = function() { sound.mute(true, id); }
-    unmuteBtn.onclick = function() { sound.mute(false, id); }
+fetch('https://azura.holgerardelt.de/api/nowplaying/klo_radio_')
+    .then(response => response.json())
+    .then(data => {
+      let urls = data.station.mounts.map(mount => mount.url);
 
-    sound.on('end', function(){ playBtn.disabled = false; });
-    sound.on('play', function(){ playBtn.disabled = true; });
+      let playlist = [{
+        src: urls,
+        html5: true, 
+        format: ['mp3', 'aac', 'ogg'],
+        howl: null
+      }];
 
-    sound.on('loaderror', function(id, error) {
-        console.error('Load error', error);
+      // Add more tracks to the playlist as needed...
+      /*playlist.push({
+        src: ['static1.mp3'],
+        html5: true,
+        format: ['mp3'],
+        howl: null});*/
+
+      var player = new Player(playlist);
+      
+      playBtn.addEventListener('click', function() {
+        player.play();
+      });
+      pauseBtn.addEventListener('click', function() {
+        player.pause();
+      });
+      
     });
     
-    sound.on('playerror', function(id, error) {
-        console.error('Play error', error);
-    });
 });

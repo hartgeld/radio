@@ -8,12 +8,15 @@
     {%- include header.html -%}
 
     <div class="controls">
-        <button class="uk-button play" type="button">Play</button>
-        <button class="uk-button mute" type="button">Mute</button>
-        <button class="uk-button unmute" type="button">Unmute</button>
-    </div>
+        
+        <button class="uk-button " id="playBtn" type="button">
+            <span uk-icon="icon: play"></span>
+        </button>
+        <button class="uk-button pauseBtn" id="pauseBtn" type="button" style="display: none;">
+            <span uk-icon="icon: heart"></span>
+        </button>
 
+    </div>
   </body>
   <script src="{{ "/assets/main.js" | relative_url }}"></script>
-
 </html>

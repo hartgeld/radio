@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack && bundle exec jekyll build",
-    "serve": "webpack && bundle exec jekyll serve --livereload"
+    "build": "webpack --watch & bundle exec jekyll build",
+    "serve": "webpack --watch & bundle exec jekyll serve --livereload"
   },
   "repository": {
     "type": "git",
