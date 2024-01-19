@@ -6,9 +6,9 @@ let id;
 
 let sound= new Howl({
     src: [
-        'https://167.172.176.229/listen/klo_radio_/radio.mp3',
-        'https://167.172.176.229/listen/klo_radio_/radio.aac',
-        'https://167.172.176.229/listen/klo_radio_/radio.ogg'
+        'https://azura.holgerardelt.de/listen/klo_radio_/radio.mp3',
+        'https://azura.holgerardelt.de/listen/klo_radio_/radio.aac',
+        'https://azura.holgerardelt.de/listen/klo_radio_/radio.ogg'
     ],
     html5: true, // A live stream can only be played through HTML5 Audio.
     format: ['mp3', 'aac', 'ogg']
@@ -22,3 +22,11 @@ unmuteBtn.onclick = function() { sound.mute(false, id); }
 
 sound.on('end', function(){ playBtn.disabled = false; });
 sound.on('play', function(){ playBtn.disabled = true; });
+
+sound.on('loaderror', function(id, error) {
+    console.error('Load error', error);
+  });
+  
+  sound.on('playerror', function(id, error) {
+    console.error('Play error', error);
+  });
