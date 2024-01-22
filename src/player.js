@@ -1,4 +1,7 @@
-
+// Assuming playBtn and pauseBtn are defined somewhere above this code
+// For example:
+// var playBtn = document.getElementById('playBtn');
+// var pauseBtn = document.getElementById('pauseBtn');
 var playBtn = document.getElementById('playBtn');
 var pauseBtn = document.getElementById('pauseBtn');
 
@@ -28,8 +31,6 @@ Player.prototype = {
 
       sound.play();
 
-      sound.volume(1.0);  // Set the volume to 0.5
-
       if (sound.state() === 'loaded') {
           playBtn.style.display = 'none';
           pauseBtn.style.display = 'block';
@@ -42,11 +43,15 @@ Player.prototype = {
   }, 
 
   stop: function() {
-      var self = this;
-      var sound = self.playlist[self.index].howl;
+    var self = this;
+    var sound = self.playlist[self.index].howl;
+
+    if (sound) {
       sound.stop();
+      sound = null;
       playBtn.style.display = 'block';
       pauseBtn.style.display = 'none';
+    }
   }
 };
 
@@ -58,7 +63,7 @@ function fetchData() {
       .then(data => {
           let urls = data.station.mounts.map(mount => mount.url);
           const isLive = data.live.is_live;
-          const streamerName = data.now_playing.streamer;
+          const streamerName = data.live.streamer_name;
           console.log(`Is Live: ${isLive}, Streamer Name: ${streamerName}`);
 
           let playlist = [{
@@ -77,7 +82,7 @@ function fetchData() {
           if (isLive) {
               isLiveElement.style.display = 'block';
               isNotLiveElement.style.display = 'none';
-              isLiveElement.innerHTML = `<i class="fas fa-circle" style="color: red;"></i> <span>${streamerName}</span>`;
+                      isLiveElement.innerHTML = `<i class="fas fa-circle" style="color: red;"></i> ${streamerName}`;
 
           } else {
               isLiveElement.style.display = 'none';
@@ -91,7 +96,7 @@ function fetchData() {
 fetchData();
 
 // Fetch data every 10 seconds
-setInterval(fetchData, 10000);
+// setInterval(fetchData, 10000);
 
 playBtn.addEventListener('click', function() {
   console.log('Play button clicked');
@@ -100,24 +105,10 @@ playBtn.addEventListener('click', function() {
       player.play();
   }
 });
-playBtn.addEventListener('touchstart', function(event) {
-  event.preventDefault();  // Prevent the browser's default touch behavior
-  if (player) {
-    player.play();
-  }
-});
-
 pauseBtn.addEventListener('click', function() {
   console.log('Pause button clicked');
 
-  if (player) {
       player.stop();
-  }
-});
-pauseBtn.addEventListener('touchstart', function(event) {
-  event.preventDefault();  // Prevent the browser's default touch behavior
-  if (player) {
-    player.stop();
-  }
+  
 });
 
