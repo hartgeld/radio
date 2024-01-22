@@ -100,11 +100,24 @@ playBtn.addEventListener('click', function() {
       player.play();
   }
 });
+playBtn.addEventListener('touchstart', function(event) {
+  event.preventDefault();  // Prevent the browser's default touch behavior
+  if (player) {
+    player.play();
+  }
+});
+
 pauseBtn.addEventListener('click', function() {
   console.log('Pause button clicked');
 
   if (player) {
       player.stop();
+  }
+});
+pauseBtn.addEventListener('touchstart', function(event) {
+  event.preventDefault();  // Prevent the browser's default touch behavior
+  if (player) {
+    player.stop();
   }
 });
 
