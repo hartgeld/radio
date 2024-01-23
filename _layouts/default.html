@@ -6,7 +6,9 @@
   <body>
     {%- include header.html -%}
     {%- include ui_head_live-player.html -%}
-    <script src="{{ "/assets/main.js" | relative_url }}"></script>
 
+    {%- include body_recent-shows.html -%}
+
+    <script src="{{ "/assets/main.js" | relative_url }}"></script>
   </body>
 </html>
