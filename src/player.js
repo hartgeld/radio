@@ -1,17 +1,13 @@
-// Assuming playBtn and pauseBtn are defined somewhere above this code
-// For example:
-// var playBtn = document.getElementById('playBtn');
-// var pauseBtn = document.getElementById('pauseBtn');
 var playBtn = document.getElementById('playBtn');
 var pauseBtn = document.getElementById('pauseBtn');
 
 var Player = function(playlist) {
-  console.log('Player constructor called');
   this.playlist = playlist;
   this.index = 0;
 };
 
 Player.prototype = {
+
   play: function(index) {
       var self = this;
       var sound;
@@ -58,13 +54,13 @@ Player.prototype = {
 var player;
 
 function fetchData() {
-  fetch('https://azura.holgerardelt.de/api/nowplaying/klo_radio_')
+  return fetch('https://azura.holgerardelt.de/api/nowplaying/klo_radio_')
       .then(response => response.json())
       .then(data => {
           let urls = data.station.mounts.map(mount => mount.url);
           const isLive = data.live.is_live;
           const streamerName = data.live.streamer_name;
-          console.log(`Is Live: ${isLive}, Streamer Name: ${streamerName}`);
+          //console.log(`Is Live: ${isLive}, Streamer Name: ${streamerName}`);
 
           let playlist = [{
               src: urls,
@@ -74,7 +70,7 @@ function fetchData() {
           }];
 
           player = new Player(playlist);
-          console.log('Player created', player);
+          //console.log('Player created', player);
 
           var isLiveElement = document.getElementById('isLive');
           var isNotLiveElement = document.getElementById('isNotLive');
@@ -89,26 +85,24 @@ function fetchData() {
               isNotLiveElement.style.display = 'block';
           }
       })
-      .catch(error => console.error('Error:', error));
+      //.catch(error => console.error('Error:', error));
 }
 
-// Fetch data immediately when the page loads
-fetchData();
+export function initializePlayer() {
+  fetchData().then(() => {
+    playBtn.addEventListener('click', function() {
+      //console.log('Play button clicked');
 
-// Fetch data every 10 seconds
-// setInterval(fetchData, 10000);
+      if (player) {
+          player.play();
+      }
+    });
+    pauseBtn.addEventListener('click', function() {
+      //console.log('Pause button clicked');
 
-playBtn.addEventListener('click', function() {
-  console.log('Play button clicked');
-
-  if (player) {
-      player.play();
-  }
-});
-pauseBtn.addEventListener('click', function() {
-  console.log('Pause button clicked');
-
-      player.stop();
-  
-});
-
+      if (player) {
+          player.stop();
+      }
+    });
+  });
+}
