@@ -27,3 +27,7 @@ exclude:
   - vendor/bundle/ruby
   - .git
   - _site
+
+collections:
+  shows:
+    output: true

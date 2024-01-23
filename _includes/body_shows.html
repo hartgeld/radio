@@ -1,0 +1,7 @@
+<h1>shows</h1>
+
+{% assign sorted-shows = site.shows %}
+
+{% for item in sorted-shows %}
+<a href="{{ item.mp3Url}}">{{ item.title }}</a>
+{% endfor %}

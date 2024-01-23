@@ -6,7 +6,7 @@ backend:
 media_folder: "img/uploads"
 
 collections:
-  - name: "show"
+  - name: "shows"
     label: "Show"
     folder: "_shows"
     create: true
