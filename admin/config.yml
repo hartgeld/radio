@@ -16,3 +16,4 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Image", name: "image", widget: "file"}
       - {label: "MP3 URL", name: "mp3Url", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "list"} 
