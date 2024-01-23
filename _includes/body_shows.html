@@ -3,7 +3,7 @@
   {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
   {% for show in sorted-shows %}
   <div class="uk-card uk-card-small uk-card-default uk-card-hover">
-    <a href="{{ show.mp3Url}}">
+    <a href="{{ show.mp3Url}}" class="mp3Button">
       <div class="uk-card-media-top">
         <img src="{{ show.image}}" width="" height="" alt="">
       </div>

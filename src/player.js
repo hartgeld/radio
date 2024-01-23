@@ -48,6 +48,30 @@ Player.prototype = {
       playBtn.style.display = 'block';
       pauseBtn.style.display = 'none';
     }
+  },
+
+  playMP3: function(mp3Url) {
+    var self = this;
+
+    // Stop the live stream
+    self.stop();
+
+    // Add the MP3 to the playlist
+    self.playlist.push({
+      src: [mp3Url],
+      html5: true,
+      format: ['mp3'],
+      howl: null
+    });
+
+    // Start playing the MP3
+    self.play(self.playlist.length - 1);
+
+    // When the MP3 finishes playing, remove it from the playlist and start the live stream
+    self.playlist[self.playlist.length - 1].howl.on('end', function() {
+      self.playlist.pop();
+      self.play(0);
+    });
   }
 };
 
@@ -92,17 +116,36 @@ export function initializePlayer() {
   fetchData().then(() => {
     playBtn.addEventListener('click', function() {
       //console.log('Play button clicked');
-
       if (player) {
           player.play();
       }
     });
     pauseBtn.addEventListener('click', function() {
       //console.log('Pause button clicked');
-
       if (player) {
           player.stop();
       }
     });
+
+    // Get references to your buttons
+    var mp3Buttons = document.getElementsByClassName('mp3Button');
+
+    // Loop over the buttons
+    for (var i = 0; i < mp3Buttons.length; i++) {
+      // Add an event listener to the button
+      mp3Buttons[i].addEventListener('click', function(event) {
+        // Prevent the default action
+        event.preventDefault();
+
+        // Get the MP3 URL from the button's href attribute
+        var mp3Url = this.getAttribute('href');
+
+        // Play the MP3
+        player.playMP3(mp3Url);
+      });
+    }
+    
   });
+ 
 }
+
