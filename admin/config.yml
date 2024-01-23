@@ -6,11 +6,13 @@ backend:
 media_folder: "img/uploads"
 
 collections:
-  - name: "post"
-    label: "Post"
-    folder: "_posts"
+  - name: "show"
+    label: "Show"
+    folder: "_shows"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Image", name: "image", widget: "file"}
+      - {label: "MP3 URL", name: "mp3Url", widget: "string"}
