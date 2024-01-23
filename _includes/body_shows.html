@@ -1,7 +1,28 @@
-<h1>shows</h1>
+<div class="uk-container">
 
-{% assign sorted-shows = site.shows %}
+  <h1>shows</h1>
+  {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
+  {% for item in sorted-shows %}
+  <div class="uk-card uk-card-small uk-card-body uk-card-default uk-card-hover">
 
-{% for item in sorted-shows %}
-<a href="{{ item.mp3Url}}">{{ item.title }}</a>
-{% endfor %}
+    <div class="uk-card-header">
+        <a href="{{ item.mp3Url}}">{{ item.title }}</a>
+    </div>
+    <div class="uk-card-body">
+      <div class="uk-card-media-top">
+        <img src="{{ item.image}}" width="" height="" alt="">
+      </div>
+    </div>
+    <div class="uk-card-footer">
+      {{ item.date | date: "%-d %B %Y" }}
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+</div>
+
+
+  <h3 class="uk-card-title"></h3>
+</div>
