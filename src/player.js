@@ -23,6 +23,8 @@ const Player = function(playlist, playAudioBtn, stopAudioBtn) {
   this.index = 0;
   this.playAudioBtn = playAudioBtn;
   this.stopAudioBtn = stopAudioBtn;
+  this.progress = document.querySelector('.uk-progress');
+  this.timer = document.getElementById('timer');
 };
 
 Player.prototype = {
@@ -51,6 +53,9 @@ Player.prototype = {
     }
   
     sound.play();
+
+    // Start updating the progress of the track.
+    requestAnimationFrame(self.step.bind(self));
   
     if (sound.state() === 'loaded') {
       self.playAudioBtn.style.display = 'none';
@@ -124,7 +129,38 @@ Player.prototype = {
 
     // Start playing the MP3
     self.play(self.playlist.length - 1);
-  }
+  },
+
+  step: function() {
+    var self = this;
+  
+    // Get the Howl we want to manipulate.
+    var sound = self.playlist[self.index].howl;
+  
+    // Determine our current seek position.
+    var seek = sound.seek() || 0;
+    self.timer.innerHTML = self.formatTime(Math.round(seek));
+    self.progress.value = seek;
+    self.progress.max = sound.duration();
+
+    // refer to progress as self.progress
+    self.progress.value = seek;
+    self.progress.max = sound.duration();
+  
+    // If the sound is still playing, continue stepping.
+    if (sound.playing()) {
+      requestAnimationFrame(self.step.bind(self));
+    }
+    console.log('seek:', seek);
+    console.log('timer element:', self.timer);
+  },
+
+  formatTime: function(secs) {
+    var minutes = Math.floor(secs / 60) || 0;
+    var seconds = (secs - minutes * 60) || 0;
+
+    return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  },
 };
 
 async function fetchData() {
