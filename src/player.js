@@ -237,54 +237,6 @@ function handleMP3ButtonClick(event) {
   }
 }
 
-/*
-function handleMP3ButtonClick(event) {
-  event.preventDefault();
-
-  const mp3Url = this.getAttribute('href');
-
-  // If the clicked MP3 is the same as the currently playing one, do nothing
-  if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
-    return;
-  }
-
-  const { playAudioBtn, stopAudioBtn } = initializeButtons();
-
-  // Show the controls
-  const controls = document.getElementById('audio-player_controls');
-  controls.style.display = 'flex';
-
-  // Fetch the title from the h1 tag
-  const title = document.querySelector('.uk-card-header h1').textContent;
-  console.log("mp3 title is: " + title);
-
-    // Display the title in head_audio-player.html
-    const titleElement = document.querySelector('#titleElement'); // Replace '#titleElement' with the selector for the element where you want to display the title
-    titleElement.textContent = title;
-
-  // Stop the static audio if it's playing and remove it from the playlist
-  if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
-    mp3Player.stop();
-    mp3Player.playlist.splice(mp3Player.index, 1);
-  }
-
-  if (mp3Player) {
-    try {
-      mp3Player.play(0);
-    } catch (error) {
-      console.error('Failed to play existing Player instance:', error);
-    }
-  } else {
-    try {
-      mp3Player = new Player([{ src: [mp3Url], html5: true, format: ['mp3'], howl: null }], playAudioBtn, stopAudioBtn);
-      mp3Player.play(0);
-    } catch (error) {
-      console.error('Failed to create Player instance:', error);
-    }
-  }
-}
-*/
-
 // Initially hide the controls
 window.onload = function() {
   const controls = document.getElementById('audio-player_controls');
@@ -297,10 +249,16 @@ export function initializePlayer() {
     playLivestreamBtn.addEventListener('click', () => {
       // Hide the controls
       const controls = document.getElementById('audio-player_controls');
-      controls.style.display = 'none';
-
+      //controls.style.display = 'none';
+    
+      // Pause the MP3 if it's playing
+      if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
+        mp3Player.pause();
+      }
+    
       // Play the livestream
       livestreamPlayer?.play();
+
     });
     stopLivestreamBtn.addEventListener('click', () => livestreamPlayer?.stop());
 
@@ -322,7 +280,12 @@ export function initializePlayer() {
     const playAudioBtn = document.getElementById('playAudio');
     playAudioBtn.addEventListener('click', () => {
       console.log('playAudio button clicked');
-
+    
+      // Pause the livestream if it's playing
+      if (livestreamPlayer?.playlist[livestreamPlayer.index]?.howl?.playing()) {
+        livestreamPlayer.pause();
+      }
+    
       if (mp3Player instanceof Player) {
         console.log('mp3Player is an instance of Player');
         mp3Player.resume();
@@ -336,10 +299,11 @@ export function initializePlayer() {
       const controls = document.getElementById('audio-player_controls');
       controls.style.display = 'none';
 
-      // Stop the static audio if it's playing and remove it from the playlist
+      // Stop the static audio if it's playing
       if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
-        mp3Player.pause();
-        //mp3Player.playlist.splice(mp3Player.index, 1);
+        mp3Player.stop();
+        mp3Player.playlist[mp3Player.index].howl.seek(0);
+
       }
     });
 
