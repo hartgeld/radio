@@ -6,6 +6,8 @@ import UIkit from 'uikit';
 import { initializePlayer } from './player';
 import { fetch_player_metaInfo } from './player_meta-info.js';
 
-initializePlayer();
+document.addEventListener('DOMContentLoaded', function() {
+    initializePlayer();
+  });
 
 setInterval(fetch_player_metaInfo, 5000);
