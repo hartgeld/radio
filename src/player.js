@@ -202,6 +202,47 @@ function handleMP3ButtonClick(event) {
 
   const mp3Url = this.getAttribute('href');
 
+  const { playAudioBtn, stopAudioBtn } = initializeButtons();
+
+  // Show the controls
+  const controls = document.getElementById('audio-player_controls');
+  controls.style.display = 'flex';
+
+  // Fetch the title from the h1 tag
+  const title = document.querySelector('.uk-card-header h1').textContent;
+
+  // Display the title in head_audio-player.html
+  const titleElement = document.querySelector('#titleElement');
+  titleElement.textContent = title;
+
+  // If the clicked MP3 is the same as the currently playing one, resume it
+  if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
+    mp3Player.play();
+    return;
+  }
+
+  // If mp3Player is undefined, initialize it with the clicked MP3
+  if (!mp3Player) {
+    const howl = new Howl({ src: [mp3Url], html5: true });
+    mp3Player = new Player([{ src: [mp3Url], html5: true, format: ['mp3'], howl }], playAudioBtn, stopAudioBtn);
+    mp3Player.play(0);
+    return;
+  }
+
+  // Add the MP3 to the playlist if it's not already there
+  if (!mp3Player.playlist.some(track => track.src[0] === mp3Url)) {
+    const howl = new Howl({ src: [mp3Url], html5: true });
+    mp3Player.playlist.push({ src: [mp3Url], html5: true, format: ['mp3'], howl });
+    mp3Player.play(mp3Player.playlist.length - 1);
+  }
+}
+
+/*
+function handleMP3ButtonClick(event) {
+  event.preventDefault();
+
+  const mp3Url = this.getAttribute('href');
+
   // If the clicked MP3 is the same as the currently playing one, do nothing
   if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
     return;
@@ -242,7 +283,7 @@ function handleMP3ButtonClick(event) {
     }
   }
 }
-
+*/
 
 // Initially hide the controls
 window.onload = function() {
@@ -297,8 +338,8 @@ export function initializePlayer() {
 
       // Stop the static audio if it's playing and remove it from the playlist
       if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
-        mp3Player.stop();
-        mp3Player.playlist.splice(mp3Player.index, 1);
+        mp3Player.pause();
+        //mp3Player.playlist.splice(mp3Player.index, 1);
       }
     });
 
