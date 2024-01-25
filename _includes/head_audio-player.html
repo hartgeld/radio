@@ -1,31 +1,30 @@
-<div class="controls uk-container uk-flex uk-flex-middle" id="audio-player_controls">  
-    <!-- play / stop -->
-    <button class="uk-button uk-width-auto uk-margin-small-right" id="playAudio" type="button">
-        <i class="fas fa-play"></i>
-    </button>
-    <button class="uk-button uk-width-auto uk-margin-small-right" id="stopAudio" type="button" style="display: none;">
-        <i class="fas fa-pause"></i>
-    </button>
-    <button class="uk-button uk-width-auto uk-margin-small-right" id="pauseAudio" type="button" style="display: none;">
-        <i class="fas fa-stop"></i>
-    </button>
-    <span class="uk-text-small uk-text-bold" id="titleElement"></span>
-    <button class="uk-button uk-width-auto uk-margin-small-right" id="closeAudioPlayer" type="button">
-        <i class="fas fa-close"></i>
-    </button>
-
-    
-</div>
-
-
-<div class="controls uk-container uk-flex uk-flex-middle" >  
-
-    <!-- Current playback time -->
-    <div id="timer" class="uk-text-small uk-margin-small-right"></div>
-
-    <!-- Progress bar -->
-    <div id="progress" class="uk-progress">
-    <div class="uk-progress-bar" style="width: 0;"></div>
+<div class="controls uk-container uk-flex-column" id="audio-player_controls">  
+    <div class="uk-width-1-1 uk-flex"">
+        <!-- play / stop -->
+        <button class="uk-button uk-width-auto uk-margin-small-right" id="playAudio" type="button">
+            <i class="fas fa-play"></i>
+        </button>
+        <button class="uk-button uk-width-auto uk-margin-small-right" id="stopAudio" type="button" style="display: none;">
+            <i class="fas fa-pause"></i>
+        </button>
+        <button class="uk-button uk-width-auto uk-margin-small-right" id="pauseAudio" type="button" style="display: none;">
+            <i class="fas fa-stop"></i>
+        </button>
+        <span class="uk-text-small uk-text-bold" id="titleElement"></span>
+        <button class="uk-button uk-width-auto uk-margin-small-right" id="closeAudioPlayer" type="button">
+            <i class="fas fa-close"></i>
+        </button>
     </div>
 
+    <div class="uk-width-1-1 uk-flex"">  
+        <!-- Current playback time -->
+        <div id="timer" class="uk-text-small uk-margin-small-right"></div>
+        <div id="duration" class="uk-text-small uk-margin-small-right"></div>
+        <!-- Progress bar -->
+        <div id="progress" class="uk-progress">
+            <div class="uk-progress-bar uk-height-small uk-background-primary" style="width: 0%;"></div>
+        </div>
+        
+    </div>
 </div>
+

@@ -23,8 +23,10 @@ const Player = function(playlist, playAudioBtn, stopAudioBtn) {
   this.index = 0;
   this.playAudioBtn = playAudioBtn;
   this.stopAudioBtn = stopAudioBtn;
-  this.progress = document.querySelector('.uk-progress');
+  
+  this.progressBar = document.querySelector('.uk-progress-bar');
   this.timer = document.getElementById('timer');
+  
 };
 
 Player.prototype = {
@@ -53,10 +55,12 @@ Player.prototype = {
     }
   
     sound.play();
-
-    // Start updating the progress of the track.
-    requestAnimationFrame(self.step.bind(self));
-  
+    // Start updating the progress of the track when the 'play' event is fired
+    sound.once('play', function() {
+      // Store the duration of the audio file
+      self.duration = sound.duration();
+      requestAnimationFrame(self.step.bind(self));
+    });
     if (sound.state() === 'loaded') {
       self.playAudioBtn.style.display = 'none';
       self.stopAudioBtn.style.display = 'block';
@@ -64,6 +68,7 @@ Player.prototype = {
       self.playAudioBtn.style.display = 'none';
       self.stopAudioBtn.style.display = 'block';
     }
+    self.step();
   },
 
   stop: function() {
@@ -129,6 +134,9 @@ Player.prototype = {
 
     // Start playing the MP3
     self.play(self.playlist.length - 1);
+
+    // Start updating the progress bar
+    //self.step();
   },
 
   step: function() {
@@ -137,22 +145,37 @@ Player.prototype = {
     // Get the Howl we want to manipulate.
     var sound = self.playlist[self.index].howl;
   
-    // Determine our current seek position.
-    var seek = sound.seek() || 0;
-    self.timer.innerHTML = self.formatTime(Math.round(seek));
-    self.progress.value = seek;
-    self.progress.max = sound.duration();
-
-    // refer to progress as self.progress
-    self.progress.value = seek;
-    self.progress.max = sound.duration();
-  
-    // If the sound is still playing, continue stepping.
+    // If the sound is playing
     if (sound.playing()) {
-      requestAnimationFrame(self.step.bind(self));
+      // Determine our current seek position.
+      var seek = sound.seek() || 0;
+      var formattedSeek = self.formatTime(Math.round(seek));
+  
+      // Only update the timer if the seek has changed
+      if (self.timer.innerHTML !== formattedSeek) {
+        self.timer.innerHTML = formattedSeek;
+      }
+  
+      var duration = sound.duration();
+      var formattedDuration = self.formatTime(Math.round(duration));
+  
+      var durationElement = document.getElementById('duration');
+      // Only update the duration if it has changed
+      if (durationElement.innerHTML !== formattedDuration) {
+        durationElement.innerHTML = formattedDuration;
+      }
+  
+      // Calculate the progress of the audio
+      var progress = (seek / duration) * 100;
+      var formattedProgress = progress + '%';
+  
+      // Only update the progress bar if the progress has changed
+      if (self.progressBar.style.width !== formattedProgress) {
+        self.progressBar.style.width = formattedProgress;
+      }
     }
-    console.log('seek:', seek);
-    console.log('timer element:', self.timer);
+    // Call the `step` function again on the next animation frame
+    requestAnimationFrame(self.step.bind(self));
   },
 
   formatTime: function(secs) {
@@ -260,8 +283,16 @@ function handleMP3ButtonClick(event) {
   // If mp3Player is undefined, initialize it with the clicked MP3
   if (!mp3Player) {
     const howl = new Howl({ src: [mp3Url], html5: true });
-    mp3Player = new Player([{ src: [mp3Url], html5: true, format: ['mp3'], howl }], playAudioBtn, stopAudioBtn);
-    mp3Player.play(0);
+  
+    const intervalId = setInterval(function() {
+      const progressBar = document.querySelector('.uk-progress-bar');
+      if (progressBar) {
+        clearInterval(intervalId);
+        mp3Player = new Player([{ src: [mp3Url], html5: true, format: ['mp3'], howl }], playAudioBtn, stopAudioBtn);
+        mp3Player.play(0);
+      }
+    }, 100);
+
     return;
   }
 
@@ -343,6 +374,30 @@ export function initializePlayer() {
       }
     });
 
+
+
+    const progressBarContainer = document.querySelector('#progress');
+
+    // Add a click event listener to the progress bar container
+    progressBarContainer.addEventListener('click', (event) => {
+      // Calculate the clicked position within the progress bar container
+      var clickPositionInProgressBar = event.clientX - progressBarContainer.getBoundingClientRect().left;
+
+      // Calculate the clicked position as a percentage
+      var clickPositionInPercentage = clickPositionInProgressBar / progressBarContainer.offsetWidth;
+
+      // Get the Howl we want to manipulate
+      var sound = mp3Player.playlist[mp3Player.index].howl;
+
+      // Calculate the seek position in the audio track
+      var seekPositionInTrack = clickPositionInPercentage * sound.duration();
+
+      // Seek to the calculated position
+      sound.seek(seekPositionInTrack);
+    });
+
   });
+
+  
 }
 
