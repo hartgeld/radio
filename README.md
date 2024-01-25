@@ -1,6 +1,6 @@
 # Radio
 
-An independently operating community radio station based in Stuttgart, focusing on local artists.
+An independent community radio station focusing on local artists.
 
 ## Installation
 
