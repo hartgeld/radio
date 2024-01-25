@@ -26,7 +26,9 @@ const Player = function(playlist, playAudioBtn, stopAudioBtn) {
   
   this.progressBar = document.querySelector('.uk-progress-bar');
   this.timer = document.getElementById('timer');
-  
+
+  // Add a flag to indicate whether the MP3 player is active
+  this.isMP3PlayerActive = false;
 };
 
 Player.prototype = {
@@ -55,8 +57,15 @@ Player.prototype = {
     }
   
     sound.play();
+
+    // Set the flag to true when the MP3 player is played
+    if (self === mp3Player) {
+      self.isMP3PlayerActive = true;
+    }
+
     // Start updating the progress of the track when the 'play' event is fired
     sound.once('play', function() {
+
       // Store the duration of the audio file
       self.duration = sound.duration();
       requestAnimationFrame(self.step.bind(self));
@@ -79,6 +88,11 @@ Player.prototype = {
       sound.stop();
       self.playAudioBtn.style.display = 'block';
       self.stopAudioBtn.style.display = 'none';
+    }
+
+    // Set the flag to false when the MP3 player is stopped
+    if (self === mp3Player) {
+      self.isMP3PlayerActive = false;
     }
   },
 
@@ -229,30 +243,42 @@ async function fetchData() {
   }
 }
 
-function handleLivestreamButtonClick(event) {
-  event.preventDefault();
+async function handleLivestreamButtonClick(event) {
+  try {
+    event.preventDefault();
 
-  const livestreamUrl = this.getAttribute('href');
-  const { playAudioBtn, stopAudioBtn } = initializeButtons();
+    const livestreamUrl = this.getAttribute('href');
+    const { playLivestreamBtn, stopLivestreamBtn } = initializeButtons();
 
-  // Stop the static audio if it's playing
-  if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
-    mp3Player.stop();
-  }
-
-  if (livestreamPlayer) {
-    try {
-      livestreamPlayer.play(0);
-    } catch (error) {
-      console.error('Failed to play existing Player instance:', error);
+    // Check if the buttons exist
+    if (!playLivestreamBtn || !stopLivestreamBtn) {
+      throw new Error('Buttons not found');
     }
-  } else {
-    try {
-      livestreamPlayer = new Player([{ src: [livestreamUrl], html5: true, format: ['mp3'], howl: null }], playAudioBtn, stopAudioBtn);
-      livestreamPlayer.play(0);
-    } catch (error) {
-      console.error('Failed to create Player instance:', error);
+
+    // Wait for fetchData to finish
+    await fetchData();
+
+    // Stop the static audio if it's playing
+    if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
+      mp3Player.stop();
     }
+
+    if (livestreamPlayer) {
+      try {
+        livestreamPlayer.play(0);
+      } catch (error) {
+        console.error('Failed to play existing Player instance:', error);
+      }
+    } else {
+      try {
+        livestreamPlayer = new Player([{ src: [livestreamUrl], html5: true, format: ['mp3'], howl: null }], playAudioBtn, stopAudioBtn);
+        livestreamPlayer.play(0);
+      } catch (error) {
+        console.error('Failed to create Player instance:', error);
+      }
+    }
+  } catch (error) {
+    console.error('An error occurred:', error);
   }
 }
 
@@ -282,8 +308,16 @@ function handleMP3ButtonClick(event) {
 
   // If mp3Player is undefined, initialize it with the clicked MP3
   if (!mp3Player) {
-    const howl = new Howl({ src: [mp3Url], html5: true });
-  
+    const howl = new Howl({ 
+      src: [mp3Url], 
+      html5: true,
+      onend: function() {
+        // When the sound finishes playing, show the play button and hide the pause button
+        playAudioBtn.style.display = '';
+        stopAudioBtn.style.display = 'none';
+      }
+    });
+
     const intervalId = setInterval(function() {
       const progressBar = document.querySelector('.uk-progress-bar');
       if (progressBar) {
@@ -310,6 +344,38 @@ window.onload = function() {
   controls.style.display = 'none';
 }
 
+// Add a flag to indicate whether the MP3 player is active
+let isMP3PlayerActive = false;
+
+// Define a function to set up the MP3 player
+function setupMP3Player(mp3Player) {
+  // Set the flag to true when the MP3 player is played
+  mp3Player.on('play', function() {
+    isMP3PlayerActive = true;
+  });
+
+  // Set the flag to false when the MP3 player is stopped
+  mp3Player.on('stop', function() {
+    isMP3PlayerActive = false;
+  });
+}
+
+function updateProgressBar() {
+  // Check if the MP3 player is defined and active
+  if (mp3Player && mp3Player.playlist[mp3Player.index]?.howl) {
+    // Calculate the MP3 progress
+    const progress = mp3Player.playlist[mp3Player.index].howl.seek() / mp3Player.playlist[mp3Player.index].howl.duration();
+
+    // Get the progress bar
+    var progressBar = document.querySelector('.uk-progress-bar');
+
+    // Update the width of the progress bar
+    progressBar.style.width = (progress * 100) + '%';
+  }
+}
+
+
+
 export function initializePlayer() {
   fetchData().then(() => {
     // Group event listener assignments together
@@ -335,12 +401,9 @@ export function initializePlayer() {
     // Add event listener for stopAudio button
     const stopAudioBtn = document.getElementById('stopAudio');
     stopAudioBtn.addEventListener('click', () => {
-      console.log('stopAudio button clicked'); // Add this line
 
       if (mp3Player instanceof Player) {
-        console.log('mp3Player is an instance of Player'); // Add this line
-
-        mp3Player.pause();
+        mp3Player.pause ();
       }
     });
     // Add event listener for playAudio button
@@ -368,13 +431,10 @@ export function initializePlayer() {
 
       // Stop the static audio if it's playing
       if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
-        mp3Player.stop();
+        mp3Player.playlist[mp3Player.index].howl.stop();
         mp3Player.playlist[mp3Player.index].howl.seek(0);
-
       }
     });
-
-
 
     const progressBarContainer = document.querySelector('#progress');
 
@@ -394,10 +454,43 @@ export function initializePlayer() {
 
       // Seek to the calculated position
       sound.seek(seekPositionInTrack);
+
+      // Get the progress bar
+      var progressBar = document.querySelector('.uk-progress-bar');
+
+      // Update the width of the progress bar
+      progressBar.style.width = (clickPositionInPercentage * 100) + '%';
+    });
+
+    
+    setInterval(updateProgressBar, 1000);
+    // Add a click event listener to the progress bar container
+    progressBarContainer.addEventListener('click', (event) => {
+      // Check if mp3Player is defined
+      if (mp3Player && mp3Player.playlist[mp3Player.index]?.howl) {
+        // Calculate the clicked position within the progress bar container
+        var clickPositionInProgressBar = event.clientX - progressBarContainer.getBoundingClientRect().left;
+
+        // Calculate the clicked position as a percentage
+        var clickPositionInPercentage = clickPositionInProgressBar / progressBarContainer.offsetWidth;
+
+        // Get the Howl we want to manipulate
+        var sound = mp3Player.playlist[mp3Player.index].howl;
+
+        // Calculate the seek position in the audio track
+        var seekPositionInTrack = clickPositionInPercentage * sound.duration();
+
+        // Seek to the calculated position
+        sound.seek(seekPositionInTrack);
+
+        // Get the progress bar
+        var progressBar = document.querySelector('.uk-progress-bar');
+
+        // Update the width of the progress bar
+        progressBar.style.width = (clickPositionInPercentage * 100) + '%';
+      }
     });
 
   });
-
-  
 }
 
