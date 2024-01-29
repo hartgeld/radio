@@ -1,22 +1,22 @@
-<div class="uk-container uk-margin-small-top uk-margin-small-bottom">
+<div class="uk-container uk-margin-medium-top uk-margin-medium-bottom">
   <h1 class="uk-heading-small">shows</h1>
   {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
   {% for show in sorted-shows %}
-  <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-small-top">
+  <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top "> <!-- uk-child-width-2-1 -->
     <a href="{{ show.mp3Url}}" class="mp3Button">
-      <div class="uk-card-media-top">
+      <div class="uk-card-media-top uk-cover-container">
         <img src="{{ show.image}}" width="" height="" alt="">
       </div>
-      <div class="uk-card-header uk-padding-small">
+      <div class="uk-card-header uk-padding-small ">
         {% for tag in show.tags %}
-        <span class="uk-text-small uk-text-bold">{{ tag }}</span>
+        <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
       {% endfor %}
       </div>
       <div class="uk-card-body">
         <h1 class="uk-text-default uk-text-bold">{{ show.title }}</h1>
       </div>
       <div class="uk-card-footer uk-padding-small">
-        <h5 class="uk-text-small  uk-text-bold ">
+        <h5 class="uk-text-small ">
           {{ show.date | date: "%d.%m.%y" }}
         </h5>
       </div>
