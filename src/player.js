@@ -50,7 +50,7 @@ Player.prototype = {
     }
     self.step();
   },
-
+/*
   stop: function() {
     const self = this;
     const sound = self.playlist[self.index].howl;
@@ -61,6 +61,25 @@ Player.prototype = {
       self.stopAudioBtn.style.display = 'none';
     }
   },
+*/
+stop: function() {
+  const self = this;
+  console.log('Stopping: playlist =', self.playlist, ', index =', self.index);
+  // Check if there is a sound at the current index
+  if (self.playlist[self.index]) {
+    // Stop the currently playing sound, if any
+    if (self.playlist[self.index].howl) {
+      self.playAudioBtn.style.display = 'block';
+      self.stopAudioBtn.style.display = 'none';
+      self.playlist[self.index].howl.stop();
+    }
+  }
+  // Clear the playlist
+  self.playlist = [];
+  // Reset the index
+  self.index = 0;
+},
+
 
   pause: function() {
     console.log('pause method called');
@@ -100,47 +119,63 @@ Player.prototype = {
 
   playMP3: function(mp3Url) {
     const self = this;
-    // Stop the live stream
-    self.stop();
+    // Stop the currently playing sound, if any
+    if (self.playlist[self.index]) {
+      self.playlist[self.index].howl.stop();
+    }
+    // Clear the playlist
+    self.playlist = [];
+    // Reset the index
+    self.index = 0;
+    // Create a new Howl
+    const howl = new Howl({
+      src: [mp3Url],
+      html5: true,
+      format: ['mp3'],
+      onload: function() {
+        // Start playing the MP3
+        self.play(0); // The new sound is now at index 0
+        // Start updating the progress bar
+        //self.step();
+      }
+    });
     // Add the MP3 to the playlist
     self.playlist.push({
       src: [mp3Url],
       html5: true,
       format: ['mp3'],
-      howl: null
+      howl: howl
     });
-    // Start playing the MP3
-    self.play(self.playlist.length - 1);
-    // Start updating the progress bar
-    //self.step();
   },
 
   step: function() {
     var self = this;
-    // Get the Howl we want to manipulate.
-    var sound = self.playlist[self.index].howl;
-    // If the sound is playing
-    if (sound.playing()) {
-      // Determine our current seek position.
-      var seek = sound.seek() || 0;
-      var formattedSeek = self.formatTime(Math.round(seek));
-      // Only update the timer if the seek has changed
-      if (self.timer.innerHTML !== formattedSeek) {
-        self.timer.innerHTML = formattedSeek;
-      }
-      var duration = sound.duration();
-      var formattedDuration = self.formatTime(Math.round(duration));
-      var durationElement = document.getElementById('duration');
-      // Only update the duration if it has changed
-      if (durationElement.innerHTML !== formattedDuration) {
-        durationElement.innerHTML = formattedDuration;
-      }
-      // Calculate the progress of the audio
-      var progress = (seek / duration) * 100;
-      var formattedProgress = progress + '%';
-      // Only update the progress bar if the progress has changed
-      if (self.progressBar.style.width !== formattedProgress) {
-        self.progressBar.style.width = formattedProgress;
+    if (self.playlist[self.index]) {
+      // Get the Howl we want to manipulate.
+      var sound = self.playlist[self.index].howl;
+      // If the sound is playing
+      if (sound.playing()) {
+        // Determine our current seek position.
+        var seek = sound.seek() || 0;
+        var formattedSeek = self.formatTime(Math.round(seek));
+        // Only update the timer if the seek has changed
+        if (self.timer.innerHTML !== formattedSeek) {
+          self.timer.innerHTML = formattedSeek;
+        }
+        var duration = sound.duration();
+        var formattedDuration = self.formatTime(Math.round(duration));
+        var durationElement = document.getElementById('duration');
+        // Only update the duration if it has changed
+        if (durationElement.innerHTML !== formattedDuration) {
+          durationElement.innerHTML = formattedDuration;
+        }
+        // Calculate the progress of the audio
+        var progress = (seek / duration) * 100;
+        var formattedProgress = progress + '%';
+        // Only update the progress bar if the progress has changed
+        if (self.progressBar.style.width !== formattedProgress) {
+          self.progressBar.style.width = formattedProgress;
+        }
       }
     }
     // Call the `step` function again on the next animation frame
@@ -217,16 +252,13 @@ async function handleLivestreamButtonClick(event) {
     // Wait for fetchData to finish
     await fetchData();
     // Pause the static audio if it's playing
-    if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
+    if (mp3Player?.playlist[mp3Player.index]?.howl) {
       mp3Player.pause();
       console.log("livestream button clicked, mp3Player paused");
       // Hide the progress bar and audio player controls
       document.getElementById('audio-player_controls').style.display = 'none';
-      //document.getElementById('progress').style.display = 'none';
-    
       const progress_container = document.getElementById('progress-container');
       progress_container.style.display = 'none';
-
     }
     // Create Livestream Player if it doesn't exist and play it
     if (livestreamPlayer) {
@@ -277,7 +309,7 @@ function handleCloseAudioPlayerBtnClick() {
   const progress_container = document.getElementById('progress-container');
   progress_container.style.display = 'none';
   // Stop the static audio if it's playing
-  if (mp3Player?.playlist[mp3Player.index]?.howl?.playing()) {
+  if (mp3Player?.playlist[mp3Player.index]?.howl) {
     mp3Player.playlist[mp3Player.index].howl.stop();
     mp3Player.playlist[mp3Player.index].howl.seek(0);
   }
@@ -301,6 +333,10 @@ function handleMP3ButtonClick(event) {
   if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
     mp3Player.play();
     return;
+  }
+  // Stop the currently playing sound, if any
+  if (mp3Player && mp3Player.playlist[mp3Player.index]) {
+    mp3Player.playlist[mp3Player.index].howl.stop();
   }
   // If mp3Player is undefined, initialize it with the clicked MP3
   if (!mp3Player) {
@@ -326,8 +362,9 @@ function handleMP3ButtonClick(event) {
   // Add the MP3 to the playlist if it's not already there
   if (!mp3Player.playlist.some(track => track.src[0] === mp3Url)) {
     const howl = new Howl({ src: [mp3Url], html5: true });
-    mp3Player.playlist.push({ src: [mp3Url], html5: true, format: ['mp3'], howl });
-    mp3Player.play(mp3Player.playlist.length - 1);
+    mp3Player.playlist = [{ src: [mp3Url], html5: true, format: ['mp3'], howl }]; // Reset the playlist
+    mp3Player.index = 0; // Reset the index
+    mp3Player.play(mp3Player.index);
   }
 }
 
