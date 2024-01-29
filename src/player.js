@@ -50,18 +50,7 @@ Player.prototype = {
     }
     self.step();
   },
-/*
-  stop: function() {
-    const self = this;
-    const sound = self.playlist[self.index].howl;
-  
-    if (sound) {
-      sound.stop();
-      self.playAudioBtn.style.display = 'block';
-      self.stopAudioBtn.style.display = 'none';
-    }
-  },
-*/
+
 stop: function() {
   const self = this;
   console.log('Stopping: playlist =', self.playlist, ', index =', self.index);
@@ -325,7 +314,7 @@ function handleMP3ButtonClick(event) {
   const progress = document.getElementById('progress-container');
   progress.style.display = 'flex';
   // Fetch the title from the h1 tag
-  const title = document.querySelector('.uk-card-header h1').textContent;
+  const title = document.querySelector('.uk-card-body h1').textContent;
   // Display the title in head_audio-player.html
   const titleElement = document.querySelector('#titleElement');
   titleElement.textContent = title;

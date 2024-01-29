@@ -1,13 +1,6 @@
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-  {%- endif -%}
-
-  {% seo %}
-  <link rel="icon" href="https://zany.sh/favicon.svg?text=🥦"/>
-</head>
+<div class="uk-container uk-background-default" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    {%- include head_nav.html -%}
+    {%- include head_live-player.html -%}
+    {%- include head_audio-player.html -%}
+  </div>
+  {%- include head_nav_offcanvas.html -%}

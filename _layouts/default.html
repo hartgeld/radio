@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
-  {%- include head.html -%}
-
+  {%- include site_head.html -%}
   <body>
-    {%- include head_nav.html -%}
-    {%- include head_live-player.html -%}
-    {%- include head_audio-player.html -%}
-    
+    {%- include head.html -%}  
     {%- include body_shows.html -%}
-    
-
     <script src="{{ "/assets/main.js" | relative_url }}"></script>
   </body>
 </html>
