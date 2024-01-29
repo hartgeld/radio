@@ -1,9 +1,9 @@
 title: Full Beans! Radio
 email: hartgeld@pm.me
 description: >- 
-  An independent community radio station focusing on local artists.
+  Independent community radio station focusing on local artists.
 baseurl: "" 
-url: "" 
+url: "https://radio.holgerardelt.de/" 
 github_username: hartgeld
 
 markdown: kramdown
