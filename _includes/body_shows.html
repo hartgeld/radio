@@ -1,36 +1,81 @@
 <div class="uk-container uk-margin-medium-top uk-margin-medium-bottom">
-  <h1 class="uk-heading-small">shows</h1>
+  <h1 class="uk-heading-small uk-text-bold">shows</h1>
   {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
   {% for show in sorted-shows %}
-  <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top "> <!-- uk-child-width-2-1 -->
-    
-    <div class="label_isPlaying uk-card-badge" style="display: none;">
-      <i class="fas fa-pause fa-2x"></i>
-    </div>
-    <div class="label_isPaused uk-card-badge ">
-      <i class="fas fa-play fa-2x"></i>
-    </div>
+    <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top "> <!-- uk-child-width-2-1 -->
+      <div class="label_isPlaying uk-card-badge" style="display: none;">
+        <i class="fas fa-pause fa-1x"></i>
+      </div>
+      <div class="label_isPaused uk-card-badge ">
+        <i class="fas fa-play fa-1x"></i>
+      </div>
+      <a href="{{ show.mp3Url}}" class="mp3Button">
+        <div class="uk-card-media-top uk-cover-container">
+          <img src="{{ show.image}}" width="" height="" alt="">
+        </div>
+      </a>
+      <a href="{{ show.mp3Url}}" class="mp3Button">
+        <div class="uk-card-header uk-padding-small-top uk-padding-large-bottom">
+          <h1 class="uk-text-default uk-text-bold">{{ show.title }}</h1>
+        </div>
+      </a>
+      
+      <div class="uk-flex uk-flex-between">
+        <div class="uk-width-expand">
+          <div class="uk-card-body uk-padding-remove-vertical">
+            {% for tag in show.tags %}
+            <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          <div class="uk-card-footer uk-padding-remove-vertical uk-flex uk-flex-between">
+            <h5 class="uk-text-small ">
+              {{ show.date | date: "%d.%m.%y" }}
+            </h5>
+          </div>
+        </div>
+      
+        <button class="uk-button uk-height-1-1 uk-margin-small-right" type="button" uk-toggle="target: #my-modal-{{ forloop.index }}">
+          <i class="fas fa-info fa-2x"></i>
+        </button>
+      </div>
 
-    <a href="{{ show.mp3Url}}" class="mp3Button">
-      <div class="uk-card-media-top uk-cover-container">
-        <img src="{{ show.image}}" width="" height="" alt="">
-      </div>
-    </a>
-    <div class="uk-card-header uk-padding-small ">
-      {% for tag in show.tags %}
-      <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
-    {% endfor %}
     </div>
-    <a href="{{ show.mp3Url}}" class="mp3Button">
-      <div class="uk-card-body">
-        <h1 class="uk-text-default uk-text-bold">{{ show.title }}</h1>
+    <div id="my-modal-{{ forloop.index }}" class="uk-flex-top" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body uk-margin-auto-bottom uk-padding-remove uk-modal-dialog" uk-overflow-auto>
+
+        <div>
+          <button class="uk-button uk-modal-close-default uk-button-small uk-padding-small  uk-position-right uk-height-small "  type="button">
+            <i class="fas fa-times fa-2x"></i>
+          </button>
+        </div>  
+
+        <div class="uk-card-media-top uk-cover-container">
+          <img src="{{ show.image}}" width="" height="" alt="">
+        </div>
+
+        <div class="uk-modal-header  uk-padding">
+          <h2 class="uk-modal-title uk-text-bold">{{ show.title }}</h2>
+        </div>
+        <div class="uk-modal-body uk-padding uk-padding-remove-vertical uk-text-secondary">
+          <p>{{ show.content | markdownify }}</p>
+        </div>
+        <div class="uk-modal-footer uk-padding uk-padding-remove-vertical">
+          {% for tag in show.tags %}
+          <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="uk-modal-footer uk-padding uk-padding-remove-vertical">
+          <h5 class="uk-text-small ">
+            {{ show.date | date: "%d.%m.%y" }}
+          </h5>
+        </div>
+
       </div>
-    </a>
-    <div class="uk-card-footer uk-padding-small">
-      <h5 class="uk-text-small ">
-        {{ show.date | date: "%d.%m.%y" }}
-      </h5>
     </div>
-  </div>
   {% endfor %}
 </div>
+
+
+
+

@@ -321,7 +321,7 @@ function handleMP3ButtonClick(event) {
     const currentLabelPlaying = currentCard.querySelector('.label_isPlaying');
     const currentLabelPaused = currentCard.querySelector('.label_isPaused');
     currentLabelPlaying.style.display = 'none';
-    currentLabelPaused.style.display = 'block';
+    currentLabelPaused.style.display = 'flex';
   }
 
   const mp3Url = this.getAttribute('href');
@@ -332,15 +332,20 @@ function handleMP3ButtonClick(event) {
   const progress = document.getElementById('progress-container');
   progress.style.display = 'flex';
   // Fetch the title from the h1 tag
-  const title = document.querySelector('.uk-card-body h1').textContent;
+  const title = document.querySelector('.uk-card-header h1').textContent;
   // Display the title in head_audio-player.html
   const titleElement = document.querySelector('#titleElement');
   titleElement.textContent = title;
-  // If the clicked MP3 is the same as the currently playing one, resume it
-  if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
+
+// If the clicked MP3 is the same as the currently playing one, toggle play/pause
+if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
+  if (mp3Player.playlist[mp3Player.index].howl.playing()) {
+    mp3Player.pause();
+  } else {
     mp3Player.play();
-    return;
   }
+  return;
+}
 
 
   // If the sound is currently playing, pause it
@@ -357,23 +362,23 @@ if (!mp3Player) {
     onend: function() {
       playAudioBtn.style.display = '';
       stopAudioBtn.style.display = 'none';
-      labelPaused.style.display = 'block';
+      labelPaused.style.display = 'flex';
       labelPlaying.style.display = 'none';
     },
     onpause: function() {
       console.log('onpause event triggered');
 
-      labelPaused.style.display = 'block';
+      labelPaused.style.display = 'flex';
       labelPlaying.style.display = 'none';
     },
     onstop: function() {
       console.log('onstop event triggered');
 
-      labelPaused.style.display = 'block';
+      labelPaused.style.display = 'flex';
       labelPlaying.style.display = 'none';
     },  
     onplay: function() {
-      labelPlaying.style.display = 'block';
+      labelPlaying.style.display = 'flex';
       labelPaused.style.display = 'none';
     }
   });
@@ -384,7 +389,7 @@ if (!mp3Player) {
       clearInterval(intervalId);
       mp3Player.play(0);
       labelPaused.style.display = 'none';
-      labelPlaying.style.display = 'block';
+      labelPlaying.style.display = 'flex';
     }
   }, 100);
   return;
@@ -397,21 +402,19 @@ if (!mp3Player.playlist.some(track => track.src[0] === mp3Url)) {
     onend: function() {
       playAudioBtn.style.display = '';
       stopAudioBtn.style.display = 'none';
-      labelPaused.style.display = 'block';
+      labelPaused.style.display = 'flex';
       labelPlaying.style.display = 'none';
     },
     onpause: function() {
-      console.log('onpause event triggered');
-      labelPaused.style.display = 'block';
+      labelPaused.style.display = 'flex';
       labelPlaying.style.display = 'none';
     },
     onstop: function() {
-      console.log('onstop event triggered');
-      labelPaused.style.display = 'block';
+      labelPaused.style.display = 'flex';
       labelPlaying.style.display = 'none';
     },
     onplay: function() {
-      labelPlaying.style.display = 'block';
+      labelPlaying.style.display = 'flex';
       labelPaused.style.display = 'none';
     }
   });
@@ -419,7 +422,7 @@ if (!mp3Player.playlist.some(track => track.src[0] === mp3Url)) {
   mp3Player.index = 0; // Reset the index
   mp3Player.play(mp3Player.index);
   labelPaused.style.display = 'none';
-  labelPlaying.style.display = 'block';
+  labelPlaying.style.display = 'flex';
 }
 currentCard = card;
 }
