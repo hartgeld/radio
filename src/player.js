@@ -3,6 +3,8 @@ import { Howl } from 'howler';
 let livestreamPlayer;
 let mp3Player;
 
+let currentCard = null; // Add this line outside the function to keep track of the currently playing card
+
 const Player = function(playlist, playAudioBtn, stopAudioBtn) {
   this.playlist = playlist;
   this.index = 0;
@@ -306,6 +308,22 @@ function handleCloseAudioPlayerBtnClick() {
 
 function handleMP3ButtonClick(event) {
   event.preventDefault();
+
+  // Find the parent card of the clicked button
+  const card = event.target.closest('.uk-card');
+
+  // Find the label elements inside the new card
+  const labelPlaying = card.querySelector('.label_isPlaying');
+  const labelPaused = card.querySelector('.label_isPaused');
+
+  // If a different card is clicked, update the labels of the currently playing card
+  if (currentCard && currentCard !== card) {
+    const currentLabelPlaying = currentCard.querySelector('.label_isPlaying');
+    const currentLabelPaused = currentCard.querySelector('.label_isPaused');
+    currentLabelPlaying.style.display = 'none';
+    currentLabelPaused.style.display = 'block';
+  }
+
   const mp3Url = this.getAttribute('href');
   const { playAudioBtn, stopAudioBtn } = initializeButtons();
   // Show the controls
@@ -323,38 +341,87 @@ function handleMP3ButtonClick(event) {
     mp3Player.play();
     return;
   }
-  // Stop the currently playing sound, if any
-  if (mp3Player && mp3Player.playlist[mp3Player.index]) {
+
+
+  // If the sound is currently playing, pause it
+  if (mp3Player && mp3Player.playlist[mp3Player.index] && mp3Player.playlist[mp3Player.index].howl.playing()) {
     mp3Player.playlist[mp3Player.index].howl.stop();
+    //return;
   }
-  // If mp3Player is undefined, initialize it with the clicked MP3
-  if (!mp3Player) {
-    const howl = new Howl({ 
-      src: [mp3Url], 
-      html5: true,
-      onend: function() {
-        // When the sound finishes playing, show the play button and hide the pause button
-        playAudioBtn.style.display = '';
-        stopAudioBtn.style.display = 'none';
-      }
-    });
-    const intervalId = setInterval(function() {
-      const progressBar = document.querySelector('.uk-progress-bar');
-      if (progressBar) {
-        clearInterval(intervalId);
-        mp3Player = new Player([{ src: [mp3Url], html5: true, format: ['mp3'], howl }], playAudioBtn, stopAudioBtn);
-        mp3Player.play(0);
-      }
-    }, 100);
-    return;
-  }
-  // Add the MP3 to the playlist if it's not already there
-  if (!mp3Player.playlist.some(track => track.src[0] === mp3Url)) {
-    const howl = new Howl({ src: [mp3Url], html5: true });
-    mp3Player.playlist = [{ src: [mp3Url], html5: true, format: ['mp3'], howl }]; // Reset the playlist
-    mp3Player.index = 0; // Reset the index
-    mp3Player.play(mp3Player.index);
-  }
+
+// If mp3Player is undefined, initialize it with the clicked MP3
+if (!mp3Player) {
+  const howl = new Howl({ 
+    src: [mp3Url], 
+    html5: true,
+    onend: function() {
+      playAudioBtn.style.display = '';
+      stopAudioBtn.style.display = 'none';
+      labelPaused.style.display = 'block';
+      labelPlaying.style.display = 'none';
+    },
+    onpause: function() {
+      console.log('onpause event triggered');
+
+      labelPaused.style.display = 'block';
+      labelPlaying.style.display = 'none';
+    },
+    onstop: function() {
+      console.log('onstop event triggered');
+
+      labelPaused.style.display = 'block';
+      labelPlaying.style.display = 'none';
+    },  
+    onplay: function() {
+      labelPlaying.style.display = 'block';
+      labelPaused.style.display = 'none';
+    }
+  });
+  mp3Player = new Player([{ src: [mp3Url], html5: true, format: ['mp3'], howl }], playAudioBtn, stopAudioBtn);
+  const intervalId = setInterval(function() {
+    const progressBar = document.querySelector('.uk-progress-bar');
+    if (progressBar) {
+      clearInterval(intervalId);
+      mp3Player.play(0);
+      labelPaused.style.display = 'none';
+      labelPlaying.style.display = 'block';
+    }
+  }, 100);
+  return;
+}
+// Add the MP3 to the playlist if it's not already there
+if (!mp3Player.playlist.some(track => track.src[0] === mp3Url)) {
+  const howl = new Howl({ 
+    src: [mp3Url], 
+    html5: true,
+    onend: function() {
+      playAudioBtn.style.display = '';
+      stopAudioBtn.style.display = 'none';
+      labelPaused.style.display = 'block';
+      labelPlaying.style.display = 'none';
+    },
+    onpause: function() {
+      console.log('onpause event triggered');
+      labelPaused.style.display = 'block';
+      labelPlaying.style.display = 'none';
+    },
+    onstop: function() {
+      console.log('onstop event triggered');
+      labelPaused.style.display = 'block';
+      labelPlaying.style.display = 'none';
+    },
+    onplay: function() {
+      labelPlaying.style.display = 'block';
+      labelPaused.style.display = 'none';
+    }
+  });
+  mp3Player.playlist = [{ src: [mp3Url], html5: true, format: ['mp3'], howl }]; // Reset the playlist
+  mp3Player.index = 0; // Reset the index
+  mp3Player.play(mp3Player.index);
+  labelPaused.style.display = 'none';
+  labelPlaying.style.display = 'block';
+}
+currentCard = card;
 }
 
 function updateProgressBar() {
