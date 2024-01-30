@@ -2,12 +2,12 @@
   <h1 class="uk-heading-small uk-text-bold">shows</h1>
   {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
   {% for show in sorted-shows %}
-    <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top "> <!-- uk-child-width-2-1 -->
-      <div class="label_isPlaying uk-card-badge" style="display: none;">
-        <i class="fas fa-pause fa-1x"></i>
+    <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top "> 
+      <div class="label_isPlaying uk-card-badge uk-padding-small uk-position-right uk-background-secondary" style="display: none; pointer-events: none;">
+        <i class="fas fa-pause fa-1x uk-text-muted"></i>
       </div>
-      <div class="label_isPaused uk-card-badge ">
-        <i class="fas fa-play fa-1x"></i>
+      <div class="label_isPaused uk-card-badge uk-padding-small uk-position-right uk-background-muted" style="pointer-events: none;">
+        <i class="fas fa-play fa-1x uk-text-secondary"></i>
       </div>
       <a href="{{ show.mp3Url}}" class="mp3Button">
         <div class="uk-card-media-top uk-cover-container">
@@ -27,14 +27,13 @@
             <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
             {% endfor %}
           </div>
-          <div class="uk-card-footer uk-padding-remove-vertical uk-flex uk-flex-between">
+          <div class="uk-card-footer uk-padding-remove-top uk-flex uk-flex-between">
             <h5 class="uk-text-small ">
               {{ show.date | date: "%d.%m.%y" }}
             </h5>
           </div>
-        </div>
-      
-        <button class="uk-button uk-height-1-1 uk-margin-small-right" type="button" uk-toggle="target: #my-modal-{{ forloop.index }}">
+        </div>      
+        <button class="uk-button uk-height-match" type="button" uk-toggle="target: #my-modal-{{ forloop.index }}">
           <i class="fas fa-info fa-2x"></i>
         </button>
       </div>
@@ -65,7 +64,7 @@
           {% endfor %}
         </div>
 
-        <div class="uk-modal-footer uk-padding uk-padding-remove-vertical">
+        <div class="uk-modal-footer uk-padding uk-padding-remove-top">
           <h5 class="uk-text-small ">
             {{ show.date | date: "%d.%m.%y" }}
           </h5>
@@ -73,6 +72,7 @@
 
       </div>
     </div>
+
   {% endfor %}
 </div>
 
