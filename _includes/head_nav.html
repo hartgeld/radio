@@ -4,7 +4,7 @@
           <div class="uk-navbar-left">
               <a class="site-title uk-text-secondary uk-text-bold" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
           </div>
-          <div class="uk-navbar-right uk-visible@m">
+          <div class="uk-navbar-right uk-visible@m ">
               <ul class="uk-navbar-nav">
                   {%- assign default_paths = site.pages | map: "path" -%}
                   {%- assign page_paths = site.header_pages | default: default_paths -%}

@@ -1,10 +1,10 @@
 <div class="uk-container uk-margin-medium-top uk-margin-medium-bottom">
-  <h1 class="uk-heading-small uk-text-bold">shows</h1>
+  <h1 class="uk-text-large uk-text-bold">Latest</h1>
   {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
   {% for show in sorted-shows %}
     <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top "> 
       <div class="label_isPlaying uk-card-badge uk-padding-small uk-position-right uk-background-secondary" style="display: none; pointer-events: none;">
-        <i class="fas fa-pause fa-1x uk-text-muted"></i>
+        <i class="fas fa-pause fa-1x uk-text-danger"></i>
       </div>
       <div class="label_isPaused uk-card-badge uk-padding-small uk-position-right uk-background-muted" style="pointer-events: none;">
         <i class="fas fa-play fa-1x uk-text-secondary"></i>
