@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {%- include site_head.html -%}
-  <body>
-    {%- include head.html -%}  
-    {%- include body_shows.html -%}
+  <body class="uk-height-viewport uk-flex uk-flex-column">
+    {%- include head.html -%}
+    <div class="uk-flex-auto">  
+      {%- include body_shows.html -%}
+    </div>
     {%- include footer.html -%}  
     <script src="{{ "/assets/main.js" | relative_url }}"></script>
   </body>
