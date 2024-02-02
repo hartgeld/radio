@@ -9,11 +9,25 @@
       <div class="label_isPaused uk-card-badge uk-padding-small uk-position-right uk-background-muted" style="pointer-events: none;">
         <i class="fas fa-play fa-1x uk-text-secondary"></i>
       </div>
+
+
+
       <a href="{{ show.mp3Url}}" class="mp3Button">
         <div class="uk-card-media-top uk-cover-container">
-          <img src="{{ show.image}}" width="" height="" alt="">
+        
+          {% assign path = show.image | remove_first: '/' %}
+
+          {% responsive_image_block %}
+            path: {{ path }}
+            {% if title %}
+            title: {{ title }}
+            alt: {{ title }}
+            {% endif %}
+          {% endresponsive_image_block %}
+
         </div>
       </a>
+
       <a href="{{ show.mp3Url}}" class="mp3Button">
         <div class="uk-card-header uk-padding-small-top uk-padding-large-bottom">
           <h1 class="uk-text-default uk-text-bold">{{ show.title }}</h1>

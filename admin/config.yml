@@ -3,7 +3,7 @@ backend:
   repo: hartgeld/radio
   branch: master
 
-media_folder: "img/uploads"
+media_folder: "img"
 
 collections:
   - name: "shows"
