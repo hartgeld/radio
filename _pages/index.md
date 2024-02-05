@@ -1,4 +1,4 @@
 ---
 permalink: /
-layout: default
+layout: index
 ---

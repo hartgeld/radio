@@ -51,8 +51,8 @@
         </div>
 
       </div>
-      <div id="my-modal-{{ forloop.index }}" class="uk-flex-top" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-bottom uk-padding-remove uk-modal-dialog" uk-overflow-auto>
+      <div id="my-modal-{{ forloop.index }}" class="uk-flex-top uk-flex-right uk-padding uk-padding-remove" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-padding-remove uk-overflow-auto uk-width-1-1 uk-width-1-2@m" uk-height-viewport="min-height: 100vh;">
 
           <div>
             <button class="uk-button uk-modal-close-default uk-button-small uk-padding-small  uk-position-right uk-height-small "  type="button">
@@ -61,7 +61,15 @@
           </div>  
 
           <div class="uk-card-media-top uk-cover-container">
-            <img src="{{ show.image}}" width="" height="" alt="">
+            {% assign path = show.image | remove_first: '/' %}
+            {% responsive_image_block %}
+              path: {{ path }}
+              {% if title %}
+              title: {{ title }}
+              alt: {{ title }}
+              {% endif %}
+            {% endresponsive_image_block %}
+            
           </div>
 
           <div class="uk-modal-header  uk-padding">
