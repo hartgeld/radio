@@ -16,7 +16,16 @@ const Player = function(playlist, playAudioBtn, stopAudioBtn) {
 
 Player.prototype = {
 
+  playing: function() {
+    const sound = this.playlist[this.index].howl;
+    if (sound) {
+      return sound.playing();
+    }
+    return false;
+  },
+
   play: function(index) {
+    console.log('Playing: this =', this);
     const self = this;
     let sound;
     // Stop the other player if it's playing
@@ -53,23 +62,34 @@ Player.prototype = {
     self.step();
   },
 
-stop: function() {
-  const self = this;
-  console.log('Stopping: playlist =', self.playlist, ', index =', self.index);
-  // Check if there is a sound at the current index
-  if (self.playlist[self.index]) {
-    // Stop the currently playing sound, if any
-    if (self.playlist[self.index].howl) {
-      self.playAudioBtn.style.display = 'block';
-      self.stopAudioBtn.style.display = 'none';
-      self.playlist[self.index].howl.stop();
+  stop: function() {
+    console.log('Stopping: this =', this);
+    const self = this;
+    console.log('Stopping: playlist =', self.playlist, ', index =', self.index);
+    // Check if there is a sound at the current index
+    if (self.playlist[self.index]) {
+      // Check if a Howl object exists
+      if (self.playlist[self.index].howl) {
+        console.log('Howl object before stopping:', self.playlist[self.index].howl);
+        self.playAudioBtn.style.display = 'block';
+        self.stopAudioBtn.style.display = 'none';
+        self.playlist[self.index].howl.pause(); // Pause the sound
+        console.log('Howl object after stopping:', self.playlist[self.index].howl);
+      } else {
+        console.log('No Howl object found at the current index');
+        return; // Return if no Howl object exists
+      }
+    } else {
+      console.log('No sound at the current index');
+      return; // Return if no sound exists at the current index
     }
-  }
-  // Clear the playlist
-  self.playlist = [];
-  // Reset the index
-  self.index = 0;
-},
+    // Clear the playlist
+    self.playlist = [];
+    // Reset the index
+    self.index = 0;
+    // Log the playlist right before it's cleared
+    console.log('Playlist before clearing:', self.playlist);
+  },
 
 
   pause: function() {
@@ -181,6 +201,10 @@ stop: function() {
 };
 
 async function fetchData() {
+  // If livestreamPlayer exists and is playing, stop it
+if (livestreamPlayer && livestreamPlayer.playlist[livestreamPlayer.index] && livestreamPlayer.playlist[livestreamPlayer.index].howl.playing()) {
+  livestreamPlayer.stop();
+}
   try {
     const response = await fetch('https://azura.holgerardelt.de/api/nowplaying/klo_radio_');
     const data = await response.json();
@@ -194,7 +218,15 @@ async function fetchData() {
       howl: null
     }];
     const { playLivestreamBtn, stopLivestreamBtn, playAudioBtn, stopAudioBtn, closeAudioPlayerBtn } = initializeButtons();
-    livestreamPlayer = new Player([playlist[0]], playLivestreamBtn, stopLivestreamBtn);
+    
+    const howl = new Howl({
+      src: playlist[0].src,
+      format: ['mp3'],
+      html5: true
+    });
+    
+    livestreamPlayer = new Player([{ ...playlist[0], howl: howl }], playLivestreamBtn, stopLivestreamBtn);
+
     if (playlist.length > 1) {
       mp3Player = new Player(playlist.slice(1), playAudioBtn, stopAudioBtn);
       console.log('MP3 player created', mp3Player);
@@ -253,13 +285,27 @@ async function handleLivestreamButtonClick(event) {
     }
     // Create Livestream Player if it doesn't exist and play it
     if (livestreamPlayer) {
-      try {
-        livestreamPlayer.play();
-        console.log("livestream button clicked, livestreamPlayer started");
-      } catch (error) {
-        console.error('Failed to play existing Player instance:', error);
+      console.log("livestreamPlayer exists");
+      if (livestreamPlayer.playing()) { // Check if the livestream is already playing
+        console.log("livestreamPlayer is playing, attempting to stop");
+        livestreamPlayer.stop(); // Stop the livestream
+        console.log("livestream button clicked, livestreamPlayer stopped");
+        if (livestreamPlayer.playing()) {
+          console.log("livestreamPlayer is still playing after stop was called");
+        } else {
+          console.log("livestreamPlayer is not playing after stop was called");
+        }
+      } else {
+        console.log("livestreamPlayer is not playing, attempting to start");
+        try {
+          livestreamPlayer.play();
+          console.log("livestream button clicked, livestreamPlayer started");
+        } catch (error) {
+          console.error('Failed to play existing Player instance:', error);
+        }
       }
     } else {
+      console.log("livestreamPlayer does not exist, attempting to create and start");
       try {
         livestreamPlayer = new Player([{ src: [livestreamUrl], html5: true, format: ['mp3'], howl: null }], playAudioBtn, stopAudioBtn);
         livestreamPlayer.play();
@@ -465,6 +511,10 @@ window.onload = function() {
 }
 
 export function initializePlayer() {
+    // If livestreamPlayer exists and is playing, return
+    if (livestreamPlayer && livestreamPlayer.playlist[livestreamPlayer.index] && livestreamPlayer.playlist[livestreamPlayer.index].howl.playing()) {
+      return;
+    }
   fetchData().then(() => {
     const buttons = initializeButtons();
     if (!buttons) {
@@ -472,24 +522,42 @@ export function initializePlayer() {
       return;
     }
     const { playAudioBtn, stopAudioBtn, playLivestreamBtn, stopLivestreamBtn, closeAudioPlayerBtn } = buttons;
-    // Add a click event listener for play livestream button
+
+    // Remove existing event listeners and add new ones
+    playLivestreamBtn.removeEventListener('click', handleLivestreamButtonClick);
     playLivestreamBtn.addEventListener('click', handleLivestreamButtonClick);
-    // Add a click event listener for stop livestream button
-    stopLivestreamBtn.addEventListener('click', () => livestreamPlayer?.stop());
-    // Add a click event listener for playAudio button
+
+    stopLivestreamBtn.removeEventListener('click', stopLivestream);
+    stopLivestreamBtn.addEventListener('click', stopLivestream);
+
+    playAudioBtn.removeEventListener('click', handlePlayAudioBtnClick);
     playAudioBtn.addEventListener('click', handlePlayAudioBtnClick);
-    // Add event listener for stopAudio button
+
+    stopAudioBtn.removeEventListener('click', handleStopAudioBtnClick);
     stopAudioBtn.addEventListener('click', handleStopAudioBtnClick);
-    // Get all elements with the class 'mp3Button' and add a click event listener to each
+
     const mp3Buttons = document.getElementsByClassName('mp3Button');
-    Array.from(mp3Buttons).forEach(button => button.addEventListener('click', handleMP3ButtonClick));
-    // Add a click event listener for closeAudioPlayer button
+    Array.from(mp3Buttons).forEach(button => {
+      button.removeEventListener('click', handleMP3ButtonClick);
+      button.addEventListener('click', handleMP3ButtonClick);
+    });
+
+    closeAudioPlayerBtn.removeEventListener('click', handleCloseAudioPlayerBtnClick);
     closeAudioPlayerBtn.addEventListener('click', handleCloseAudioPlayerBtnClick);
-    // Add a click event listener to the progress bar container
+
     const progressBarContainer = document.querySelector('#progress');
+    progressBarContainer.removeEventListener('click', handleProgressBarContainerClick);
     progressBarContainer.addEventListener('click', (event) => handleProgressBarContainerClick(progressBarContainer, event));
+
     setInterval(updateProgressBar, 1000);
   });
 }
 
-
+function stopLivestream() {
+  if (livestreamPlayer) {
+    livestreamPlayer.stop();
+    console.log("Stop button clicked, livestreamPlayer stopped");
+  } else {
+    console.log("Stop button clicked, but no livestreamPlayer found");
+  }
+}

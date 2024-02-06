@@ -5,7 +5,7 @@ import { Howl } from 'howler';
 import UIkit from 'uikit';
 import { initializePlayer } from './player';
 import { fetch_player_metaInfo } from './player_meta-info.js';
-import { fetchPages } from './fetch-pages.js'; // Add this line
+import { fetchPages } from './fetch-pages.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
