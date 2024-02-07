@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {%- include site_head.html -%}
+  <body class="uk-height-viewport uk-flex uk-flex-column">
+    {%- include head.html -%}
+    <div class="uk-flex-auto show-content">
+
+
+
+      <div class="uk-card-media-top uk-cover-container">
+        {% assign path = page.image | remove_first: '/' %}
+        {% responsive_image_block %}
+          path: {{ path }}
+          {% if title %}
+          title: {{ title }}
+          alt: {{ title }}
+          {% endif %}
+        {% endresponsive_image_block %}
+      </div>
+
+      <div class="uk-modal-header  uk-padding">
+        <h2 class="uk-modal-title uk-text-bold">{{ page.title }}</h2>
+      </div>
+      <div class="uk-modal-body uk-padding uk-padding-remove-vertical uk-text-secondary">
+        <p>{{ page.content | markdownify }}</p>
+      </div>
+      <div class="uk-modal-footer uk-padding uk-padding-remove-vertical">
+        {% for tag in page.tags %}
+        <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="uk-modal-footer uk-padding uk-padding-remove-top">
+        <h5 class="uk-text-small ">
+          {{ page.date | date: "%d.%m.%y" }}
+        </h5>
+      </div>
+
+    </div>
+    {%- include footer.html -%}  
+    <script src="{{ "/assets/main.js" | relative_url }}"></script>
+  </body>
+</html>
+
+
+

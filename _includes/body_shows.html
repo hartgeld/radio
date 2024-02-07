@@ -44,13 +44,22 @@
                 {{ show.date | date: "%d.%m.%y" }}
               </h5>
             </div>
-          </div>      
-          <button class="uk-button uk-height-match" type="button" uk-toggle="target: #my-modal-{{ forloop.index }}">
+          </div>
+          <!--      
+          <button class="uk-button uk-height-match show-page" type="button" uk-toggle="target: #my-modal-{{ forloop.index }}">
             <i class="fas fa-info fa-2x"></i>
           </button>
+          -->
+          <div class="show-page">
+            <a href="{{ site.url }}/{{show.url}}" class="uk-button uk-height-match">
+              <!--<i class="fas fa-info fa-2x"></i>--> more
+            </a>
+          </div>
         </div>
 
       </div>
+
+      <!--
       <div id="my-modal-{{ forloop.index }}" class="uk-flex-top uk-flex-right uk-padding uk-padding-remove" uk-modal>
         <div class="uk-modal-dialog uk-modal-body uk-padding-remove uk-overflow-auto uk-width-1-1 uk-width-1-2@m" uk-height-viewport="min-height: 100vh;">
 
@@ -92,6 +101,8 @@
 
         </div>
       </div>
+      -->
+
     </div>
     {% endfor %}
   </div>
