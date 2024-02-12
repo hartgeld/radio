@@ -43,7 +43,9 @@ collections:
 
 feed:
   collections:
-    - shows
+    - all
+
+rss: "RSS Feed"
 
 responsive_image:
   # [Required]
