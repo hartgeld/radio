@@ -32,10 +32,17 @@ function attachEventListener(selector) {
         console.log('Fetching URL:', event.target.href);
         console.log('trying to call updateLabels'); // Add this line
 
-        // Fetch the full HTML of the page
+        // Show the preloader
+        UIkit.modal('#preloader').show();
+
         fetch(event.target.href)
         .then(response => response.text())
         .then(html => {
+          
+          // Hide the preloader
+          UIkit.modal('#preloader').hide();
+
+
           // Parse the HTML
           const doc = new DOMParser().parseFromString(html, 'text/html');
 

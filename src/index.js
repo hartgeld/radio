@@ -9,8 +9,13 @@ import { fetchPages } from './fetch-pages.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    initializePlayer();
-    fetchPages(); 
-  });
+   
+  document.body.style.display = 'block'; // Show the body
+  initializePlayer();
+  fetchPages(); 
+  // Hide the preloader
+  document.getElementById('preloader').style.display = 'none';
+ 
+});
 
 setInterval(fetch_player_metaInfo, 5000);
