@@ -41,6 +41,10 @@ collections:
   shows:
     output: true
 
+feed:
+  collections:
+    - shows
+
 responsive_image:
   # [Required]
   # Path to the image template.
