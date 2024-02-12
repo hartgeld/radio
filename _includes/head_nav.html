@@ -1,9 +1,9 @@
 <nav class="uk-navbar-container uk-box-shadow-medium uk-background-primary">
     <div uk-navbar class="uk-padding-small uk-padding-remove-vertical">
-      <div class="uk-navbar-left">
+      <div class="uk-navbar-left uk-padding-small">
         <a class="site-title uk-text-secondary uk-text-bold" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
       </div>
-      <div class="uk-navbar-right uk-visible@m">
+      <div class="uk-navbar-right uk-visible@m uk-padding-small">
         <ul class="uk-navbar-nav">
           {%- assign default_paths = site.pages | map: "path" -%}
           {%- assign page_paths = site.header_pages | default: default_paths -%}
@@ -15,7 +15,7 @@
           {%- endfor -%}
         </ul>
       </div>
-      <div class="uk-navbar-right uk-hidden@m">
+      <div class="uk-navbar-right uk-hidden@m uk-padding-small">
         <a class="uk-navbar-toggle" href="#offcanvas-nav" uk-toggle>
           <i class="fas fa-bars fa-2x uk-text-secondary"></i>
         </a>

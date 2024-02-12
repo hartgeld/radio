@@ -1,4 +1,6 @@
 import { Howl } from 'howler';
+import { updateLabels } from './fetch-pages.js'; // Adjust the path if necessary
+
 
 let livestreamPlayer;
 let mp3Player;
@@ -89,6 +91,8 @@ Player.prototype = {
     self.index = 0;
     // Log the playlist right before it's cleared
     console.log('Playlist before clearing:', self.playlist);
+      // Call updateLabels
+    //this.updateLabels();
   },
 
 
@@ -350,6 +354,7 @@ function handleCloseAudioPlayerBtnClick() {
     mp3Player.playlist[mp3Player.index].howl.stop();
     mp3Player.playlist[mp3Player.index].howl.seek(0);
   }
+  updateLabels();
 }
 
 function handleMP3ButtonClick(event) {
@@ -369,6 +374,16 @@ function handleMP3ButtonClick(event) {
     currentLabelPlaying.style.display = 'none';
     currentLabelPaused.style.display = 'flex';
   }
+  // Update the labels of the clicked card
+  if (mp3Player?.playlist[mp3Player.index]?.src[0] === event.currentTarget.getAttribute('href')) {
+    if (mp3Player.playlist[mp3Player.index].howl.playing()) {
+      labelPlaying.style.display = 'flex';
+      labelPaused.style.display = 'none';
+    } else {
+      labelPlaying.style.display = 'none';
+      labelPaused.style.display = 'flex';
+    }
+  }
 
   const mp3Url = this.getAttribute('href');
   const { playAudioBtn, stopAudioBtn } = initializeButtons();
@@ -383,20 +398,23 @@ function handleMP3ButtonClick(event) {
   const titleElement = document.querySelector('#titleElement');
   titleElement.textContent = title;
 
-// If the clicked MP3 is the same as the currently playing one, toggle play/pause
-if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
-  if (mp3Player.playlist[mp3Player.index].howl.playing()) {
-    mp3Player.pause();
-  } else {
-    mp3Player.play();
+  // If the clicked MP3 is the same as the currently playing one, toggle play/pause
+  if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {
+    if (mp3Player.playlist[mp3Player.index].howl.playing()) {
+      mp3Player.pause();
+      updateLabels();
+    } else {
+      mp3Player.play();
+      updateLabels();
+    }
+    return;
   }
-  return;
-}
 
 
   // If the sound is currently playing, pause it
   if (mp3Player && mp3Player.playlist[mp3Player.index] && mp3Player.playlist[mp3Player.index].howl.playing()) {
     mp3Player.playlist[mp3Player.index].howl.stop();
+    updateLabels();
     //return;
   }
 
@@ -511,10 +529,10 @@ window.onload = function() {
 }
 
 export function initializePlayer() {
-    // If livestreamPlayer exists and is playing, return
-    if (livestreamPlayer && livestreamPlayer.playlist[livestreamPlayer.index] && livestreamPlayer.playlist[livestreamPlayer.index].howl.playing()) {
-      return;
-    }
+  // If livestreamPlayer exists and is playing, return
+  if (livestreamPlayer && livestreamPlayer.playlist[livestreamPlayer.index] && livestreamPlayer.playlist[livestreamPlayer.index].howl.playing()) {
+    return;
+  }
   fetchData().then(() => {
     const buttons = initializeButtons();
     if (!buttons) {
@@ -553,7 +571,7 @@ export function initializePlayer() {
   });
 }
 
-function stopLivestream() {
+ function stopLivestream() {
   if (livestreamPlayer) {
     livestreamPlayer.stop();
     console.log("Stop button clicked, livestreamPlayer stopped");
@@ -561,3 +579,11 @@ function stopLivestream() {
     console.log("Stop button clicked, but no livestreamPlayer found");
   }
 }
+
+// Add an event listener for the 'stop' event
+//mp3Player.on('stop', () => {
+  // Update the labels
+//  updateLabels();
+//});
+
+export { mp3Player };

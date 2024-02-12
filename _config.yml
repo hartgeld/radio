@@ -4,6 +4,7 @@ description: >-
   Independent community radio station focusing on local artists.
 baseurl: "" 
 url: "https://radio.holgerardelt.de/" 
+host: localhost
 # github_username: hartgeld
 
 markdown: kramdown

@@ -1,5 +1,6 @@
 // fetch-pages.js
 import { initializePlayer } from './player';
+import { mp3Player } from './player.js';
 import UIkit from 'uikit';
 
 export function fetchPages() {
@@ -29,6 +30,7 @@ function attachEventListener(selector) {
 
         // Log the href attribute of the clicked <a> element
         console.log('Fetching URL:', event.target.href);
+        console.log('trying to call updateLabels'); // Add this line
 
         // Fetch the full HTML of the page
         fetch(event.target.href)
@@ -40,7 +42,7 @@ function attachEventListener(selector) {
           // Extract the main content or the show content
           const contentSelector = event.target.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
           const contentElement = doc.querySelector(contentSelector);
-
+          
           if (contentElement) {
             const content = contentElement.innerHTML;
 
@@ -52,7 +54,15 @@ function attachEventListener(selector) {
 
             // Reattach event listeners
             initializePlayer();
+
+
+
+
             fetchPages(); // Reattach event listeners for fetching pages
+                    
+            // Update the labels of the currently playing MP3
+            updateLabels();            
+
           } else {
             console.error(`No element found for selector "${contentSelector}"`);
           }
@@ -74,56 +84,38 @@ function attachEventListener(selector) {
   });
 }
 
+export function updateLabels() {
+  console.log('updateLabels called');
 
-/*
-function attachEventListener(selector) {
-  document.querySelectorAll(selector).forEach(element => {
-    element.addEventListener('click', function(event) {
+  // Check if mp3Player and mp3Player.playlist are defined
+  if (mp3Player && mp3Player.playlist) {
+    const href = mp3Player.playlist[mp3Player.index].src[0];
+    console.log('href:', href); // Add this line
 
-      console.log('Event target:', event.target); // Log the event target
-      // Check if the clicked element is a navigation link or a "show-page" link
-      if (event.target.tagName === 'A' && (event.target.closest('.uk-navbar-container') || event.target.closest('#offcanvas-nav') || event.target.closest('.show-page'))) {
-        // Prevent default action
-        event.preventDefault();
+    // Find the anchor that matches the currently playing MP3
+    const anchor = document.querySelector(`.uk-card a[href="${href}"]`);
+    
+    // If the anchor is found, find the closest .uk-card
+    const card = anchor ? anchor.closest('.uk-card') : null;
+    console.log('Card:', card);
 
-        // Log the href attribute of the clicked <a> element
-        console.log('Fetching URL:', event.target.href);
+    // If the card is found, find the label elements and update them
+    if (card) {
+      const labelPlaying = card.querySelector('.label_isPlaying');
+      const labelPaused = card.querySelector('.label_isPaused');
 
-        // Fetch the full HTML of the page
-        fetch(event.target.href)
-        .then(response => response.text())
-        .then(html => {
-          //console.log(html); // Log the fetched HTML
-      
-          // Parse the HTML
-          const doc = new DOMParser().parseFromString(html, 'text/html');
-      
-          // Extract the main content or the show content
-          const contentSelector = event.target.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
-          const contentElement = doc.querySelector(contentSelector);
-      
-          if (contentElement) {
-            const content = contentElement.innerHTML;
-      
-            // Replace the current main content with the new content
-            document.querySelector('.uk-flex-auto').innerHTML = content;
-      
-            // Update the URL without reloading the page
-            history.pushState({}, '', event.target.href);
-      
-            // Reattach event listeners
-            //initializePlayer();
-            fetchPages(); // Reattach event listeners for fetching pages
-          } else {
-            console.error(`No element found for selector "${contentSelector}"`);
-          }
-        });
+      console.log('Label playing:', labelPlaying);
+      console.log('Label paused:', labelPaused);
+
+      if (mp3Player.playlist[mp3Player.index].howl.playing()) {
+        labelPlaying.style.display = 'flex';
+        labelPaused.style.display = 'none';
+      } else {
+        labelPlaying.style.display = 'none';
+        labelPaused.style.display = 'flex';
       }
-
-    });
-  });
+    } else {
+      console.error('Card not found');
+    }
+  }
 }
-
-*/
-
-
