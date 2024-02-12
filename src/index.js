@@ -14,8 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
   initializePlayer();
   fetchPages(); 
   // Hide the preloader
-  document.getElementById('preloader').style.display = 'none';
- 
+
+    // Hide the preloader
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.display = 'none';
+    } 
 });
 
 setInterval(fetch_player_metaInfo, 5000);
