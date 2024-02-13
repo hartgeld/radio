@@ -6,6 +6,11 @@ import UIkit from 'uikit';
 import { initializePlayer } from './player';
 import { fetch_player_metaInfo } from './player_meta-info.js';
 import { fetchPages } from './fetch-pages.js';
+
+// Configure lazysizes
+window.lazySizesConfig = window.lazySizesConfig || {};
+window.lazySizesConfig.expand = 10; // set to your desired value
+
 import 'lazysizes';
 
 document.addEventListener('DOMContentLoaded', function() {   
@@ -20,4 +25,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 setInterval(fetch_player_metaInfo, 5000);
-

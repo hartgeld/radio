@@ -5,3 +5,5 @@
       doc.content.gsub! 'path: /', 'path: ' #you can probably optimise this a bit
     end
   end
+
+
