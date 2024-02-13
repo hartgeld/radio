@@ -14,15 +14,14 @@
 
         <a href="{{ show.mp3Url}}" class="mp3Button">
           <div class="uk-card-media-top uk-cover-container uk-inline uk-square">
-            
-            {% assign path = show.image | remove_first: '/' %}
-            {% responsive_image_block %}
-              path: {{ path }}
-              {% if title %}
-              title: {{ title }}
-              alt: {{ title }}
-              {% endif %}
-            {% endresponsive_image_block %}
+            {% if show.image %}
+              {% assign path = show.image | remove_first: '/' %}
+              {% responsive_image_block %}
+                path: {{ path }}
+                title: {{ show.title }}
+                alt: {{ show.title }}
+              {% endresponsive_image_block %}
+            {% endif %}
           </div>
         </a>
 
