@@ -6,15 +6,12 @@ import UIkit from 'uikit';
 import { initializePlayer } from './player';
 import { fetch_player_metaInfo } from './player_meta-info.js';
 import { fetchPages } from './fetch-pages.js';
+import 'lazysizes';
 
-
-document.addEventListener('DOMContentLoaded', function() {
-   
+document.addEventListener('DOMContentLoaded', function() {   
   document.body.style.display = 'block'; // Show the body
   initializePlayer();
   fetchPages(); 
-  // Hide the preloader
-
     // Hide the preloader
     var preloader = document.getElementById('preloader');
     if (preloader) {
@@ -23,3 +20,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 setInterval(fetch_player_metaInfo, 5000);
+
