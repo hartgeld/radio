@@ -13,6 +13,13 @@ export function fetchPages() {
     console.log("adding event listener to offcanvas-nav");
     attachEventListener('#offcanvas-nav');
   });
+
+  // Add this line at the end of the fetchPages function
+  window.addEventListener('popstate', function(event) {
+    showPreloader()
+      .then(() => fetchAndRenderContent(window.location.href))
+      .then(hidePreloader);
+  });
 }
 
 // Create a Map to store the event handler functions
@@ -40,17 +47,18 @@ function hidePreloader() {
 }
 
 function fetchAndRenderContent(event) {
-  return fetch(event.target.href)
+  const url = event.target ? event.target.href : event;
+  return fetch(url)
     .then(response => response.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const contentSelector = event.target.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
+      const contentSelector = event.target && event.target.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
       const contentElement = doc.querySelector(contentSelector);
       
       if (contentElement) {
         const content = contentElement.innerHTML;
         document.querySelector('.uk-flex-auto').innerHTML = content;
-        history.pushState({}, '', event.target.href);
+        history.pushState({}, '', url);
         initializePlayer();
         fetchPages();
         updateLabels();            
@@ -115,4 +123,14 @@ export function updateLabels() {
       console.error('Card not found');
     }
   }
+}
+
+
+// Add this line at the end of the fetchPages function
+window.addEventListener('popstate', handlePopState);
+
+function handlePopState(event) {
+  showPreloader()
+    .then(() => fetchAndRenderContent(window.location.href))
+    .then(hidePreloader);
 }
