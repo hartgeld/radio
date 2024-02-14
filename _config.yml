@@ -5,7 +5,6 @@ description: >-
 baseurl: "" 
 url: "https://radio.holgerardelt.de/" 
 host: localhost
-# github_username: hartgeld
 
 markdown: kramdown
 

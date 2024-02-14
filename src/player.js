@@ -1,7 +1,6 @@
 import { Howl } from 'howler';
 import { updateLabels } from './fetch-pages.js'; // Adjust the path if necessary
 
-
 let livestreamPlayer;
 let mp3Player;
 
@@ -579,11 +578,5 @@ export function initializePlayer() {
     console.log("Stop button clicked, but no livestreamPlayer found");
   }
 }
-
-// Add an event listener for the 'stop' event
-//mp3Player.on('stop', () => {
-  // Update the labels
-//  updateLabels();
-//});
 
 export { mp3Player };

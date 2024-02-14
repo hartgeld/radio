@@ -1,15 +1,15 @@
 // src/index.js
 import 'uikit/dist/css/uikit.min.css';
 import '@fortawesome/fontawesome-free/js/all';
-import { Howl } from 'howler';
-import UIkit from 'uikit';
+// import { Howl } from 'howler';
+// import UIkit from 'uikit';
 import { initializePlayer } from './player';
 import { fetch_player_metaInfo } from './player_meta-info.js';
 import { fetchPages } from './fetch-pages.js';
 
 // Configure lazysizes
 window.lazySizesConfig = window.lazySizesConfig || {};
-window.lazySizesConfig.expand = 10; // set to your desired value
+window.lazySizesConfig.expand = 100; // set to your desired value
 
 import 'lazysizes';
 

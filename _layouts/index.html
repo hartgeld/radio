@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {%- include site_head.html -%}
-  <body class="uk-height-viewport uk-flex uk-flex-column" style="display: none;">
+  <body class="uk-height-viewport uk-flex uk-flex-column" style="display: none;" >
     {%- include preloader.html -%}
     {%- include head.html -%}
-    <div class="uk-flex-auto">  
+    <div class="uk-flex uk-flex-column" style="min-height: 100vh;">
       {%- include body_shows.html -%}
+      {%- include footer.html -%}  
     </div>
-    {%- include footer.html -%}  
     <script src="{{ "/assets/main.js" | relative_url }}"></script>
   </body>
 </html>
