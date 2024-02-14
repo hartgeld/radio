@@ -62,6 +62,7 @@ function fetchAndRenderContent(event) {
         initializePlayer();
         fetchPages();
         updateLabels();            
+        window.scrollTo(0, 0); // Add this line
       } else {
         console.error(`No element found for selector "${contentSelector}"`);
       }
