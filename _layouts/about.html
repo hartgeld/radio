@@ -4,10 +4,13 @@
   <body class="uk-height-viewport uk-flex uk-flex-column" style="display: none;" >
     {%- include preloader.html -%}
     {%- include head.html -%}
-    <div class="uk-flex-auto">
-      {{ content }}
+    <div class="uk-flex uk-flex-column" style="min-height: 100vh;">
+      <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">
+        {{ content }}
+      </div>
+      {%- include footer.html -%}  
     </div>
-    {%- include footer.html -%}  
+    
     <script src="{{ "/assets/main.js" | relative_url }}"></script>
   </body>
 </html>

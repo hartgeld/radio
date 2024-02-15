@@ -4,58 +4,59 @@
   <body class="uk-height-viewport uk-flex uk-flex-column" style="display: none;">
     {%- include preloader.html -%}
     {%- include head.html -%}
-    <div class="uk-flex-auto show-content">
+    <div class="uk-flex uk-flex-column" style="min-height: 100vh;">
+      <div class="uk-flex-auto show-content" uk-height-viewport="expand: true" style="flex: 1;">
 
-    <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-padding-remove-left">
-      
-      <div class="label_isPlaying uk-card-badge uk-padding-small uk-position-right uk-background-secondary" style="display: none; pointer-events: none;">
-        <i class="fas fa-pause fa-1x uk-text-danger"></i>
-      </div>
-      <div class="label_isPaused uk-card-badge uk-padding-small uk-position-right uk-background-muted" style="pointer-events: none;">
-        <i class="fas fa-play fa-1x uk-text-secondary"></i>
-      </div>
-
-      <a href="{{ page.mp3Url}}" class="mp3Button">
-        <div class="uk-card-media-top uk-cover-container uk-inline uk-square">
+        <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-padding-remove-left">
           
-          {% assign path = page.image | remove_first: '/' %}
-          {% responsive_image_block %}
-            path: {{ path }}
-            {% if title %}
-            title: {{ title }}
-            alt: {{ title }}
-            {% endif %}
-          {% endresponsive_image_block %}
-        </div>
-      </a>
-
-      <a href="{{ show.mp3Url}}" class="mp3Button" >
-        <div class="uk-card-header uk-padding-small-top uk-padding-large-bottom">
-          <h1 class="uk-text-default uk-text-bold">{{ page.title }}</h1>
-        </div>
-      </a>
-
-          
-          
-      <div class="uk-flex uk-flex-between">
-        <div class="uk-width-expand">
-          <div class="uk-card-body uk-padding-remove-vertical">
-            <p>{{ page.content | markdownify }}</p>
+          <div class="label_isPlaying uk-card-badge uk-padding-small uk-position-right uk-background-secondary" style="display: none; pointer-events: none;">
+            <i class="fas fa-pause fa-1x uk-text-danger"></i>
           </div>
-          <div class="uk-card-footer uk-padding-remove-vertical">
-            {% for tag in page.tags %}
-            <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
-            {% endfor %}
+          <div class="label_isPaused uk-card-badge uk-padding-small uk-position-right uk-background-muted" style="pointer-events: none;">
+            <i class="fas fa-play fa-1x uk-text-secondary"></i>
           </div>
-          <div class="uk-card-footer uk-padding-remove-top uk-flex uk-flex-between">
-            <h5 class="uk-text-small ">
-              {{ page.date | date: "%d.%m.%y" }}
-            </h5>
+
+          <a href="{{ page.mp3Url}}" class="mp3Button">
+            <div class="uk-card-media-top uk-cover-container uk-inline uk-square">
+              
+              {% assign path = page.image | remove_first: '/' %}
+              {% responsive_image_block %}
+                path: {{ path }}
+                {% if title %}
+                title: {{ title }}
+                alt: {{ title }}
+                {% endif %}
+              {% endresponsive_image_block %}
+            </div>
+          </a>
+
+          <a href="{{ show.mp3Url}}" class="mp3Button" >
+            <div class="uk-card-header uk-padding-small-top uk-padding-large-bottom">
+              <h1 class="uk-text-default uk-text-bold">{{ page.title }}</h1>
+            </div>
+          </a>
+
+              
+              
+          <div class="uk-flex uk-flex-between">
+            <div class="uk-width-expand">
+              <div class="uk-card-body uk-padding-remove-vertical">
+                <p>{{ page.content | markdownify }}</p>
+              </div>
+              <div class="uk-card-footer uk-padding-remove-vertical">
+                {% for tag in page.tags %}
+                <span class="uk-text-small uk-text-secondary">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              <div class="uk-card-footer uk-padding-remove-top uk-flex uk-flex-between">
+                <h5 class="uk-text-small ">
+                  {{ page.date | date: "%d.%m.%y" }}
+                </h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     </div>
     {%- include footer.html -%}  
     <script src="{{ "/assets/main.js" | relative_url }}"></script>
