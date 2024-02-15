@@ -6,7 +6,9 @@
     {%- include head.html -%}
     <div class="uk-flex uk-flex-column" style="min-height: 100vh;">
       <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">
-        {{ content }}
+        <div class="uk-container-expand uk-margin-medium-top uk-margin-medium-bottom uk-padding">
+          {{ content }}
+        </div>
       </div>
       {%- include footer.html -%}  
     </div>
