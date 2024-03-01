@@ -12,9 +12,15 @@
 }
 
 #playLivestream{
-    background-color: $color-neutral-37; 
-}
-#stopLivestream{
     background-color: $color-neutral-25; 
 }
+#stopLivestream{
+    background-color: $color-neutral-12; 
+}
 
+.player_live_container{
+    //padding: 0;
+    padding: $global-margin_vert;
+    padding-bottom: 0px;
+    background-color: $color-neutral-00;
+}

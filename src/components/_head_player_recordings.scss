@@ -1,5 +1,6 @@
 .player_recordings_container{
-    padding-top: 3px;
+    padding: $global-margin_vert;
+    background-color: $color-neutral-00;
 }
 
 .button-container {
@@ -18,25 +19,25 @@
     align-items: center; 
     border-radius: 3px; 
 
-    background-color: $color-neutral-37; 
-    margin-left: 1px;
+    background-color: $color-neutral-25; 
+    margin-left: $global-margin_vert
 }
 
 #closeAudioPlayer{
-    background-color: $color-neutral-37; 
+    background-color: $color-neutral-25; 
     
 }
 
 #playAudio{
-    background-color: $color-neutral-37; 
+    background-color: $color-neutral-25; 
 }
 #stopAudio{
-    background-color: $color-neutral-25; 
+    background-color: $color-neutral-12; 
 }
 
 
 #progress {
-    background-color: $color-neutral-37;
+    background-color: $color-neutral-25;
 
     position: relative; 
     display: flex; 
@@ -45,7 +46,7 @@
 }
 
 #progress-bar{
-    background-color: $color-secondary-100;
+    background-color: $color-secondary-75;
 }
 
 #progress-bar_timer{
