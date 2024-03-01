@@ -20,6 +20,12 @@ export function fetchPages() {
       .then(() => fetchAndRenderContent(window.location.href))
       .then(hidePreloader);
   });
+
+  // Attach hidden event listener to off-canvas sidebar
+  UIkit.util.on('#offcanvas-nav', 'hidden', function() {
+    // Replace the current URL with the original URL without the fragment
+    history.replaceState({}, '', window.location.href.split('#')[0]);
+  });
 }
 
 // Create a Map to store the event handler functions

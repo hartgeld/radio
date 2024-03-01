@@ -1,27 +1,43 @@
 
-<div class="uk-container-expand uk-box-shadow-medium">
-    <div class="controls uk-container-expand uk-flex uk-flex-column " id="audio-player_controls">  
-        <div class="uk-width-1-1 uk-flex uk-flex-middle">
-            <button class="uk-button uk-height-1-1 uk-margin-small-right " id="playAudio" type="button">
-                <i class="fas fa-play"></i>
-            </button>
-            <button class="uk-button uk-height-1-1 uk-margin-small-right uk-background-secondary" id="stopAudio" type="button" style="display: none;">
-                <i class="fas fa-pause uk-text-danger"></i>
-            </button>
-            
-            <span class="uk-text-small uk-text-bold uk-margin-small-left" id="titleElement"></span>
-            <button class="uk-button uk-height-1-1 uk-margin-small-left uk-margin-auto-left" id="closeAudioPlayer" type="button">
-                <i class="fas fa-close"></i>
-            </button>
-        </div>
-    </div>
-    <div class="controls uk-container-expand uk-flex uk-flex-column " id="progress-container">  
-        <div class="uk-width-1-1 uk-flex uk-flex-middle">  
-            <div id="timer" class="uk-text-small uk-margin-left uk-margin-right"></div>
-            <div id="progress" class="uk-progress uk-link">
-                <div class="uk-progress-bar uk-height-small uk-background-primary" style="width: 0%;"></div>
+<div class="uk-container-expand player_recordings_container">
+
+    <div class="controls uk-position-relative uk-container-expand uk-flex-row uk-flex uk-flex-middle uk-padding-small uk-padding-remove-vertical" id="audio-player_controls">
+        <div class="uk-width-1-1">
+            <div class="button-container">               
+                <button class="uk-button uk-height-1-1 uk-padding-remove player-button" id="stopAudio" type="button" style="display: none;">
+                    <div class="player-button-icon">
+                        <i class="fas fa-pause fa-xs"></i>
+                    </div>
+                    <div class="player-button-streamer" id="audio-player_button_streamer-name_playing"></div>                           
+                </button>
+                <button class="uk-button uk-height-1-1 uk-padding-remove player-button" id="playAudio" type="button">
+                    <div class="player-button-icon">
+                        <i class="fas fa-play fa-xs"></i>
+                    </div>
+                    <div class="player-button-streamer" id="audio-player_button_streamer-name_stopped"></div>    
+                </button>
+                <button class="uk-button uk-height-1-1 uk-padding-remove square-button" id="closeAudioPlayer" type="button">
+                    <div class="player-button-icon">
+                        <i class="fas fa-close fa-xs"></i>
+                    </div>
+                </button> 
             </div>
-            <div id="duration" class="uk-text-small uk-margin-left uk-margin-right"></div>
+             
         </div>
     </div>
+
+    <div class="controls uk-container-expand uk-flex uk-flex-column " id="progress-container">  
+        <div class="uk-width-1-1 uk-flex-middle uk-padding-small uk-padding-remove-vertical">  
+            
+            <div id="progress" class="uk-progress uk-link uk-width-1-1 uk-height-progress-bar vertical-margin_global">
+                <div class="uk-progress-bar uk-height-small uk-background-primary uk-height-progress-bar" id="progress-bar" style="width: 0%; "></div>
+            </div>
+
+            <div class="uk-width-1-1 uk-flex uk-flex-between ">
+                <div id="timer" class="font-size-xs"></div>
+                <div id="duration" class="font-size-xs"></div>
+            </div>
+    </div>
+
 </div>
+

@@ -9,10 +9,11 @@ export function fetch_player_metaInfo() {
         if (isLive) {
             isLiveElement.style.display = 'block';
             isNotLiveElement.style.display = 'none';
-            isLiveElement.innerHTML = `<i class="fas fa-circle" style="color: red;"></i> ${streamerName}`;
+            isLiveElement.innerHTML = `<i class="fas fa-circle fa-xs"></i> Live`;
         } else {
             isLiveElement.style.display = 'none';
             isNotLiveElement.style.display = 'block';
+            isNotLiveElement.innerHTML = `<i class="fas fa-repeat fa-xs"></i> Replay`;
         }
         return {
             isLive: isLive,

@@ -1,0 +1,45 @@
+.player_recordings_container{
+    padding-top: 3px;
+}
+
+.button-container {
+    display: flex;
+}
+
+#playAudio {
+    flex-grow: 1;
+}
+
+.square-button {
+    height: 50px;
+    aspect-ratio: 1 / 1;
+    display: flex; 
+    justify-content: left; 
+    align-items: center; 
+    border-radius: 3px; 
+
+    background-color: $color-neutral-25; 
+    margin-left: 1px;
+}
+
+#closeAudioPlayer{
+    background-color: $color-neutral-25; 
+    
+}
+
+#playAudio{
+    background-color: $color-neutral-25; 
+}
+#stopAudio{
+    background-color: $color-neutral-12; 
+}
+
+
+#progress {
+    background-color: $color-neutral-25;
+}
+
+#progress-bar{
+    background-color: $color-primary-100;
+}
+

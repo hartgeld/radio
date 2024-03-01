@@ -55,10 +55,10 @@ Player.prototype = {
     });
     if (sound.state() === 'loaded') {
       self.playAudioBtn.style.display = 'none';
-      self.stopAudioBtn.style.display = 'block';
+      self.stopAudioBtn.style.display = 'flex';
     } else {
       self.playAudioBtn.style.display = 'none';
-      self.stopAudioBtn.style.display = 'block';
+      self.stopAudioBtn.style.display = 'flex';
     }
     self.step();
   },
@@ -72,7 +72,7 @@ Player.prototype = {
       // Check if a Howl object exists
       if (self.playlist[self.index].howl) {
         console.log('Howl object before stopping:', self.playlist[self.index].howl);
-        self.playAudioBtn.style.display = 'block';
+        self.playAudioBtn.style.display = 'flex';
         self.stopAudioBtn.style.display = 'none';
         self.playlist[self.index].howl.pause(); // Pause the sound
         console.log('Howl object after stopping:', self.playlist[self.index].howl);
@@ -103,7 +103,7 @@ Player.prototype = {
       if (sound.playing()) {
         console.log('howl is playing');
         sound.pause();
-        this.playAudioBtn.style.display = 'block';
+        this.playAudioBtn.style.display = 'flex';
         this.stopAudioBtn.style.display = 'none';
       } else {
         console.log('howl is not playing');
@@ -122,7 +122,7 @@ Player.prototype = {
         console.log('howl is not playing');
         sound.play();
         this.playAudioBtn.style.display = 'none';
-        this.stopAudioBtn.style.display = 'block';
+        this.stopAudioBtn.style.display = 'flex';
       } else {
         console.log('howl is already playing');
       }
@@ -236,17 +236,30 @@ if (livestreamPlayer && livestreamPlayer.playlist[livestreamPlayer.index] && liv
     } else {
       console.log('No MP3s in the playlist');
     }
+
     console.log('Livestream player created', livestreamPlayer);
+
+    // set streamer name
+    const livestreamPlaying = document.getElementById('streamername-LivestreamPlaying');
+    const livestreamStopped = document.getElementById('streamername-LivestreamStopped');
+    livestreamPlaying.innerHTML = `${streamerName}`;
+    livestreamStopped.innerHTML = `${streamerName}`;
+
+    // set live/replay status of livestream
     const isLiveElement = document.getElementById('isLive');
-    const isNotLiveElement = document.getElementById('isNotLive');
+    const isNotLiveElement = document.getElementById('isNotLive');  
+
     if (isLive) {
       isLiveElement.style.display = 'block';
       isNotLiveElement.style.display = 'none';
-      isLiveElement.innerHTML = `<i class="fas fa-circle" style="color: red;"></i> ${streamerName}`;
+      isLiveElement.innerHTML = `<i class="fas fa-circle fa-xs"></i> Live`;
     } else {
       isLiveElement.style.display = 'none';
       isNotLiveElement.style.display = 'block';
+      isNotLiveElement.innerHTML = `<i class="fas fa-repeat fa-xs"></i> Replay`;
     }
+    
+
   } catch (error) {
     console.error('Error:', error);
   }
@@ -392,10 +405,13 @@ function handleMP3ButtonClick(event) {
   const progress = document.getElementById('progress-container');
   progress.style.display = 'flex';
   // Fetch the title from the h1 tag
-  const title = document.querySelector('.uk-card-header h1').textContent;
+  const title = card.querySelector('.uk-card-header h1').textContent;
+  console.log('Title:', title);
   // Display the title in head_audio-player.html
-  const titleElement = document.querySelector('#titleElement');
-  titleElement.textContent = title;
+  const audioplayer_button_streamer_playing = document.querySelector('#audio-player_button_streamer-name_playing');
+  const audioplayer_button_streamer_stopped = document.querySelector('#audio-player_button_streamer-name_stopped');
+  audioplayer_button_streamer_playing.textContent = title;
+  audioplayer_button_streamer_stopped.textContent = title;
 
   // If the clicked MP3 is the same as the currently playing one, toggle play/pause
   if (mp3Player?.playlist[mp3Player.index]?.src[0] === mp3Url) {

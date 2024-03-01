@@ -1,0 +1,20 @@
+
+.livestream-button-status{
+    background: none;
+    padding-right: 15px;
+}
+
+.livestream-button-status-live{
+    color: $color-primary-100;
+}
+.livestream-button-status-replay{
+    color: $color-secondary-50;
+}
+
+#playLivestream{
+    background-color: $color-neutral-25; 
+}
+#stopLivestream{
+    background-color: $color-neutral-12; 
+}
+

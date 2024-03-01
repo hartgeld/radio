@@ -1,0 +1,99 @@
+// 1. Your custom variables and variable overwrites.
+
+$global-font-family: 'Inter', Arial, sans-serif;
+
+// neutral colors
+$color-neutral-00: #0F0E12;
+$color-neutral-12: #171619;
+$color-neutral-25: #272727;
+$color-neutral-50: #989FA5;
+$color-neutral-75: #B7BDC0;
+$color-neutral-87: #DEE2E2;
+$color-neutral-100: #F6F8F7;
+
+// primary colors
+$color-primary-100: #F15A22;
+$color-secondary-100: #006837;
+$color-secondary-50: #4DDB99;
+
+// set global margin for elements. first used in player
+$global-margin_vert: 4px;
+
+// 2. Import default variables and available mixins.
+@import "~uikit/src/scss/variables-theme.scss";
+@import "~uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@mixin navbar-toggle {
+    min-height: 45px !important;
+    display: flex; // Set to flex
+    justify-content: center; // Center horizontally
+    align-items: center; // Center vertically
+    width: 100%;
+}
+
+@mixin progress-bar_custom-height {
+    height: 12px !important;
+}
+
+@mixin vertical-margin {
+    margin-top: $global-margin_vert;
+    margin-bottom: $global-margin_vert;
+
+    @media (min-width: $breakpoint-large) {
+        margin-top: $global-margin_vert * 2;
+        margin-bottom: $global-margin_vert * 2;
+    }
+}
+
+// type sizes
+@mixin font-size-xs {
+    font-size: 0.65rem;
+    line-height: 0.65rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @media (max-width: 600px) {
+        font-size: 0.5rem;
+        line-height: 0.5rem;
+    }
+}
+
+@mixin font-size-m {
+    font-size: 1.0rem;
+    line-height: 1.0rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @media (max-width: 600px) {
+        font-size: 0.75rem;
+        line-height: 1.0rem;
+    }
+}
+
+// 4. Import UIkit.
+@import "~uikit/src/scss/uikit-theme.scss";
+
+// 5. Use your custom mixin
+.uk-navbar-toggle {
+    @include navbar-toggle;
+}
+
+.uk-height-progress-bar {
+    @include progress-bar_custom-height;
+}
+
+.vertical-margin_global {
+    @include vertical-margin;
+}
+
+// fontsizes
+.font-size-xs {
+    @include font-size-xs;
+}
+
+.font-size-m {
+    @include font-size-m;
+}

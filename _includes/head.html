@@ -1,7 +1,9 @@
-<div class="uk-container-expand uk-background-default uk-padding-remove" uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-    {%- include head_nav.html -%}
-    {%- include head_live-player.html -%}
-    {%- include head_audio-player.html -%}
+<div class="uk-container-expand uk-background-default uk-padding-remove" uk-sticky="sel-target: .sticky-container; cls-active: uk-navbar-sticky">
+    <div class="sticky-container " data-uk-sticky>
+        {%- include head_nav.html -%}
+        {%- include head_live-player.html -%}
+        {%- include head_audio-player.html -%}
+    </div>
 </div>
 
 {%- include head_nav_offcanvas.html -%}

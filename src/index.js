@@ -1,12 +1,16 @@
+// import font awesome icons
+import '@fortawesome/fontawesome-free/js/all';
+
+// import typeface inter
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+
 // import uikit
-import 'uikit/dist/css/uikit.min.css';
 import UIkit from 'uikit';
 
 // import custom css
 import './styles.scss';
-
-// import font awesome icons
-import '@fortawesome/fontawesome-free/js/all';
 
 // import custom js
 import { initializePlayer } from './player';

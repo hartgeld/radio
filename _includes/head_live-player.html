@@ -1,14 +1,26 @@
-<div class="controls uk-container-expand uk-flex-row uk-flex uk-flex-middle uk-box-shadow-medium">  
-    <button class="uk-button uk-height-1-1 uk-margin-small-right" id="playLivestream" type="button">
-        <i class="fas fa-play"></i>
+<div class="controls uk-position-relative uk-container-expand uk-flex-row uk-flex uk-flex-middle uk-box-shadow-medium uk-padding-small uk-padding-remove-vertical">  
+
+    <button class="uk-button uk-height-1-1 uk-padding-remove player-button" id="playLivestream" type="button">
+        <div class="player-button-icon">
+            <i class="fas fa-play fa-xs"></i>
+        </div>
+        <div class="player-button-streamer" id="streamername-LivestreamStopped"></div>
+
     </button>
-    <button class="uk-button uk-height-1-1 uk-margin-small-right uk-background-secondary" id="stopLivestream" type="button" style="display: none;">
-        <i class="fas fa-stop uk-text-danger"></i>
+    
+    <button class="uk-button uk-height-1-1 uk-padding-remove player-button" id="stopLivestream" type="button" style="display: none;">
+        <div class="player-button-icon">
+            <i class="fas fa-stop fa-xs"></i>
+        </div>
+        <div class="player-button-streamer" id="streamername-LivestreamPlaying">
+        </div>        
     </button>
-    <div class="uk-flex uk-margin-small-left uk-text-small uk-text-bold " id="isNotLive">
-        <i class="fa-solid fa-repeat"></i>
-    </div>
-    <div class="uk-flex uk-margin-small-left uk-text-small uk-text-bold " id="isLive"  style="display: none;">
-        <i class="fas fa-circle fa-10x" style="color: red;"></i>
+
+    <div class="label-wrapper uk-position-center-right uk-padding-small" style="pointer-events: none;">
+        <span class="uk-label livestream-button-status livestream-button-status-replay font-size-xs" id="isNotLive" style="display: none;">
+        </span>
+        <span class="uk-label livestream-button-status livestream-button-status-live font-size-xs" id="isLive" style="display: none;">
+        </span>
     </div>
 </div>
+

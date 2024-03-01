@@ -1,0 +1,36 @@
+.player-button{    
+    width: 100%; 
+    height: 50px;
+    display: flex; 
+    justify-content: left; 
+    align-items: center; 
+    border-radius: 3px; 
+}
+
+
+.player-button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; // Adjust as needed
+    height: 50px; // Should be the same as width
+    color: $color-neutral-100;
+}
+
+.player-button-streamer{
+    //background: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $color-neutral-100;
+    line-height: 1.0rem;
+    letter-spacing: 0.05em; 
+    font-size: 1.0rem; // Default font size
+    @media (max-width: 600px) {
+        font-size: 0.75rem; // Smaller font size for screens up to 600px wide
+        line-height: 1.0rem;;
+    }
+}
+
+.player-background{
+    background-color: $color-neutral-00; 
+}
