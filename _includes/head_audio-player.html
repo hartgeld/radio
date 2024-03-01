@@ -29,13 +29,12 @@
     <div class="controls uk-container-expand uk-flex uk-flex-column " id="progress-container">  
         <div class="uk-width-1-1 uk-flex-middle uk-padding-small uk-padding-remove-vertical">  
             
-            <div id="progress" class="uk-progress uk-link uk-width-1-1 uk-height-progress-bar vertical-margin_global">
-                <div class="uk-progress-bar uk-height-small uk-background-primary uk-height-progress-bar" id="progress-bar" style="width: 0%; "></div>
-            </div>
-
-            <div class="uk-width-1-1 uk-flex uk-flex-between ">
-                <div id="timer" class="font-size-xs"></div>
-                <div id="duration" class="font-size-xs"></div>
+            <div id="progress" class="uk-progress uk-link uk-width-1-1 uk-height-progress-bar vertical-margin_global" style="position: relative; display: flex; align-items: center; justify-content: center;">
+                <div class="uk-width-1-1 uk-flex uk-flex-between uk-padding-small" id="progress-bar_timer">
+                    <div id="timer" class="font-size-xs"></div>
+                    <div id="duration" class="font-size-xs"></div>
+                </div>
+                <div class="uk-progress-bar uk-height-small uk-background-primary uk-height-progress-bar" id="progress-bar" style="width: 0%; position: absolute; top: 0; left: 0;"></div>
             </div>
     </div>
 

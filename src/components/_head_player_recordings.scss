@@ -37,9 +37,19 @@
 
 #progress {
     background-color: $color-neutral-25;
+
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
 }
 
 #progress-bar{
-    background-color: $color-primary-100;
+    background-color: $color-secondary-100;
+}
+
+#progress-bar_timer{
+    z-index: 1; position: relative;
+    color: $color-neutral-100;
 }
 
