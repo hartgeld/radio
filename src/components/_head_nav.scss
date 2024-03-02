@@ -9,8 +9,10 @@
 }
 
 .uk-navbar-padding {
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: $global-margin_vert;
+    padding-bottom: $global-margin_vert;
+    padding-left: $global-margin_vert;
+    padding-right: $global-margin_vert;
   }
 
 .site-title {

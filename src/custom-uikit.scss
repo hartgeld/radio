@@ -76,6 +76,10 @@ $global-margin_vert: 4px;
     }
 }
 
+@mixin navbar-container-bg {
+    background-color: $color-neutral-100; // Replace with your desired color
+}
+
 // 4. Import UIkit.
 @import "~uikit/src/scss/uikit-theme.scss";
 
@@ -99,4 +103,8 @@ $global-margin_vert: 4px;
 
 .font-size-m {
     @include font-size-m;
+}
+
+.uk-navbar-container.uk-navbar-container  {
+    @include navbar-container-bg;
 }

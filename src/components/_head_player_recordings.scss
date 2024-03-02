@@ -1,5 +1,6 @@
 .player_recordings_container{
-    padding: $global-margin_vert;
+    //padding: 0;
+    padding: 0px $global-margin_vert 0px $global-margin_vert ;
     background-color: $color-neutral-00;
 }
 
