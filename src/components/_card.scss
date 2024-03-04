@@ -1,5 +1,6 @@
 // _uk-card.scss
 
+
 .uk-card {
 
     background-color: $color-neutral-100;
@@ -63,6 +64,13 @@
             height: 100%;
             object-fit: cover;
         }
+    }
+
+    .icon-margin {
+        position: absolute;
+        top: $base-unit;
+        right: $base-unit;
+
     }
 
     .uk-card-header {
