@@ -1,10 +1,20 @@
 
-  <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">  
-    <div class="uk-container-expand uk-margin-medium-top uk-margin-medium-bottom uk-padding">
-      <h1 class="uk-text-large uk-text-bold">Shows</h1>
+  <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">
+
+    <div class="uk-container-expand uk-margin-medium-top uk-margin-medium-bottom">
+      
       {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
+
+      <div style="display: flex; align-items: flex-end; flex-direction: row;" class="uk-padding-small uk-padding-remove-vertical">
+        <div>
+            <h1 class="font-size-xl" style="display: inline-block;">Epi<br>sod<br>es</h1>
+        </div>
+        <div ><h1 class="font-size-xl text-neutral-50 " style="display: inline-block;">[{{ sorted-shows | size }}]</h1></div>
+    </div>
+      
       <div class="uk-grid uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-child-width-1-4@xl" uk-grid>
         {% for show in sorted-shows %}
+       
         <div class="">
           <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-margin-medium-top uk-padding-remove-left"> 
             <div class="label_isPlaying uk-card-badge uk-padding-small uk-position-right uk-background-secondary" style="display: none; pointer-events: none;">

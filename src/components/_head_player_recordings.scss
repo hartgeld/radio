@@ -1,6 +1,12 @@
+// _head_player_recordings.scss
+
+@mixin progress-bar_custom-height {
+    height: 12px !important;
+}
+
 .player_recordings_container{
     //padding: 0;
-    padding: 0px $global-margin_vert 0px $global-margin_vert ;
+    padding: 0px $base-unit 0px $base-unit ;
     background-color: $color-neutral-00;
 }
 
@@ -21,12 +27,11 @@
     border-radius: 3px; 
 
     background-color: $color-neutral-25; 
-    margin-left: $global-margin_vert
+    margin-left: $base-unit
 }
 
 #closeAudioPlayer{
     background-color: $color-neutral-25; 
-    
 }
 
 #playAudio{
@@ -44,6 +49,17 @@
     display: flex; 
     align-items: center; 
     justify-content: center;
+
+    margin-top: $base-unit;
+    margin-bottom: $base-unit;
+    @media (min-width: $breakpoint-large) {
+        margin-top: $base-unit * 2;
+        margin-bottom: $base-unit * 2;
+    }
+}
+
+.uk-progress {
+    @include progress-bar_custom-height;
 }
 
 #progress-bar{
@@ -54,4 +70,3 @@
     z-index: 1; position: relative;
     color: $color-neutral-100;
 }
-

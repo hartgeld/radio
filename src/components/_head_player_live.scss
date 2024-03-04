@@ -1,3 +1,4 @@
+@import '../base/variables';
 
 .livestream-button-status{
     background: none;
@@ -20,7 +21,8 @@
 
 .player_live_container{
     //padding: 0;
-    padding: $global-margin_vert;
+    padding: $base-unit;
     //padding-bottom: 0px;
     background-color: $color-neutral-00;
 }
+

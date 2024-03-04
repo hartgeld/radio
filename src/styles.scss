@@ -1,5 +1,12 @@
-@import 'custom-uikit';
+// Import custom variables and typography.
+@import 'base/variables';
+@import 'base/mixins';
 
+// Import your custom UIKit styles.
+@import 'custom-uikit';
+@import 'base/typography';
+
+// Import your component-specific styles.
 @import 'components/head';
 @import 'components/head_nav';
 @import 'components/head_player';

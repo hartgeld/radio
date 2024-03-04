@@ -1,4 +1,19 @@
-.button-navbar{
+// _head_nav.scss
+
+@import '../base/mixins';
+@import '../base/colors';
+
+// Moved mixin
+@mixin navbar-container-bg {
+    background-color: $color-neutral-100; // Replace with your desired color
+}
+
+.uk-navbar-container.uk-navbar-container  {
+    @include navbar-container-bg;
+}
+
+.button-navbar, .uk-navbar-toggle {
+    @include navbar-toggle;
     background-color: $color-neutral-75; 
     width: 50px; 
     height: 50px;
@@ -9,16 +24,16 @@
 }
 
 .uk-navbar-padding {
-    padding-top: $global-margin_vert;
-    padding-bottom: $global-margin_vert;
-    padding-left: $global-margin_vert;
-    padding-right: $global-margin_vert;
-  }
+    padding-top: $base-unit;
+    padding-bottom: $base-unit;
+    padding-left: $base-unit;
+    padding-right: $base-unit;
+}
 
 .site-title {
     font-weight: 500;
     text-transform: uppercase;
-    color: $color-neutral-25;
+    //color: $color-neutral-25;
     line-height: 1.2rem;
     letter-spacing: 0.2em; 
     
