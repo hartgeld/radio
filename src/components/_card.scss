@@ -1,0 +1,61 @@
+// _uk-card.scss
+
+.uk-card {
+
+    background-color: $color-neutral-100;
+    border-radius: $base-unit;
+
+    &.uk-card-small {
+      // styles for .uk-card.uk-card-small
+    }
+  
+    &.uk-card-default {
+      // styles for .uk-card.uk-card-default
+    }
+  
+    &.uk-card-hover {
+      // styles for .uk-card.uk-card-hover
+    }
+  
+    &.uk-margin-medium-top {
+      // styles for .uk-card.uk-margin-medium-top
+    }
+  
+    &.uk-padding-remove-left {
+      // styles for .uk-card.uk-padding-remove-left
+    }
+  
+    .uk-card-badge {
+      &.uk-padding-small {
+        // styles for .uk-card-badge.uk-padding-small
+      }
+  
+      &.uk-position-right {
+        // styles for .uk-card-badge.uk-position-right
+      }
+  
+      &.uk-background-secondary {
+        // styles for .uk-card-badge.uk-background-secondary
+      }
+  
+      &.uk-background-muted {
+        // styles for .uk-card-badge.uk-background-muted
+      }
+    }
+  
+    .uk-card-media-top {
+      // styles for .uk-card-media-top
+    }
+  
+    .uk-card-header {
+      // styles for .uk-card-header
+    }
+  
+    .uk-card-body {
+      // styles for .uk-card-body
+    }
+  
+    .uk-card-footer {
+      // styles for .uk-card-footer
+    }
+  }
