@@ -53,12 +53,13 @@ function hidePreloader() {
 }
 
 function fetchAndRenderContent(event) {
-  const url = event.target ? event.target.href : event;
+  const anchor = event.target.closest('a');
+  const url = anchor ? anchor.href : event;
   return fetch(url)
     .then(response => response.text())
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const contentSelector = event.target && event.target.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
+      const contentSelector = anchor && anchor.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
       const contentElement = doc.querySelector(contentSelector);
       
       if (contentElement) {
@@ -68,7 +69,7 @@ function fetchAndRenderContent(event) {
         initializePlayer();
         fetchPages();
         updateLabels();            
-        window.scrollTo(0, 0); // Add this line
+        window.scrollTo(0, 0);
       } else {
         console.error(`No element found for selector "${contentSelector}"`);
       }
@@ -78,7 +79,8 @@ function fetchAndRenderContent(event) {
 function attachEventListener(selector) {
   document.querySelectorAll(selector).forEach(element => {
     const eventHandler = function(event) {
-      if (event.target.tagName === 'A' && (event.target.closest('.uk-navbar-container') || event.target.closest('#offcanvas-nav') || event.target.closest('.show-page'))) {
+      const anchor = event.target.closest('a');
+      if (anchor && (anchor.closest('.uk-navbar-container') || anchor.closest('#offcanvas-nav') || anchor.closest('.show-page'))) {
         event.preventDefault();
       
         showPreloader()
@@ -95,7 +97,6 @@ function attachEventListener(selector) {
     element.addEventListener('click', eventHandler);
   });
 }
-
 export function updateLabels() {
   console.log('updateLabels called');
 
