@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
 
 // import uikit
 import UIkit from 'uikit';

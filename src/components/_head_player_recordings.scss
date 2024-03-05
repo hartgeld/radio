@@ -1,7 +1,7 @@
 // _head_player_recordings.scss
 
 @mixin progress-bar_custom-height {
-    height: 12px !important;
+    height: $base-unit*3 !important;
 }
 
 .player_recordings_container{
@@ -19,7 +19,7 @@
 }
 
 .square-button {
-    height: 50px;
+    height: $layout-unit;
     aspect-ratio: 1 / 1;
     display: flex; 
     justify-content: left; 

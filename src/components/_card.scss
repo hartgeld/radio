@@ -74,14 +74,62 @@
     }
 
     .uk-card-header {
-      // styles for .uk-card-header
+      height: $layout-unit;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+  
+      h1 {
+          @include font-size-l_card-title;
+      }
     }
   
+    .show-page {
+      margin: $base-unit;
+    }
+    
+    .uk-card-body_custom-height {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .uk-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.uk-width-expand {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .uk-card-body, .uk-card-footer {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
     .uk-card-body {
-      // styles for .uk-card-body
+        span {
+            display: inline-block;
+            padding: $base-unit;
+            margin-right: $base-unit;
+            background-color: $color-neutral-25;
+            color: $color-neutral-100;
+            border-radius: $base-unit; // This will create a pill shape
+
+            @include font-size-xs;
+        }
     }
-  
+
     .uk-card-footer {
-      // styles for .uk-card-footer
+        h5 {
+            @include font-size-xs;
+            color: $color-neutral-25;
+        }
     }
+}
+
   }
