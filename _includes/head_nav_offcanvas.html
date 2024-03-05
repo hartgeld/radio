@@ -1,6 +1,19 @@
 <div id="offcanvas-nav" uk-offcanvas=" mode: none; overlay: true">
   <div class="uk-offcanvas-bar">
-    <ul class="uk-nav uk-nav-primary">
+
+    <div uk-navbar class=" uk-navbar-padding uk-padding-remove-left">
+    
+    <div class="uk-navbar-left uk-padding-small uk-padding-remove-vertical ">
+      <span class="site-title text-neutral-75" >full<br>beans<br>radio</span>
+    </div>
+
+    <div class="uk-navbar-right uk-hidden@m  button-navbar">
+      <a class="uk-navbar-toggle" href="#offcanvas-nav" uk-toggle="animation: uk-animation-fade; queued: true">
+        <i class="fas fa-xmark text-neutral-25 fa-lg"></i>
+      </a>
+    </div>
+    </div>
+    <ul class="uk-nav uk-nav-primary uk-padding-small uk-margin-large-top">
      <li><a class="offcanvas-link" rel="author" href="{{ "/" | relative_url }}">Shows</a></li>
       {%- assign default_paths = site.pages | map: "path" -%}
       {%- assign page_paths = site.header_pages | default: default_paths -%}
