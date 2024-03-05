@@ -1,0 +1,17 @@
+
+
+@mixin divider-color {
+    .uk-list-divider > li:not(:first-child)::before {
+      border-top: 5px solid $color-primary-100 !important;
+    }
+  }  
+
+@mixin link-color {
+    .social-media-list li a {
+      color: $color-neutral-100 !important;
+    }
+  }
+
+
+@include divider-color;
+@include link-color;

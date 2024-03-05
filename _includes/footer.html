@@ -1,12 +1,19 @@
-<footer class="uk-padding uk-background-secondary ">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>  
-  <div class="uk-container-expand uk-text-left"">
-    <h2 class="uk-text-default uk-text-bold uk-text-muted">{{ site.title | escape }}</h2>
-    <div class="uk-width-1-1@m">
-      <p>{{- site.description | escape -}}</p>
+<footer class="uk-padding-small bg-neutral-12">
+  <div class="uk-container-expand">
+    <div uk-grid>
+      <div class="uk-width-auto">
+        <div class="font-size-xs text-neutral-87">full<br>beans<br>radio</div>
+      </div>
+      <div class="uk-width-expand uk-flex uk-flex-bottom">
+        <p class="font-size-xs text-neutral-50">{{- site.description | escape -}}</p>
+      </div>
     </div>
-    <div class="uk-width-1-1@m">
-      {%- include footer_social.html -%}
+    <div uk-grid>
+      <div class="uk-width-1-1">
+        {%- include footer_social.html -%}
+      </div>
     </div>
   </div>
 </footer>
+
+<!--  <data class="u-url" href="{{ "/" | relative_url }}"></data>  -->
