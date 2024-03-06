@@ -3,7 +3,13 @@ import { initializePlayer } from './player';
 import { mp3Player } from './player.js';
 import UIkit from 'uikit';
 
+let eventListenersAttached = false;
+
 export function fetchPages() {
+  if (eventListenersAttached) {
+    return;
+  }
+
   // Attach click event listener to navigation container
   attachEventListener('.uk-navbar-container');
   attachEventListener('.show-page');
@@ -14,6 +20,22 @@ export function fetchPages() {
     attachEventListener('#offcanvas-nav');
   });
 
+  // Attach hidden event listener to off-canvas sidebar
+  UIkit.util.on('#offcanvas-nav', 'hidden', function() {
+    console.log('Current URL:', window.location.href);
+    // Get the URL without the fragment
+    var urlWithoutFragment = window.location.href.split('#')[0];
+    console.log('URL without fragment:', urlWithoutFragment);
+
+
+
+    // Replace the current URL with the original URL without the fragment
+    history.replaceState({}, '', urlWithoutFragment);
+    console.log('Current URL after replaceState:', window.location.href);
+
+;
+  });
+
   // Add this line at the end of the fetchPages function
   window.addEventListener('popstate', function(event) {
     showPreloader()
@@ -21,11 +43,7 @@ export function fetchPages() {
       .then(hidePreloader);
   });
 
-  // Attach hidden event listener to off-canvas sidebar
-  UIkit.util.on('#offcanvas-nav', 'hidden', function() {
-    // Replace the current URL with the original URL without the fragment
-    history.replaceState({}, '', window.location.href.split('#')[0]);
-  });
+  eventListenersAttached = true;
 }
 
 // Create a Map to store the event handler functions
@@ -60,8 +78,7 @@ function fetchAndRenderContent(event) {
     .then(html => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const contentSelector = anchor && anchor.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
-      const contentElement = doc.querySelector(contentSelector);
-      
+      const contentElement = doc.querySelector(contentSelector);      
       if (contentElement) {
         const content = contentElement.innerHTML;
         document.querySelector('.uk-flex-auto').innerHTML = content;
@@ -80,12 +97,19 @@ function attachEventListener(selector) {
   document.querySelectorAll(selector).forEach(element => {
     const eventHandler = function(event) {
       const anchor = event.target.closest('a');
-      if (anchor && (anchor.closest('.uk-navbar-container') || anchor.closest('#offcanvas-nav') || anchor.closest('.show-page'))) {
-        event.preventDefault();
-      
-        showPreloader()
-          .then(() => fetchAndRenderContent(event))
-          .then(hidePreloader);
+      if (anchor) {
+        // Check if the clicked <a> element is the close button
+        if (anchor.classList.contains('uk-navbar-toggle')) {
+          // It's the close button, don't prevent the default action and don't fetch and render content
+          return;
+        }
+        if (anchor.closest('.uk-navbar-container') || anchor.closest('#offcanvas-nav') || anchor.closest('.show-page')) {
+          event.preventDefault();
+        
+          showPreloader()
+            .then(() => fetchAndRenderContent(event))
+            .then(hidePreloader);
+        }
       }
     };
 
@@ -97,6 +121,7 @@ function attachEventListener(selector) {
     element.addEventListener('click', eventHandler);
   });
 }
+
 export function updateLabels() {
   console.log('updateLabels called');
 
@@ -133,7 +158,6 @@ export function updateLabels() {
   }
 }
 
-
 // Add this line at the end of the fetchPages function
 window.addEventListener('popstate', handlePopState);
 
@@ -142,3 +166,5 @@ function handlePopState(event) {
     .then(() => fetchAndRenderContent(window.location.href))
     .then(hidePreloader);
 }
+
+
