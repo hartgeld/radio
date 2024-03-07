@@ -1,5 +1,6 @@
 import { Howl } from 'howler';
-import { updateLabels } from './fetch-pages.js'; // Adjust the path if necessary
+import { updateLabels } from './update-labels'; // Add this line
+
 
 let livestreamPlayer;
 let mp3Player;

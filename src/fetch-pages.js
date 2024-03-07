@@ -1,9 +1,37 @@
-// fetch-pages.js
-import { initializePlayer } from './player';
-import { mp3Player } from './player.js';
 import UIkit from 'uikit';
+import { showPreloader, hidePreloader } from './preloader';
+import { fetchAndRenderContent, fetchAndRenderContentForPopState, attachEventListener } from './content-handler';
 
 let eventListenersAttached = false;
+
+function handleShownOffcanvasNav() {
+  console.log("adding event listener to offcanvas-nav");
+  attachEventListener('#offcanvas-nav');
+}
+
+function handleHiddenOffcanvasNav() {
+  console.log('Current URL:', window.location.href);
+  // Get the URL without the fragment
+  var urlWithoutFragment = window.location.href.split('#')[0];
+  console.log('URL without fragment:', urlWithoutFragment);
+
+  // Replace the current URL with the original URL without the fragment
+  history.replaceState({}, '', urlWithoutFragment);
+  console.log('Current URL after replaceState:', window.location.href);
+}
+
+function handlePopState(event) {
+  showPreloader()
+    .then(() => fetchAndRenderContent(window.location.href))
+    .then(hidePreloader);
+}
+
+window.addEventListener('popstate', function(event) {
+  showPreloader()
+    .then(() => fetchAndRenderContentForPopState(window.location.href))
+    .then(hidePreloader);
+});
+
 
 export function fetchPages() {
   if (eventListenersAttached) {
@@ -15,156 +43,14 @@ export function fetchPages() {
   attachEventListener('.show-page');
 
   // Attach click event listener to off-canvas sidebar when it's shown
-  UIkit.util.on('#offcanvas-nav', 'shown', function() {
-    console.log("adding event listener to offcanvas-nav");
-    attachEventListener('#offcanvas-nav');
-  });
+  UIkit.util.on('#offcanvas-nav', 'shown', handleShownOffcanvasNav);
 
   // Attach hidden event listener to off-canvas sidebar
-  UIkit.util.on('#offcanvas-nav', 'hidden', function() {
-    console.log('Current URL:', window.location.href);
-    // Get the URL without the fragment
-    var urlWithoutFragment = window.location.href.split('#')[0];
-    console.log('URL without fragment:', urlWithoutFragment);
+  UIkit.util.on('#offcanvas-nav', 'hidden', handleHiddenOffcanvasNav);
 
-
-
-    // Replace the current URL with the original URL without the fragment
-    history.replaceState({}, '', urlWithoutFragment);
-    console.log('Current URL after replaceState:', window.location.href);
-
-;
-  });
-
-  // Add this line at the end of the fetchPages function
-  window.addEventListener('popstate', function(event) {
-    showPreloader()
-      .then(() => fetchAndRenderContent(window.location.href))
-      .then(hidePreloader);
-  });
+  window.addEventListener('popstate', handlePopState);
 
   eventListenersAttached = true;
-}
-
-// Create a Map to store the event handler functions
-const eventHandlers = new Map();
-
-let preloaderModal;
-
-function showPreloader() {
-  return new Promise(resolve => {
-    preloaderModal = document.querySelector('#preloader');
-    if (preloaderModal) {
-      preloaderModal.style.display = 'block';
-    }
-    setTimeout(resolve, 100); // Adjust the delay as needed
-  });
-}
-
-function hidePreloader() {
-  return new Promise(resolve => {
-    if (preloaderModal) {
-      preloaderModal.style.display = 'none';
-    }
-    setTimeout(resolve, 100); // Adjust the delay as needed
-  });
-}
-
-function fetchAndRenderContent(event) {
-  const anchor = event.target.closest('a');
-  const url = anchor ? anchor.href : event;
-  return fetch(url)
-    .then(response => response.text())
-    .then(html => {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      const contentSelector = anchor && anchor.classList.contains('show-page') ? '.show-content' : '.uk-flex-auto';
-      const contentElement = doc.querySelector(contentSelector);      
-      if (contentElement) {
-        const content = contentElement.innerHTML;
-        document.querySelector('.uk-flex-auto').innerHTML = content;
-        history.pushState({}, '', url);
-        initializePlayer();
-        fetchPages();
-        updateLabels();            
-        window.scrollTo(0, 0);
-      } else {
-        console.error(`No element found for selector "${contentSelector}"`);
-      }
-    });
-}
-
-function attachEventListener(selector) {
-  document.querySelectorAll(selector).forEach(element => {
-    const eventHandler = function(event) {
-      const anchor = event.target.closest('a');
-      if (anchor) {
-        // Check if the clicked <a> element is the close button
-        if (anchor.classList.contains('uk-navbar-toggle')) {
-          // It's the close button, don't prevent the default action and don't fetch and render content
-          return;
-        }
-        if (anchor.closest('.uk-navbar-container') || anchor.closest('#offcanvas-nav') || anchor.closest('.show-page')) {
-          event.preventDefault();
-        
-          showPreloader()
-            .then(() => fetchAndRenderContent(event))
-            .then(hidePreloader);
-        }
-      }
-    };
-
-    if (eventHandlers.has(element)) {
-      element.removeEventListener('click', eventHandlers.get(element));
-    }
-
-    eventHandlers.set(element, eventHandler);
-    element.addEventListener('click', eventHandler);
-  });
-}
-
-export function updateLabels() {
-  console.log('updateLabels called');
-
-  // Check if mp3Player and mp3Player.playlist are defined
-  if (mp3Player && mp3Player.playlist) {
-    const href = mp3Player.playlist[mp3Player.index].src[0];
-    console.log('href:', href); // Add this line
-
-    // Find the anchor that matches the currently playing MP3
-    const anchor = document.querySelector(`.uk-card a[href="${href}"]`);
-    
-    // If the anchor is found, find the closest .uk-card
-    const card = anchor ? anchor.closest('.uk-card') : null;
-    console.log('Card:', card);
-
-    // If the card is found, find the label elements and update them
-    if (card) {
-      const labelPlaying = card.querySelector('.label_isPlaying');
-      const labelPaused = card.querySelector('.label_isPaused');
-
-      console.log('Label playing:', labelPlaying);
-      console.log('Label paused:', labelPaused);
-
-      if (mp3Player.playlist[mp3Player.index].howl.playing()) {
-        labelPlaying.style.display = 'flex';
-        labelPaused.style.display = 'none';
-      } else {
-        labelPlaying.style.display = 'none';
-        labelPaused.style.display = 'flex';
-      }
-    } else {
-      console.error('Card not found');
-    }
-  }
-}
-
-// Add this line at the end of the fetchPages function
-window.addEventListener('popstate', handlePopState);
-
-function handlePopState(event) {
-  showPreloader()
-    .then(() => fetchAndRenderContent(window.location.href))
-    .then(hidePreloader);
 }
 
 
