@@ -62,40 +62,31 @@ export function postUpdateActions() {
   attachEventListener(SHOW_PAGE_SELECTOR);
 }
 
-// Create a Map to store the event handler functions
 export const eventHandlers = new Map();
 
 export function attachEventListener(selector) {
-  console.log('Selector:', selector); // Log the selector
   const elements = document.querySelectorAll(selector);
-  console.log('Elements:', elements); // Log the selected elements
+
   elements.forEach(element => {
     const anchors = element.querySelectorAll('a:not(.uk-navbar-toggle)');
-    console.log('Anchors:', anchors); // Log the anchor elements
+
     anchors.forEach(anchor => {
       if (anchor) {
-        const eventHandler = function(event) {
-          console.log('Event handler called'); 
+        const eventHandler = event => {
           event.preventDefault();
-        
-          console.log("display preloader");
+
           showPreloader()
-            .then(() => {
-              return fetchAndRenderContent(event);
-            })
+            .then(() => fetchAndRenderContent(event))
             .then(hidePreloader)
             .catch(error => console.error('Error:', error));
         };
 
         if (eventHandlers.has(anchor)) {
-          console.log('Removing existing event handler'); // Log when removing an existing event handler
           anchor.removeEventListener('click', eventHandlers.get(anchor));
         }
 
-        console.log('Attaching new event handler'); // Log when attaching a new event handler
         eventHandlers.set(anchor, eventHandler);
         anchor.addEventListener('click', eventHandler);
-        console.log('Event handlers:', eventHandlers); // Log the eventHandlers map
       }
     });
   });

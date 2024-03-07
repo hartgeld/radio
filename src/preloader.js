@@ -5,10 +5,10 @@ export function showPreloader() {
   return new Promise(resolve => {
     preloaderModal = document.querySelector('#preloader');
     if (preloaderModal) {
-      preloaderModal.style.display = 'flex'; // Change this to 'block' or 'flex' or whatever is appropriate
-      preloaderModal.style.position = 'fixed'; // Add this line
+      preloaderModal.style.display = 'flex'; 
+      preloaderModal.style.position = 'fixed'; 
     }
-    setTimeout(resolve, 100); // Adjust the delay as needed
+    setTimeout(resolve, 100); 
   });
 }
 
@@ -19,6 +19,6 @@ export function hidePreloader() {
       preloaderModal.style.display = 'none';
       preloaderModal.style.position = 'fixed'; // Add this line
     }
-    setTimeout(resolve, 100); // Adjust the delay as needed
+    setTimeout(resolve, 100); 
   });
 }

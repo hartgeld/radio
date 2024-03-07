@@ -17,6 +17,8 @@ import './styles.scss';
 import { initializePlayer } from './player';
 import { fetch_player_metaInfo } from './player_meta-info.js';
 import { fetchPages } from './fetch-pages.js';
+import { showPreloader, hidePreloader } from './preloader.js';
+
 
 // configure and import lazysizes
 window.lazySizesConfig = window.lazySizesConfig || {};
@@ -33,16 +35,29 @@ function attachOffcanvasListeners() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {   
-  document.body.style.display = 'block'; // Show the body
-  initializePlayer();
-  fetchPages(); 
-  // Attach event listeners
-  attachOffcanvasListeners();
-  // Hide the preloader
-  var preloader = document.getElementById('preloader');
-  if (preloader) {
-    preloader.style.display = 'none';
-  } 
+document.addEventListener('DOMContentLoaded', function() {
+  showPreloader()
+    .then(() => {
+      initializePlayer();
+      return fetchPages();
+    })
+    .then(() => {
+      // Attach event listeners
+      attachOffcanvasListeners();
+      // Show the "content" div
+      var content = document.getElementById('content');
+      if (content) {
+        content.style.display = 'block';
+      }
+      // Hide the preloader after a delay
+      setTimeout(() => {
+        var preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.display = 'none';
+        }
+      }, 500); // Adjust this value as needed
+    });
 });
+
+
 setInterval(fetch_player_metaInfo, 5000);
