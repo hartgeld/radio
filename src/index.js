@@ -49,15 +49,18 @@ document.addEventListener('DOMContentLoaded', function() {
       if (content) {
         content.style.display = 'block';
       }
-      // Hide the preloader after a delay
-      setTimeout(() => {
-        var preloader = document.getElementById('preloader');
-        if (preloader) {
-          preloader.style.display = 'none';
-        }
-      }, 500); // Adjust this value as needed
     });
 });
+
+window.onload = function() {
+  // Hide the preloader after a delay
+  setTimeout(() => {
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.style.display = 'none';
+    }
+  }, 1000); // 2000 milliseconds = 2 seconds
+};
 
 
 setInterval(fetch_player_metaInfo, 5000);

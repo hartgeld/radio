@@ -36,7 +36,6 @@
 .site-title {
     font-weight: 700;
     text-transform: uppercase;
-    //color: $color-neutral-25;
     line-height: 1.2rem;
     letter-spacing: -0.02em; 
     
@@ -44,6 +43,11 @@
     @media (max-width: 600px) {
         font-size: 0.8rem; // Smaller font size for screens up to 600px wide
         line-height: 0.65rem;;
+    }
+
+    a:active {
+        color: $color-neutral-75; /* Replace with your desired color */
+        text-decoration: none;
     }
 }
 
