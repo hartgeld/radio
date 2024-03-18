@@ -53,6 +53,32 @@
     }
 }
 
+@mixin font-size-l_page-title($important: false) {
+    font-size: 3.0rem; // Adjust as needed
+    line-height: 3.0rem; // Adjust as needed
+    letter-spacing: -0.015em; // Adjust as needed
+    font-weight: 700;
+    text-transform: uppercase;
+
+    @if $important {
+        font-size: 3.0rem !important;
+        line-height: 3.0rem !important;
+        letter-spacing: -0.015em !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 1.5rem; // Adjust as needed
+        line-height: 1.5rem; // Adjust as needed
+
+        @if $important {
+            font-size: 1.5rem !important;
+            line-height: 1.5rem !important;
+        }
+    }
+}
+
 // Apply the mixins to the corresponding classes
 .font-size-xs {
     @include font-size-xs;

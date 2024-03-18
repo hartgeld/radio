@@ -1,7 +1,6 @@
 
-        <div class="uk-flex-auto show-content body-show" uk-height-viewport="expand: true" style="flex: 1;">
-          
-          <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-padding-remove-left">
+        <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">  
+          <div class="uk-card">
             <div class="icon-margin uk-button uk-height-1-1 uk-padding-remove square-button label_isPlaying uk-card-badge uk-position-right " style="display: none; pointer-events: none;">
               <div class="player-button-icon bg-neutral-12 ">
                 <i class="fas fa-pause fa-xs "></i>
@@ -14,7 +13,7 @@
             </div>
 
             <a href="{{ page.mp3Url}}" class="mp3Button">
-              <div class="uk-cover-container uk-inline uk-square custom-card-media-top_page-shows">
+              <div class="uk-cover-container uk-inline uk-square page_stage-img">
                 {% assign path = page.image | remove_first: '/' %}
                 {% responsive_image_block %}
                   path: {{ path }}
@@ -26,18 +25,14 @@
               </div>
             </a>
 
-            <!--<a href="{{ show.mp3Url}}" class="mp3Button" > </a>-->
-
-              <div class="uk-card-header body-show-card-header uk-padding-small-top uk-padding-large-bottom custom-card-header ">
-                <h1 class="text-neutral-25 custom-card-header_title">{{ page.title }}</h1>
-                {{ page.content | markdownify }}
-              </div>
-
-           
+            <div class="uk-card-header page_content uk-padding-medium">
+              <h1 class="text-neutral-25 ">{{ page.title }}</h1>
+              {{ page.content | markdownify }}
+            </div>
 
             <div class="uk-flex uk-flex-between">
               <div class="uk-width-expand">
-                  <div class="uk-card-body uk-padding-small uk-padding-remove-vertical">
+                  <div class="uk-card-body ">
                     {% for tag in page.tags %}
                     <span class="">{{ tag }}</span>
                     {% endfor %}

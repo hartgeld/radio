@@ -1,8 +1,5 @@
 
-
-
-
-  .custom-card-media-top_page-shows {
+  .page_stage-img {
     position: relative;
     width: 100%;
 
@@ -22,24 +19,15 @@
     }
 }
 
-.custom-card-header {
+.page_content {
     height: auto!important;
     display: flex;
     align-items: flex-start!important;
     justify-content: flex-start;
+    flex-direction: column;
 
     h1 {
-        @include font-size-l_card-title;
+      @include font-size-l_page-title(true);
     }
   }
 
-  .custom-card-header_title{
-    
-  }
-
-.body-show-card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: flex-start;
-  }
