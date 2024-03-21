@@ -7,4 +7,4 @@ tags:
   - Techno
   - Bass
 ---
-Philip and Georg rattle through dozens of tracks at breakneck speed. 
+Philipp and Georg rattle through dozens of tracks at breakneck speed. 
