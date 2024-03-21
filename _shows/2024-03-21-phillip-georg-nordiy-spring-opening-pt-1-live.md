@@ -6,6 +6,5 @@ mp3Url: https://radio-shows.fra1.cdn.digitaloceanspaces.com/recordings/nordiy/st
 tags:
   - Techno
   - Bass
-  - ""
 ---
 Philip and Georg rattle through dozens of tracks at breakneck speed. 
