@@ -1,6 +1,5 @@
 import { Howl } from 'howler';
-import { updateLabels } from './update-labels'; // Add this line
-
+import { updateLabels } from './update-labels'; 
 
 let livestreamPlayer;
 let mp3Player;

@@ -1,4 +1,4 @@
-import { mp3Player } from './player.js';
+import { mp3Player } from './initializePlayer.js';
 
 export function updateLabels() {
   console.log('updateLabels called');

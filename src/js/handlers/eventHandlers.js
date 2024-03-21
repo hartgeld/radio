@@ -1,6 +1,6 @@
 import UIkit from 'uikit';
-import { showPreloader } from './preloader.js';
-import { initializePlayer } from './player.js';
+import { showPreloader } from '../utils/preloader.js';
+import { initializePlayer } from '../player/initializePlayer.js';
 import { fetchPages } from './fetch-pages.js';
 
 

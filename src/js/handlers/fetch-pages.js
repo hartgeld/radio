@@ -1,5 +1,5 @@
 import UIkit from 'uikit';
-import { showPreloader, hidePreloader } from './preloader';
+import { showPreloader, hidePreloader } from '../utils/preloader';
 import { fetchAndRenderContent, fetchAndRenderContentForPopState, attachEventListener } from './content-handler';
 
 let eventListenersAttached = false;

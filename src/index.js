@@ -11,10 +11,10 @@ import "@fontsource/inter/700.css";
 import './styles.scss';
 
 // Import custom JS 
-import { handleOnLoad } from './preloader.js';
-import { handleDOMContentLoaded } from './eventHandlers.js';
-import './lazySizesConfig.js'; 
-import { fetch_player_metaInfo } from './player_meta-info.js';
+import { handleOnLoad } from './js/utils/preloader.js';
+import { handleDOMContentLoaded } from './js/handlers/eventHandlers.js';
+import './js/config/lazySizesConfig.js'; 
+import { fetch_player_metaInfo } from './js/player/player_meta-info.js';
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
@@ -23,7 +23,5 @@ window.onload = handleOnLoad;
 // Periodic tasks
 setInterval(fetch_player_metaInfo, 5000); 
 
-//backupzzz
-//import { initializePlayer } from './player';
-//import { fetchPages } from './fetch-pages.js';
-//import UIkit from 'uikit'; // UIKit
+
+

@@ -1,7 +1,7 @@
-import { initializePlayer } from './player';
-import { fetchPages } from './fetch-pages';
-import { showPreloader, hidePreloader } from './preloader.js';
-import { updateLabels } from './update-labels'; // Add this line
+import { initializePlayer } from '../player/initializePlayer.js';
+import { fetchPages } from './fetch-pages.js';
+import { showPreloader, hidePreloader } from '../utils/preloader.js';
+import { updateLabels } from '../player/update-labels.js'; // Add this line
 
 const CONTENT_SELECTOR = '.uk-flex-auto';
 const SHOW_PAGE_SELECTOR = '.show-page';
