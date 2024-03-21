@@ -1,6 +1,7 @@
 
-        <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">  
-          <div class="uk-card">
+      <div class="uk-flex-auto" uk-height-viewport="expand: true" style="flex: 1;">  
+        <div class="bg-neutral-100">
+          <div class="uk-card remove-border-radius">
             <div class="icon-margin uk-button uk-height-1-1 uk-padding-remove square-button label_isPlaying uk-card-badge uk-position-right " style="display: none; pointer-events: none;">
               <div class="player-button-icon bg-neutral-12 ">
                 <i class="fas fa-pause fa-xs "></i>
@@ -25,6 +26,13 @@
               </div>
             </a>
 
+            <div class="uk-card-header uk-padding-remove-vertical uk-flex uk-flex-between">
+              <h5 class="font-size-xs">
+                {{ page.date | date: "%d.%m.%y" }}
+              </h5>
+            </div>
+
+            
             <div class="uk-card-header page_content uk-padding-medium">
               <h1 class="text-neutral-25 ">{{ page.title }}</h1>
               {{ page.content | markdownify }}
@@ -37,13 +45,9 @@
                     <span class="">{{ tag }}</span>
                     {% endfor %}
                   </div>
-                <div class="uk-card-footer uk-padding-remove-top uk-flex uk-flex-between">
-                  <h5 class="uk-text-small ">
-                    {{ page.date | date: "%d.%m.%y" }}
-                  </h5>
-                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
         

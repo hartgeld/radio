@@ -38,15 +38,23 @@
     text-transform: uppercase;
     line-height: 1.2rem;
     letter-spacing: -0.02em; 
-    
     font-size: 1.2rem; // Default font size
+    margin-bottom: 0;
+    float: left;
+    
     @media (max-width: 600px) {
         font-size: 0.8rem; // Smaller font size for screens up to 600px wide
-        line-height: 0.65rem;;
+        line-height: 0.65rem;
+    }
+
+    &,
+    &:visited,
+    &:hover {
+        text-decoration: none;
+        color: currentColor;
     }
 
     a:active {
-        color: $color-neutral-75; /* Replace with your desired color */
         text-decoration: none;
     }
 }
