@@ -1,7 +1,7 @@
 
-import { mp3Player } from './initializePlayer.js';
 
-export function updateMP3Controls(playAudioBtn, stopAudioBtn) {
+// checks the playing state of the mp3Player and updates the display properties of the play and stop buttons
+export function updateMP3Controls(playAudioBtn, stopAudioBtn, mp3Player) {
   if (mp3Player.playlist[mp3Player.index].howl.playing()) {
     playAudioBtn.style.display = 'none';
     stopAudioBtn.style.display = 'flex';
@@ -9,4 +9,10 @@ export function updateMP3Controls(playAudioBtn, stopAudioBtn) {
     playAudioBtn.style.display = 'flex';
     stopAudioBtn.style.display = 'none';
   }
+}
+
+// directly sets the display properties of the play and stop buttons based on the isPlaying parameter
+export function setMP3Controls(playAudioBtn, stopAudioBtn, isPlaying) {
+  playAudioBtn.style.display = isPlaying ? 'none' : 'flex';
+  stopAudioBtn.style.display = isPlaying ? 'flex' : 'none';
 }

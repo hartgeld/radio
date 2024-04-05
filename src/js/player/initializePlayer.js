@@ -1,6 +1,6 @@
 import { Howl } from 'howler';
 import { updateLabels } from './update-labels';
-import { updateMP3Controls} from './updateMP3Controls.js'; 
+import { updateMP3Controls, setMP3Controls} from './updateMP3Controls.js'; 
 import { PlayerManager } from './playerManager.js';
 import Player from './Player.js';
 
@@ -14,7 +14,7 @@ let mp3Player;
 
 async function fetchData() {
   
-  playerManager.stopOtherPlayer(mp3Player);
+  //playerManager.stopOtherPlayer(mp3Player);
   
   // fetch data
   try {
@@ -97,17 +97,12 @@ function initializeButtons() {
 
 async function handleLivestreamButtonClick(event) {
 
-
-   // Check if the mp3Player is playing
+   // Check if the mp3Player is playing then stop it
    if (playerManager.mp3Player && playerManager.mp3Player.playing()) {
-    console.log('mp3Player is playing, about to stop');
-    // Stop the mp3Player
     playerManager.mp3Player.stop();
     updateLabels(currentCard, false);
   }
   
-  console.log('handleLivestreamButtonClick was called');
-
   try {
     event.preventDefault();
 
@@ -125,18 +120,16 @@ async function handleLivestreamButtonClick(event) {
     // Wait for fetchData to finish
     await fetchData();
 
-    // Assuming playerManager is an instance of PlayerManager
-    console.log('mp3Player is playing:', playerManager.mp3Player.playing());
     //playerManager.stopPlayerIfPlaying(playerManager.mp3Player);
-    playerManager.stopOtherPlayer(playerManager.livestreamPlayer);
+    //playerManager.stopOtherPlayer(playerManager.livestreamPlayer);
      // Stop and reset the static audio if it's playing
     //playerManager.stopAndResetPlayer(mp3Player);
-    console.log('About to stop mp3Player');
+    //console.log('About to stop mp3Player');
 
     //playerManager.mp3Player.stop();
     //playerManager.mp3Player.clearPlaylist();
 
-    console.log("livestream button clicked, mp3Player paused");
+    //console.log("livestream button clicked, mp3Player paused");
 
     // Hide the progress bar and audio player controls
     document.getElementById('audio-player_controls').style.display = 'none';
@@ -161,7 +154,6 @@ async function handleLivestreamButtonClick(event) {
         console.log("livestreamPlayer is not playing, attempting to start");
         try {
 
-
           playerManager.livestreamPlayer.play(0);
 
           playLivestreamBtn.style.display = 'none';
@@ -174,6 +166,8 @@ async function handleLivestreamButtonClick(event) {
       }
     } else {
       console.log("livestreamPlayer does not exist, attempting to create and start");
+      
+      /*
       try {
         playerManager.livestreamPlayer = new Player([{ src: [livestreamUrl], html5: true, format: ['mp3'], howl: null }], playLivestreamBtn, stopLivestreamBtn);
         playerManager.livestreamPlayer.play(0);
@@ -188,7 +182,7 @@ async function handleLivestreamButtonClick(event) {
 
       } catch (error) {
         console.error('Failed to create Player instance:', error);
-      }
+      }*/
     }
   } catch (error) {
     console.error('An error occurred:', error);
@@ -203,11 +197,7 @@ function handlePlayAudioBtnClick() {
   
   if (mp3Player instanceof Player) {
     mp3Player.resume();
-    
-    playAudioBtn.style.display = 'none';
-    stopAudioBtn.style.display = 'flex';
-
-    // Update the labels of the current card
+    setMP3Controls(playAudioBtn, stopAudioBtn, true);
     updateLabels(currentCard, true);
   }
 }
@@ -218,8 +208,7 @@ function handleStopAudioBtnClick() {
   if (mp3Player instanceof Player) {
     mp3Player.pause();
     
-    playAudioBtn.style.display = 'flex';
-    stopAudioBtn.style.display = 'none';
+    setMP3Controls(playAudioBtn, stopAudioBtn, false);
 
     // Update the labels of the current card
     updateLabels(currentCard, false);
@@ -238,9 +227,7 @@ function handleCloseAudioPlayerBtnClick() {
   // Stop and reset the static audio if it's playing
   playerManager.stopAndResetPlayer(mp3Player);
   
-  playAudioBtn.style.display = 'flex';
-  stopAudioBtn.style.display = 'none';
-  
+  setMP3Controls(playAudioBtn, stopAudioBtn, false);
   updateLabels(null, false);
 }
 
@@ -259,19 +246,14 @@ function handleMP3ButtonClick(event) {
 
   // If a different card is clicked, update the labels of the currently playing card
   if (currentCard && currentCard !== card) {
-    console.log('Different card clicked');
-
-    // Update the labels of the old card
+    // update the labels of the previously clicked card
     updateLabels(currentCard, false);
-
-    playAudioBtn.style.display = 'none';
-    stopAudioBtn.style.display = 'flex';
-
+    updateMP3Controls(playAudioBtn, stopAudioBtn, playerManager.mp3Player);
     // Update the currentCard to the newly clicked card
     currentCard = card;
   }
 
-  // Update the labels of the clicked card
+  // update the labels of the currently playing card
   updateLabels(card, mp3Player.playlist[mp3Player.index].howl.playing());
 
 
@@ -310,7 +292,7 @@ function handleMP3ButtonClick(event) {
   
   // If the clicked MP3 is the same as the currently playing one, toggle play/pause
   if (playerManager.togglePlayPause(mp3Url)) {
-    updateMP3Controls(playAudioBtn, stopAudioBtn);
+    updateMP3Controls(playAudioBtn, stopAudioBtn, playerManager.mp3Player);
     updateLabels(card, mp3Player.playlist[mp3Player.index].howl.playing());
     return;
   }
@@ -322,8 +304,7 @@ if (!playerManager.mp3Player) {
   playerManager.mp3Player = new MP3Player();
 } else {
   // Hide the play button
-  playAudioBtn.style.display = 'none';
-  stopAudioBtn.style.display = 'flex';
+  setMP3Controls(playAudioBtn, stopAudioBtn, true);
 }
 
 // Get the MP3 URL and play it
