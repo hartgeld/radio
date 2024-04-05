@@ -103,7 +103,7 @@ async function handleLivestreamButtonClick(event) {
     console.log('mp3Player is playing, about to stop');
     // Stop the mp3Player
     playerManager.mp3Player.stop();
-    //updateLabels(currentCard, true);
+    updateLabels(currentCard, false);
   }
   
   console.log('handleLivestreamButtonClick was called');
