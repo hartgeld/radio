@@ -34,8 +34,6 @@ class Player {
   }
 
   selectTrack(index) {
-    console.log('selectTrack called with index:', index);
-
     if (index >= 0 && index < this.playlist.length) {
       this.index = index;
     } else {
@@ -44,7 +42,6 @@ class Player {
   }
 
   clearPlaylist = () => {
-    console.log('clearPlaylist called');
     this.playlist.forEach(track => {
       if (track.howl) {
         track.howl.stop();
@@ -57,13 +54,11 @@ class Player {
   playing = () => {
     const sound = this.getHowl(this.index);
     const isPlaying = sound ? sound.playing() : false;
-    console.log('playing function called, isPlaying:', isPlaying);
     return isPlaying;
   }
   
   play = (index) => {
     if (!this.playlist) {
-      console.error('Playlist is not defined');
       return;
     }
   
@@ -71,13 +66,10 @@ class Player {
       try {
         this.selectTrack(index);
       } catch (error) {
-        console.error(`Error selecting track at index ${index}:`, error);
         return;
       }
     }
-  
-    console.log('play function called with index:', index, 'this.index:', this.index, 'playlist length:', this.playlist.length);
-  
+    
     this.playerManager.stopOtherPlayer(this);
   
     index = typeof index === 'number' ? index : this.index;
@@ -86,18 +78,15 @@ class Player {
     if (data) {
       let sound = this.getHowl(index);
       if (!sound) {
-        console.error(`No sound found at index ${index}`);
         return;
       }
       if (!sound.playing()) {
-        console.log('sound is not playing, about to play');
         sound.play();
         sound.once('play', () => {
           this.duration = sound.duration();
           requestAnimationFrame(this.step.bind(this));
         });
       } else {
-        console.log('sound is already playing');
       }
       this.step();
     } else {
@@ -106,14 +95,11 @@ class Player {
   }
   
   stop = () => {
-    console.log('stop function called');
     const sound = this.getHowl(this.index);
     if (sound) {
       if (sound.playing()) {
-        console.log('sound is playing, about to stop');
         sound.stop();
       } else {
-        console.log('sound is not playing');
       }
       sound.unload();
     }  
@@ -144,7 +130,6 @@ class Player {
 
   playMP3 = (mp3Url) => {
     this.index = 0;
-    console.log('Playlist before:', this.playlist);
     
     // Stop the currently playing sound, if any
     if (this.playlist.length > 0) {
@@ -156,11 +141,8 @@ class Player {
     
     // Ensure that this.playlist is an array before pushing the new MP3
     if (!Array.isArray(this.playlist)) {
-      console.error('Playlist is not an array, resetting it');
       this.playlist = [];
     }
-
-    console.log('Playlist after stopping current sound:', this.playlist);
     
     // Create a new Howl
     const howl = new Howl({

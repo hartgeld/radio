@@ -1,6 +1,7 @@
 //playerManager.js controls multiple Player instances
 
 import Player from './Player.js';
+import { updateMP3Controls, setMP3Controls, updateControlPanel, updateLivestreamControls } from './updateMP3Controls.js';
 
 export class PlayerManager {
     constructor() {
@@ -17,23 +18,14 @@ export class PlayerManager {
     }
 
     stopPlayerIfPlaying(player) {
-    
       if (player?.playlist[player.index]?.howl?.playing()) {
         player.stop();
         player.clearPlaylist();
-        //player.unload();
-        console.log("Player stopped");
       }
     }
   
     stopOtherPlayer(currentPlayer) {
-      console.log('Current player:', currentPlayer);
-      console.log('MP3 player playing:', this.mp3Player?.playlist[this.mp3Player.index]?.howl?.playing());
-      console.log('Livestream player playing:', this.livestreamPlayer?.playlist[this.livestreamPlayer.index]?.howl?.playing());
-    
       const mp3PlayerPlaying = this.mp3Player?.playlist[this.mp3Player.index]?.howl?.playing();
-      console.log('mp3PlayerPlaying:', mp3PlayerPlaying);
-    
       if (currentPlayer === this.livestreamPlayer && mp3PlayerPlaying) {
         this.mp3Player.stop();
       } else if (currentPlayer === this.mp3Player && this.livestreamPlayer?.playlist[this.livestreamPlayer.index]?.howl?.playing()) {
@@ -49,14 +41,13 @@ export class PlayerManager {
     }
 
     pausePlayerAndUpdateButtons(player, playBtn, stopBtn) {
-      console.log('pausePlayerAndUpdateButtons called with player:', player);
       if (player?.playlist[player.index]?.howl?.playing()) {
-        console.log('Player is playing, pausing...');
         player.pause();
-        playBtn.style.display = 'flex';
-        stopBtn.style.display = 'none';
-      } else {
-        console.log('Player is not playing, not pausing.');
+        if (player === this.livestreamPlayer) {
+          updateLivestreamControls(playBtn, stopBtn, player);
+        } else if (player === this.mp3Player) {
+          updateMP3Controls(playBtn, stopBtn, player);
+        }
       }
     }
 
@@ -71,6 +62,14 @@ export class PlayerManager {
         return true;
       }
       return false;
+    }
+
+    isCurrentTrack(player, url) {
+      return player?.playlist[player.index]?.src?.[0] === url;
+    }
+
+    isPlaying(player) {
+      return player?.playlist[player.index]?.howl?.playing();
     }
   }
 

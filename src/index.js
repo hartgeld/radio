@@ -1,3 +1,4 @@
+// index.js
 // Import libraries
 import '@fortawesome/fontawesome-free/js/all';
 

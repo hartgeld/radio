@@ -1,3 +1,5 @@
+//eventHandlers.js
+
 import UIkit from 'uikit';
 import { showPreloader } from '../utils/preloader.js';
 import { initializePlayer } from '../player/initializePlayer.js';

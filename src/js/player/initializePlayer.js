@@ -1,346 +1,172 @@
-import { Howl } from 'howler';
-import { updateLabels } from './update-labels';
-import { updateMP3Controls, setMP3Controls} from './updateMP3Controls.js'; 
-import { PlayerManager } from './playerManager.js';
+// initializePlayer.js
+
+// Internal modules
 import Player from './Player.js';
+import { PlayerManager } from './PlayerManager.js';
+import { ButtonManager } from './ButtonManager.js';
+import { fetchData } from './playerSetup.js';
+import { updateLabels } from './update-labels';
+import { updateMP3Controls, setMP3Controls, updateControlPanel } from './updateMP3Controls.js';
 
 
 let currentCard = null;
 
 const playerManager = new PlayerManager();
+const buttonManager = new ButtonManager();
 
-let mp3Player;
-
-
-async function fetchData() {
-  
-  //playerManager.stopOtherPlayer(mp3Player);
-  
-  // fetch data
-  try {
-    const response = await fetch('https://azura.holgerardelt.de/api/nowplaying/klo_radio_');
-    const data = await response.json();
-    const isLive = data.live.is_live;
-    const streamerName = data.live.streamer_name;
-    const urls = data.station.mounts.map(mount => mount.url);
-    const playlist = [{
-      src: urls,
-      html5: true, 
-      format: ['mp3', 'aac', 'ogg'],
-      howl: new Howl({
-        src: urls,
-        format: ['mp3'],
-        html5: true
-      })
-    }];
-
-    // initialize buttons
-    const { playLivestreamBtn, stopLivestreamBtn, playAudioBtn, stopAudioBtn, closeAudioPlayerBtn } = initializeButtons();
-
-    // Init Howl-Object for Livestream Player
-    const howl = new Howl({
-      src: playlist[0].src,
-      format: ['mp3'],
-      html5: true
-    });
-
-    // Create Livestream Player
-    playerManager.createLivestreamPlayer([{ ...playlist[0], howl: howl }], playLivestreamBtn, stopLivestreamBtn);
-
-    // Create mp3Player 
-    if (playlist.length > 1) {
-      //playerManager.createMp3Player(playlist.slice(1), playAudioBtn, stopAudioBtn);
-    } else {
-      playerManager.createMp3Player(playlist, playAudioBtn, stopAudioBtn);
-    }
-    mp3Player = playerManager.mp3Player;
-  
-    // set streamer name
-    const livestreamPlaying = document.getElementById('streamername-LivestreamPlaying');
-    const livestreamStopped = document.getElementById('streamername-LivestreamStopped');
-    livestreamPlaying.innerHTML = `${streamerName}`;
-    livestreamStopped.innerHTML = `${streamerName}`;
-
-    // set live/replay status of livestream
-    const isLiveElement = document.getElementById('isLive');
-    const isNotLiveElement = document.getElementById('isNotLive');  
-
-    if (isLive) {
-      isLiveElement.style.display = 'block';
-      isNotLiveElement.style.display = 'none';
-      isLiveElement.innerHTML = `<i class="fas fa-circle fa-xs"></i> Live`;
-    } else {
-      isLiveElement.style.display = 'none';
-      isNotLiveElement.style.display = 'block';
-      isNotLiveElement.innerHTML = `<i class="fas fa-repeat fa-xs"></i> Replay`;
-    }
-    
-
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-function initializeButtons() {
-  const playAudioBtn = document.getElementById('playAudio');
-  const stopAudioBtn = document.getElementById('stopAudio');
-  const playLivestreamBtn = document.getElementById('playLivestream');
-  const stopLivestreamBtn = document.getElementById('stopLivestream');
-  const closeAudioPlayerBtn = document.getElementById('closeAudioPlayer');
-  if (!playAudioBtn || !stopAudioBtn || !playLivestreamBtn || !stopLivestreamBtn || !closeAudioPlayerBtn) {
-    console.error('One or more buttons not found');
-    return null;
-  }
-  return { playAudioBtn, stopAudioBtn, playLivestreamBtn, stopLivestreamBtn, closeAudioPlayerBtn };
-}
-
+export const mp3PlayerWrapper = { mp3Player: null };
 
 async function handleLivestreamButtonClick(event) {
-
-   // Check if the mp3Player is playing then stop it
-   if (playerManager.mp3Player && playerManager.mp3Player.playing()) {
-    playerManager.mp3Player.stop();
+  if (mp3PlayerWrapper.mp3Player?.playing()) {
+    mp3PlayerWrapper.mp3Player.stop();
     updateLabels(currentCard, false);
   }
-  
   try {
     event.preventDefault();
-
-    // Get the URL of the livestream from Howl object
-    const livestreamUrl = this.getAttribute('href');
-
-    // Initialize livestream buttons
-    const { playLivestreamBtn, stopLivestreamBtn } = initializeButtons();
-
-    // Check if the buttons exist
-    if (!playLivestreamBtn || !stopLivestreamBtn) {
-      throw new Error('Buttons not found');
-    }
-
-    // Wait for fetchData to finish
-    await fetchData();
-
-    //playerManager.stopPlayerIfPlaying(playerManager.mp3Player);
-    //playerManager.stopOtherPlayer(playerManager.livestreamPlayer);
-     // Stop and reset the static audio if it's playing
-    //playerManager.stopAndResetPlayer(mp3Player);
-    //console.log('About to stop mp3Player');
-
-    //playerManager.mp3Player.stop();
-    //playerManager.mp3Player.clearPlaylist();
-
-    //console.log("livestream button clicked, mp3Player paused");
-
-    // Hide the progress bar and audio player controls
-    document.getElementById('audio-player_controls').style.display = 'none';
-    const progress_container = document.getElementById('progress-container');
-    progress_container.style.display = 'none';
-
-    // Create Livestream Player if it doesn't exist and play it
-    if (playerManager.livestreamPlayer) {
-      if (playerManager.livestreamPlayer.playing()) { // Check if the livestream is already playing
-        
-        playerManager.stopPlayerIfPlaying(playerManager.livestreamPlayer);
-
-        playLivestreamBtn.style.display = 'flex';
-        stopLivestreamBtn.style.display = 'none';
-
-        if (playerManager.livestreamPlayer.playing()) {
-          console.log("livestreamPlayer is still playing after stop was called");
-        } else {
-          console.log("livestreamPlayer is not playing after stop was called");
-        }
-      } else {
-        console.log("livestreamPlayer is not playing, attempting to start");
-        try {
-
-          playerManager.livestreamPlayer.play(0);
-
-          playLivestreamBtn.style.display = 'none';
-          stopLivestreamBtn.style.display = 'flex';
-
-          console.log("livestream button clicked, livestreamPlayer started");
-        } catch (error) {
-          console.error('Failed to play existing Player instance:', error);
-        }
-      }
-    } else {
-      console.log("livestreamPlayer does not exist, attempting to create and start");
-      
-      /*
-      try {
-        playerManager.livestreamPlayer = new Player([{ src: [livestreamUrl], html5: true, format: ['mp3'], howl: null }], playLivestreamBtn, stopLivestreamBtn);
-        playerManager.livestreamPlayer.play(0);
-        
-        playLivestreamBtn.style.display = 'none';
-        stopLivestreamBtn.style.display = 'flex';
-
-        const progress_container = document.getElementById('progress-container');
-        progress_container.style.display = 'none';
-        
-        console.log("livestream button clicked, livestreamPlayer started");
-
-      } catch (error) {
-        console.error('Failed to create Player instance:', error);
-      }*/
-    }
+    const { playLivestreamBtn, stopLivestreamBtn, controls, progress_container } = buttonManager.buttons;
+    await fetchData(buttonManager, playerManager);
+    updateControlPanel(false, controls, progress_container);
+    handleLivestreamPlayer(playLivestreamBtn, stopLivestreamBtn);
   } catch (error) {
-    console.error('An error occurred:', error);
+    handleError('An error occurred: ', error);
   }
+}
+
+function handleLivestreamPlayer(playLivestreamBtn, stopLivestreamBtn) {
+  if (!playerManager.livestreamPlayer) {
+    handleError('Livestream player does not exist', new Error('Livestream player does not exist'));
+  } else if (playerManager.livestreamPlayer.playing()) {
+    playerManager.stopPlayerIfPlaying(playerManager.livestreamPlayer);
+    setMP3Controls(playLivestreamBtn, stopLivestreamBtn, false);
+  } else {
+    playLivestreamPlayer(playLivestreamBtn, stopLivestreamBtn);
+  }
+}
+
+function playLivestreamPlayer(playLivestreamBtn, stopLivestreamBtn) {
+  try {
+    playerManager.livestreamPlayer.play(0);
+    setMP3Controls(playLivestreamBtn, stopLivestreamBtn, true);
+  } catch (error) {
+    handleError('An error occurred: ', error);
+  }
+}
+
+function handleError(message, error) {
+  throw new Error(message + error);
 }
 
 function handlePlayAudioBtnClick() {
-  const { playAudioBtn, stopAudioBtn } = initializeButtons();
-  
-  // Pause the livestream if it's playing
+  const { playAudioBtn, stopAudioBtn } = buttonManager.buttons;
   playerManager.stopPlayerIfPlaying(playerManager.livestreamPlayer);
-  
-  if (mp3Player instanceof Player) {
-    mp3Player.resume();
+  if (mp3PlayerWrapper.mp3Player instanceof Player) {
+    mp3PlayerWrapper.mp3Player.resume();
     setMP3Controls(playAudioBtn, stopAudioBtn, true);
     updateLabels(currentCard, true);
   }
 }
 
 function handleStopAudioBtnClick() {
-  const { playAudioBtn, stopAudioBtn } = initializeButtons();
-  
-  if (mp3Player instanceof Player) {
-    mp3Player.pause();
-    
+  const { playAudioBtn, stopAudioBtn } = buttonManager.buttons;
+  if (mp3PlayerWrapper.mp3Player instanceof Player) {
+    mp3PlayerWrapper.mp3Player.pause();
     setMP3Controls(playAudioBtn, stopAudioBtn, false);
-
-    // Update the labels of the current card
     updateLabels(currentCard, false);
   }
 }
 
 function handleCloseAudioPlayerBtnClick() {
-  const { playAudioBtn, stopAudioBtn } = initializeButtons();
-
-  // Hide the static audio player
-  const controls = document.getElementById('audio-player_controls');
-  controls.style.display = 'none';
-  const progress_container = document.getElementById('progress-container');
-  progress_container.style.display = 'none';
-  
-  // Stop and reset the static audio if it's playing
-  playerManager.stopAndResetPlayer(mp3Player);
-  
+  const { playAudioBtn, stopAudioBtn, controls, progress_container } = buttonManager.buttons;
+  updateControlPanel(false, controls, progress_container);
+  playerManager.stopAndResetPlayer(mp3PlayerWrapper.mp3Player);
   setMP3Controls(playAudioBtn, stopAudioBtn, false);
   updateLabels(null, false);
 }
 
 function handleMP3ButtonClick(event) {
-
   event.preventDefault();
 
-  //load buttons
-  const { playLivestreamBtn, stopLivestreamBtn, playAudioBtn, stopAudioBtn } = initializeButtons();
+  const { playLivestreamBtn, stopLivestreamBtn, playAudioBtn, stopAudioBtn, controls, progress_container, audioplayer_button_streamer_playing, audioplayer_button_streamer_stopped } = buttonManager.buttons;
 
-  // Pause the livestream if it's playing
-  playerManager.pausePlayerAndUpdateButtons(playerManager.livestreamPlayer, playLivestreamBtn, stopLivestreamBtn);
-
-  // Find the parent card of the clicked button
   const card = event.target.closest('.uk-card');
+  const mp3Url = event.currentTarget.getAttribute('href');
+  const { textContent: title } = card.querySelector('.uk-card-header h1'); 
 
-  // If a different card is clicked, update the labels of the currently playing card
-  if (currentCard && currentCard !== card) {
-    // update the labels of the previously clicked card
-    updateLabels(currentCard, false);
-    updateMP3Controls(playAudioBtn, stopAudioBtn, playerManager.mp3Player);
-    // Update the currentCard to the newly clicked card
-    currentCard = card;
+  playerManager.pausePlayerAndUpdateButtons(playerManager.livestreamPlayer, playLivestreamBtn, stopLivestreamBtn, card);
+
+  let isPlaying = playerManager.isPlaying(mp3PlayerWrapper.mp3Player);
+  if (!playerManager.isCurrentTrack(mp3PlayerWrapper.mp3Player, mp3Url)) {
+    updateLabels(card, isPlaying);
   }
 
-  // update the labels of the currently playing card
-  updateLabels(card, mp3Player.playlist[mp3Player.index].howl.playing());
+  handleCardUpdate(card, playAudioBtn, stopAudioBtn);
 
-
-  console.log("mp3Player, check if defined: " + mp3Player);
-  if (
-    mp3Player?.playlist[mp3Player.index] &&
-    mp3Player.playlist[mp3Player.index].src &&
-    mp3Player.playlist[mp3Player.index].src[0] === event.currentTarget.getAttribute('href')
-  ) {
-    console.log("Check if mp3Player.playlist[mp3Player.index] is defined:" + mp3Player.playlist[mp3Player.index]);
-    if (mp3Player.playlist[mp3Player.index].howl.playing()) {
-      // Update the labels of the clicked card
-      updateLabels(card, true);
-    } else {
-      // Update the labels of the clicked card
-      updateLabels(card, false);
-    }
-  }
-
-  const mp3Url = this.getAttribute('href');
-
-  // Show the controls
-  const controls = document.getElementById('audio-player_controls');
-  controls.style.display = 'flex';
-  const progress = document.getElementById('progress-container');
-  progress.style.display = 'flex';
+  updateControlPanel(true, controls, progress_container);
   
-  // Fetch the title from the h1 tag
-  const title = card.querySelector('.uk-card-header h1').textContent;
+  updateStreamerTitle(audioplayer_button_streamer_playing, audioplayer_button_streamer_stopped, title);
   
-  // Display the title in head_audio-player.html
-  const audioplayer_button_streamer_playing = document.querySelector('#audio-player_button_streamer-name_playing');
-  const audioplayer_button_streamer_stopped = document.querySelector('#audio-player_button_streamer-name_stopped');
-  audioplayer_button_streamer_playing.textContent = title;
-  audioplayer_button_streamer_stopped.textContent = title;
-  
-  // If the clicked MP3 is the same as the currently playing one, toggle play/pause
   if (playerManager.togglePlayPause(mp3Url)) {
+    isPlaying = playerManager.isPlaying(mp3PlayerWrapper.mp3Player); 
+    updateLabels(card, isPlaying);
     updateMP3Controls(playAudioBtn, stopAudioBtn, playerManager.mp3Player);
-    updateLabels(card, mp3Player.playlist[mp3Player.index].howl.playing());
     return;
   }
 
-// Check if the mp3Player is initialized
-if (!playerManager.mp3Player) {
-  console.log('mp3Player is not initialized');
-  // Initialize mp3Player here
-  playerManager.mp3Player = new MP3Player();
-} else {
-  // Hide the play button
-  setMP3Controls(playAudioBtn, stopAudioBtn, true);
+  handleMP3PlayerInitialization(playAudioBtn, stopAudioBtn);
+  handleMP3Playback(card, mp3Url, stopAudioBtn);
+
+  currentCard = card;
 }
 
-// Get the MP3 URL and play it
-if (stopAudioBtn.style.display !== 'none') {
-  mp3Player.playMP3(mp3Url, () => {
-    // Log the state of mp3Player and card before updating labels
-    console.log('mp3Player state before updateLabels:', mp3Player);
-    console.log('card state before updateLabels:', card);
-  });
-
-  // Add the MP3 to the playlist if it's not already there
-  if (mp3Player && Array.isArray(mp3Player.playlist)) {
-    console.log("Add the MP3 to the playlist if it's not already there");
-    const existingTrackIndex = mp3Player.playlist.findIndex(track => track.src && typeof track.src === 'string' && track.src.includes(mp3Url));
-    if (existingTrackIndex !== -1) {
-      mp3Player.play(existingTrackIndex);
-    }
+function handleCardUpdate(card, playAudioBtn, stopAudioBtn) {
+  if (currentCard && currentCard !== card) {
+    updateLabels(currentCard, false);
+    updateMP3Controls(playAudioBtn, stopAudioBtn, mp3PlayerWrapper.mp3Player);
+    currentCard = card;
   }
-
-  // Update the labels when the audio starts playing
-  mp3Player.playlist[mp3Player.index].howl.on('play', () => {
-    updateLabels(card, true);
-  });
 }
 
-// Update the labels of the clicked card
-updateLabels(card, mp3Player.playlist[mp3Player.index].howl.playing());
+function updateStreamerTitle(audioplayer_button_streamer_playing, audioplayer_button_streamer_stopped, title) {
+  audioplayer_button_streamer_playing.textContent = title;
+  audioplayer_button_streamer_stopped.textContent = title;
+}
 
-currentCard = card;
+function handleMP3PlayerInitialization(playAudioBtn, stopAudioBtn) {
+  if (!mp3PlayerWrapper.mp3Player) {
+    mp3PlayerWrapper.mp3Player = new MP3Player();
+  } else {
+    setMP3Controls(playAudioBtn, stopAudioBtn, true);
+  }
+}
+
+function handleMP3Playback(card, mp3Url, stopAudioBtn) {
+  if (stopAudioBtn.style.display !== 'none') {
+    mp3PlayerWrapper.mp3Player.playMP3(mp3Url, () => {}); 
+
+    const existingTrackIndex = findExistingTrack(mp3PlayerWrapper.mp3Player.playlist, mp3Url); 
+    if (existingTrackIndex !== -1) {
+      mp3PlayerWrapper.mp3Player.play(existingTrackIndex); 
+    }
+
+    mp3PlayerWrapper.mp3Player.playlist[mp3PlayerWrapper.mp3Player.index].howl.on('play', () => { 
+      updateLabels(card, true);
+    });
+
+    mp3PlayerWrapper.mp3Player.playlist[mp3PlayerWrapper.mp3Player.index].howl.on('stop', () => { 
+      updateLabels(card, false);
+    });
+  }
+}
+
+function findExistingTrack(playlist, mp3Url) {
+  return playlist.findIndex(track => track.src && typeof track.src === 'string' && track.src.includes(mp3Url));
 }
 
 function updateProgressBar() {
   // Check if the MP3 player is defined and active
-  if (mp3Player && mp3Player.index < mp3Player.playlist.length && mp3Player.playlist[mp3Player.index]?.howl) {
+  if (mp3PlayerWrapper.mp3Player && mp3PlayerWrapper.mp3Player.index < mp3PlayerWrapper.mp3Player.playlist.length && mp3PlayerWrapper.mp3Player.playlist[mp3PlayerWrapper.mp3Player.index]?.howl) {
     // Calculate the MP3 progress
-    const progress = mp3Player.playlist[mp3Player.index].howl.seek() / mp3Player.playlist[mp3Player.index].howl.duration();
+    const progress = mp3PlayerWrapper.mp3Player.playlist[mp3PlayerWrapper.mp3Player.index].howl.seek() / mp3PlayerWrapper.mp3Player.playlist[mp3PlayerWrapper.mp3Player.index].howl.duration();
     // Get the progress bar
     var progressBar = document.querySelector('.uk-progress-bar');
     // Update the width of the progress bar
@@ -354,7 +180,7 @@ function handleProgressBarContainerClick(progressBarContainer, event) {
   // Calculate the clicked position as a percentage
   var clickPositionInPercentage = clickPositionInProgressBar / progressBarContainer.offsetWidth;
   // Get the Howl we want to manipulate
-  var sound = mp3Player.playlist[mp3Player.index].howl;
+  var sound = mp3PlayerWrapper.mp3Player.playlist[mp3PlayerWrapper.mp3Player.index].howl;
   // Calculate the seek position in the audio track
   var seekPositionInTrack = clickPositionInPercentage * sound.duration();
   // Seek to the calculated position
@@ -367,10 +193,8 @@ function handleProgressBarContainerClick(progressBarContainer, event) {
 
 // Initially hide the controls
 window.onload = function() {
-  const controls = document.getElementById('audio-player_controls');
-  controls.style.display = 'none';
-  const progress_container = document.getElementById('progress-container');
-  progress_container.style.display = 'none';
+  const { controls, progress_container } = buttonManager.buttons;
+  updateControlPanel(false, controls, progress_container);
 }
 
 export function initializePlayer() {
@@ -378,8 +202,8 @@ export function initializePlayer() {
   if (playerManager.livestreamPlayer && playerManager.livestreamPlayer.playlist[playerManager.livestreamPlayer.index] && playerManager.livestreamPlayer.playlist[playerManager.livestreamPlayer.index].howl.playing()) {
     return;
   }
-  fetchData().then(() => {
-    const buttons = initializeButtons();
+  fetchData(buttonManager, playerManager).then(() => {
+    const buttons = buttonManager.buttons;
     if (!buttons) {
       console.error('Failed to initialize buttons');
       return;
@@ -417,7 +241,7 @@ export function initializePlayer() {
 }
 
 function stopLivestream() {
-  const { playLivestreamBtn, stopLivestreamBtn } = initializeButtons();
+  const { playLivestreamBtn, stopLivestreamBtn } = buttonManager.buttons;
   if (playerManager.livestreamPlayer) {
     playerManager.livestreamPlayer.stop();
     console.log("Stop button clicked, livestreamPlayer stopped");
@@ -428,5 +252,3 @@ function stopLivestream() {
     console.log("Stop button clicked, but no livestreamPlayer found");
   }
 }
-
-export { mp3Player as mp3Player };
