@@ -23,9 +23,7 @@ export function handleDOMContentLoaded() {
       return fetchPages();
     })
     .then(() => {
-      // Attach event listeners
       attachOffcanvasListeners();
-      // Show the "content" div
       var content = document.getElementById('content');
       if (content) {
         content.style.display = 'block';

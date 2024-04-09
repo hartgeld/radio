@@ -1,7 +1,9 @@
+// content-handler.js
+
 import { initializePlayer } from '../player/initializePlayer.js';
 import { fetchPages } from './fetch-pages.js';
 import { showPreloader, hidePreloader } from '../utils/preloader.js';
-import { updateLabels } from '../player/update-labels.js'; // Add this line
+import { updateLabels } from '../player/update-labels.js';
 
 const CONTENT_SELECTOR = '.uk-flex-auto';
 const SHOW_PAGE_SELECTOR = '.show-page';

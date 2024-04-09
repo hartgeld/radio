@@ -12,7 +12,6 @@ class Player {
     this.progressBar = document.querySelector('.uk-progress-bar');
     this.timer = document.getElementById('timer');
     this.durationElement = document.getElementById('duration'); 
-    
   }
   
   getHowl(index) {

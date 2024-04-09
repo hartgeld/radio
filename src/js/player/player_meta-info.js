@@ -6,7 +6,6 @@ export function fetch_player_metaInfo() {
         const streamerName = data.live.streamer_name;
         var isLiveElement = document.getElementById('isLive');
         var isNotLiveElement = document.getElementById('isNotLive');
-
         var streamerName_LivestreamStopped = document.getElementById('streamername-LivestreamStopped');
         var streamername_LivestreamPlaying = document.getElementById('streamername-LivestreamPlaying');
 
