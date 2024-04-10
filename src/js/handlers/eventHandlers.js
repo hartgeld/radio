@@ -3,7 +3,7 @@
 import UIkit from 'uikit';
 import { showPreloader } from '../utils/preloader.js';
 import { initializePlayer } from '../player/initializePlayer.js';
-import { fetchPages } from './fetch-pages.js';
+import { fetchPages } from './content-handler.js';
 
 
 // function to attach event listeners

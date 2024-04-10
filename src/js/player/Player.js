@@ -52,7 +52,9 @@ class Player {
 
   playing = () => {
     const sound = this.getHowl(this.index);
+    console.log('sound:', sound);
     const isPlaying = sound ? sound.playing() : false;
+    console.log('isPlaying:', isPlaying);
     return isPlaying;
   }
   

@@ -1,7 +1,12 @@
+
+// fetch-pages.js
+/*
 import UIkit from 'uikit';
 import { showPreloader, hidePreloader } from '../utils/preloader';
-import { fetchAndRenderContent, fetchAndRenderContentForPopState, attachEventListener } from './content-handler';
+import { fetchAndRenderContent, attachEventListener } from './content-handler';
+import { fetchAndRenderContentForPopState } from './fetch-render';
 
+// rest of the code...
 let eventListenersAttached = false;
 
 function handleShownOffcanvasNav() {
@@ -53,4 +58,4 @@ export function fetchPages() {
   eventListenersAttached = true;
 }
 
-
+*/
