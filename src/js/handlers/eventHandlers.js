@@ -3,10 +3,9 @@
 import UIkit from 'uikit';
 import { showPreloader } from '../utils/preloader.js';
 import { initializePlayer } from '../player/initializePlayer.js';
-import { fetchPages } from './content-handler.js';
+import { fetchPages } from './fetch-pages.js'; 
 
-
-// function to attach event listeners
+// attach event listeners to off-canvas links
 export function attachOffcanvasListeners() {
   document.querySelectorAll('.offcanvas-link').forEach(function(link) {
     link.addEventListener('click', function() {
@@ -16,6 +15,7 @@ export function attachOffcanvasListeners() {
   });
 }
 
+// DOMContentLoaded => initi player => fetch pages => attach off-canvas listeners => displays content
 export function handleDOMContentLoaded() {
   showPreloader()
     .then(() => {
@@ -24,7 +24,7 @@ export function handleDOMContentLoaded() {
     })
     .then(() => {
       attachOffcanvasListeners();
-      var content = document.getElementById('content');
+      const content = document.getElementById('content');
       if (content) {
         content.style.display = 'block';
       }

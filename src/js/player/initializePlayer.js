@@ -7,6 +7,7 @@ import { updateControlPanel } from './updateMP3Controls.js';
 import { updateProgressBar } from './mp3PlayerHandlers.js';
 import { setupButtonEventListeners } from './eventHandlers.js';
 
+
 export const playerManager = new PlayerManager();
 export const buttonManager = new ButtonManager();
 

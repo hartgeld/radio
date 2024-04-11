@@ -51,6 +51,6 @@ export function stopLivestream() {
   }
 }
 
-function handleError(message, error) {
+export function handleError(message, error) {
   throw new Error(message + error);
 }
