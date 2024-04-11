@@ -1,0 +1,32 @@
+// Custom variables and mixins
+@import 'base/variables';
+@import 'base/mixins';
+
+// UIkit default variables and mixins
+@import "~uikit/src/scss/variables-theme.scss";
+@import "~uikit/src/scss/mixins-theme.scss";
+
+// UIkit theme
+@import "~uikit/src/scss/uikit-theme.scss";
+
+// Custom typography
+@import 'base/typography';
+
+// Component: Head
+@import 'components/head';
+@import 'components/head_nav';
+@import 'components/head_player';
+@import 'components/head_player_live';
+@import 'components/head_player_recordings';
+
+// Page: Show
+@import 'components/body_show';
+
+// Component: Card
+@import 'components/card';
+
+// Component: Preloader
+@import 'components/preloader';
+
+// Component: Footer
+@import 'components/footer';

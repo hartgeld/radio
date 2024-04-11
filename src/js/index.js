@@ -9,13 +9,13 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 
 // Import custom CSS
-import './styles.scss';
+import '../styles/styles.scss';
 
 // Import custom JS 
-import { handleOnLoad } from './js/utils/preloader.js';
-import { handleDOMContentLoaded } from './js/handlers/eventHandlers.js';
-import './js/config/lazySizesConfig.js'; 
-import { fetch_player_metaInfo } from './js/player/player_meta-info.js';
+import { handleOnLoad } from './utils/preloader.js';
+import { handleDOMContentLoaded } from './handlers/eventHandlers.js';
+import './config/lazySizesConfig.js'; 
+import { fetch_player_metaInfo } from './player/player_meta-info.js';
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
