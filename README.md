@@ -70,7 +70,6 @@ Visualität/Branding sind noch völlig offen.
 
 ## Installation
 
-### Clone the repository
 ```bash
 git clone <repository-url>
 
@@ -90,7 +89,3 @@ npm run build
 npm run serve
 ## Usage
 
-Describe how to use your project.
-
-## Was
-Online Community Radio
