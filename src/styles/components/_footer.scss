@@ -15,3 +15,10 @@
 
 @include divider-color;
 @include link-color;
+
+.footer{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  height: 33vh;
+}

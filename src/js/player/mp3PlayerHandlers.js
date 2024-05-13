@@ -83,7 +83,7 @@ export function updateStreamerTitle(audioplayer_button_streamer_playing, audiopl
   
 export function handleMP3PlayerInitialization(playAudioBtn, stopAudioBtn) {
     if (!mp3PlayerWrapper.mp3Player) {
-        mp3PlayerWrapper.mp3Player = new MP3Player();
+        mp3PlayerWrapper.mp3Player = playerManager.mp3Player;
     } else {
         setMP3Controls(playAudioBtn, stopAudioBtn, true);
     }

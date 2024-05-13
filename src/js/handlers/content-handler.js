@@ -1,14 +1,8 @@
 // content-handler.js
-
 import { showPreloader, hidePreloader } from '../utils/preloader.js';
 import { fetchAndRenderContentForPopState, fetchAndRenderContent } from './fetch-render';
 
-const SHOW_PAGE_SELECTOR = '.show-page';
-const SHOW_CONTENT_SELECTOR = '.show-content';
-
 window.addEventListener('popstate', function(event) {
-  console.log('popstate event fired');
-
   showPreloader()
     .then(() => fetchAndRenderContentForPopState(window.location.href))
     .then(hidePreloader);

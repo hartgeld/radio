@@ -16,6 +16,7 @@ import { handleOnLoad } from './utils/preloader.js';
 import { handleDOMContentLoaded } from './handlers/eventHandlers.js';
 import './config/lazySizesConfig.js'; 
 import { fetch_player_metaInfo } from './player/player_meta-info.js';
+import './handlers/tagFilter.js';
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);

@@ -20,10 +20,8 @@ window.onload = function() {
 }
 
 export function initializePlayer() {
-  console.log('initializePlayer called');
   // Check if livestreamPlayer is already initialized and playing
   if (playerManager.livestreamPlayer && playerManager.livestreamPlayer.playlist[playerManager.livestreamPlayer.index] && playerManager.livestreamPlayer.playlist[playerManager.livestreamPlayer.index].howl.playing()) {
-    console.log('initializePlayer early return');
     // livestreamPlayer is already initialized and playing, so return early
     return;
   }

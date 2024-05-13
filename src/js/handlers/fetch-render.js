@@ -82,7 +82,6 @@ export function updateState(url) {
   history.pushState({}, '', url);
 }
 
-// post update
 
 export function postUpdateActions() {
 

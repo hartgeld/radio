@@ -2,8 +2,8 @@
 
 // type sizes
 @mixin font-size-xs {
-    font-size: 0.65rem;
-    line-height: 0.65rem;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
     letter-spacing: 0.2em;
     font-weight: 500;
     text-transform: uppercase;
@@ -41,15 +41,15 @@
 }
 
 @mixin font-size-l_card-title {
-    font-size: 2.0rem; // Adjust as needed
-    line-height: 2.0rem; // Adjust as needed
+    font-size: 1.0rem; 
+    line-height: 1.0rem; 
     letter-spacing: -0.015em; // Adjust as needed
     font-weight: 700;
     text-transform: uppercase;
 
     @media (max-width: 600px) {
-        font-size: 1.0rem; // Adjust as needed
-        line-height: 1.0rem; // Adjust as needed
+        font-size: 1.0rem; 
+        line-height: 1.0rem; 
     }
 }
 

@@ -9,7 +9,6 @@ import { fetchPages } from './fetch-pages.js';
 export function attachOffcanvasListeners() {
   document.querySelectorAll('.offcanvas-link').forEach(function(link) {
     link.addEventListener('click', function() {
-      console.log("close offcanvas-nav");
       UIkit.offcanvas('#offcanvas-nav').hide();
     });
   });

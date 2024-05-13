@@ -44,7 +44,7 @@ export function initializePlayers(playlist, buttonManager, playerManager) {
   });
   playerManager.createLivestreamPlayer([{ ...playlist[0], howl: howl }], playLivestreamBtn, stopLivestreamBtn);
   if (playlist.length > 1) {
-    //playerManager.createMp3Player(playlist.slice(1), playAudioBtn, stopAudioBtn);
+    playerManager.createMp3Player(playlist.slice(1), playAudioBtn, stopAudioBtn);
   } else {
     playerManager.createMp3Player(playlist, playAudioBtn, stopAudioBtn);
   }

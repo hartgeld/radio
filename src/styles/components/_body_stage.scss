@@ -1,0 +1,27 @@
+// _body_stage.scss
+.body-stage {
+    display: flex;
+    align-items: flex-end; 
+    flex-direction: row;
+    height: 33vh;
+    justify-content: space-between; 
+}
+
+.body-stage .h1-container {
+    display: flex;
+    align-items: flex-end; 
+    flex-direction: row;
+}
+
+.body-stage h1,
+.body-stage button {
+    margin: 0;  // Reset the margins
+    padding: 0;  // Reset the padding
+    border: 0;  // Reset the borders
+    line-height: 1;  // Adjust the line-height
+
+}
+
+.body-stage h1 {
+    text-align: left;
+}
