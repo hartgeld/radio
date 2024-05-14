@@ -7,6 +7,7 @@ import { setupButtonEventListeners, updateButtonEventListener } from '../player/
 import { ButtonManager } from '../player/ButtonManager.js';
 import { handleMP3ButtonClick } from '../player/mp3PlayerHandlers.js';
 import { attachEventListener } from './content-handler.js';
+import { attachTagFilterEventListeners } from './tagFilter.js';
 
 
 const SHOW_PAGE_SELECTOR = '.show-page';
@@ -120,6 +121,8 @@ export function postUpdateActions() {
     });
 
   });
+    // Call the function to reattach the event listeners
+    attachTagFilterEventListeners();
 }
 
 export function updateCurrentCardFromPlaylist() {

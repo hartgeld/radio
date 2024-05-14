@@ -25,13 +25,9 @@
           <div>
               <h1 class="font-size-xl text-neutral-25">Sho&VeryThinSpace;&mdash;<br>&VeryThinSpace;&mdash;ws</h1>
           </div>
-          <!--
-          <div>
-              <h1 class="font-size-xl text-neutral-50">[{{ sorted-shows | size }}]</h1>
-          </div>
-          -->
+
         </div>
-        <div class="">
+        <div class="uk-padding-small uk-padding-remove-vertical">
           <button class="uk-button uk-button-default " type="button">
             <h1 class="font-size-xl text-neutral-25" >
               Genre &VeryThinSpace;&#9662;<br>
@@ -91,7 +87,7 @@
               <div class="uk-width-expand">
                 <div class="uk-card-body uk-padding-small uk-padding-remove-vertical">
                   {% for tag in show.tags %}
-                  <span class="">{{ tag }}</span>
+                  <span class="" data-tag="{{ tag | slugify }}" style="cursor: pointer;">{{ tag }}</span>
                   {% endfor %}
                 </div>
                 <div class="uk-card-footer uk-padding-remove-vertical uk-flex uk-flex-between">
