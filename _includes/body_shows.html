@@ -23,20 +23,21 @@
       <div  class="uk-padding-small uk-padding-remove-vertical body-stage">
         <div class="h1-container">
           <div>
-              <h1 class="font-size-xl text-neutral-25">Sho&VeryThinSpace;&mdash;<br>&VeryThinSpace;&mdash;ws</h1>
+              <h1 class="font-size-xl text-neutral-25 body-stage-title">Sho&VeryThinSpace;&mdash;<br>&VeryThinSpace;&mdash;&VeryThinSpace;ws</h1>
           </div>
 
         </div>
         <div class="uk-padding-small uk-padding-remove-vertical">
           <button class="uk-button uk-button-default " type="button">
-            <h1 class="font-size-xl text-neutral-25" >
+            <h1 class="font-size-xl text-neutral-25 body-stage-filter" >
               Genre &VeryThinSpace;&#9662;<br>
+              &mdash;
               <span id="selected-tag">All</span>
               <span id="selected-tag-count" class="text-neutral-50">[{{ sorted-shows | size }}]</span>
             </h1>
           </button>
           <div uk-dropdown="mode: click">
-            <ul class="uk-nav uk-dropdown-nav">
+            <ul class="uk-nav uk-dropdown-nav ">
               <li><a href="#" id="all-shows" style="cursor: pointer;">All</a></li>
               {% for tag in unique_tags %}
                   <li><a href="#" data-tag="{{ tag | slugify }}" style="cursor: pointer;">{{ tag }}</a></li>

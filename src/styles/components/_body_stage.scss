@@ -23,9 +23,19 @@
     padding: 0;  // Reset the padding
     border: 0;  // Reset the borders
     line-height: 1;  // Adjust the line-height
+    text-align: left;
 
 }
 
-.body-stage h1 {
-    text-align: left;
+.body-stage .body-stage-title {
+    
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.1rem;
+    line-height: 2rem;
+}
+
+.body-stage .body-stage-filter {
+    font-size: 1rem!important;
+    
 }
