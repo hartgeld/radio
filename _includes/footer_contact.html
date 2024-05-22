@@ -1,0 +1,16 @@
+<!-- _includes/sitemap.html -->
+<div class="uk-flex-column uk-padding-remove-left">
+
+    <h1 class="font-size-xs text-neutral-75">contact</h1>
+    <ul class="uk-list  social-media-list font-size-m ">
+        {%- if site.email -%}
+            <li>
+            <a href="mailto:{{ site.email | escape }}">
+                <i class="fas fa-envelope"></i> 
+                &VeryThinSpace;
+                <span>{{ site.email | escape }}</span>
+            </a>
+            </li>
+        {%- endif -%}
+    </ul>
+</div>

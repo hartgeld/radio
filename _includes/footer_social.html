@@ -1,22 +1,31 @@
-<ul class="uk-list uk-list-divider social-media-list font-size-xs ">
-  {%- if site.facebook_username -%}<li><a href="https://www.facebook.com/{{ site.facebook_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use></svg> <span class="username">{{ site.facebook_username| escape }}</span></a></li>{%- endif -%}
-  {%- if site.github_username -%}
-  <li>
-    <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
-      <i class="fab fa-github"></i>
-      <span class="username">{{ site.github_username| escape }}</span>
-    </a>
-  </li>
-  {%- endif -%}
-  {%- if site.instagram_username -%}<li><a href="https://instagram.com/{{ site.instagram_username| cgi_escape | escape }}"><i class="fab fa-instagram"></i> <span class="username">{{ site.instagram_username| escape }}</span></a></li>{%- endif -%}
-  {%- for mst in site.mastodon -%}{%- if mst.username and mst.instance -%}<li><a href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}"><i class="fab fa-mastodon"></i> <span class="username">{{ mst.username|escape }}</span></a></li>{%- endif -%}{%- endfor -%}
-  {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"><i class="fab fa-twitter"></i> <span class="username">{{ site.twitter_username| escape }}</span></a></li>{%- endif -%}
-  {%- if site.youtube_username -%}<li><a href="https://youtube.com/{{ site.youtube_username| cgi_escape | escape }}"><i class="fab fa-youtube"></i> <span class="username">{{ site.youtube_username| escape }}</span></a></li>{%- endif -%}
-  {%- if site.rss -%}<li>
-    <a href="{{ 'feed/all.xml' | relative_url }}">
-      <i class="fas fa-rss"></i> 
-      <span>{{ site.rss | escape }}</span>
-    </a></li>
-  {%- endif -%}
-  {%- if site.email -%}<li><a href="mailto:{{ site.email | escape }}"><i class="fas fa-envelope"></i> <span>{{ site.email | escape }}</span></a></li>{%- endif -%}
-</ul>
+<!-- footer_social.html-->
+<div class="uk-flex-column uk-padding-remove-left">
+
+  <h1 class="font-size-xs text-neutral-75">social</h1>
+
+  <ul class="uk-list  social-media-list font-size-m ">
+    {%- if site.facebook_username -%}<li><a href="https://www.facebook.com/{{ site.facebook_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use></svg> <span class="username">{{ site.facebook_username| escape }}</span></a></li>{%- endif -%}
+    {%- if site.github_username -%}
+    <li>
+      <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+        <i class="fab fa-github"></i>
+        <span class="username">{{ site.github_username| escape }}</span>
+      </a>
+    </li>
+    {%- endif -%}
+    {%- if site.instagram_username -%}<li><a href="https://instagram.com/{{ site.instagram_username| cgi_escape | escape }}"><i class="fab fa-instagram"></i> <span class="username">{{ site.instagram_username| escape }}</span></a></li>{%- endif -%}
+    {%- for mst in site.mastodon -%}{%- if mst.username and mst.instance -%}<li><a href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}"><i class="fab fa-mastodon"></i> <span class="username">{{ mst.username|escape }}</span></a></li>{%- endif -%}{%- endfor -%}
+    {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"><i class="fab fa-twitter"></i> <span class="username">{{ site.twitter_username| escape }}</span></a></li>{%- endif -%}
+    {%- if site.youtube_username -%}<li><a href="https://youtube.com/{{ site.youtube_username| cgi_escape | escape }}"><i class="fab fa-youtube"></i> <span class="username">{{ site.youtube_username| escape }}</span></a></li>{%- endif -%}
+    {%- if site.rss -%}
+      <li>
+        <a href="{{ 'feed/all.xml' | relative_url }}">
+          <i class="fas fa-rss"></i> 
+          &VeryThinSpace;
+          <span>{{ site.rss | escape }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+    
+  </ul>
+</div>

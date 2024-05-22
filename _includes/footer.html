@@ -1,17 +1,50 @@
-<footer class="uk-padding-small bg-neutral-12 footer">
-  <div class="uk-container-expand">
-    <div uk-grid>
-      <div class="uk-width-auto">
-        <div class="font-size-xs text-neutral-87">full<br>beans<br>radio</div>
+<!-- footer.html -->
+<footer class="uk-padding-small bg-neutral-12 footer uk-flex uk-flex-column">
+  <div class="uk-container-expand uk-width-1-1 uk-flex uk-flex-column uk-height-1-1" >
+    
+    <div class="uk-grid uk-margin-remove-left">
+      <div class="uk-width-1-3 uk-margin-remove-left uk-padding-remove-left">
+        <div class="site-title text-neutral-75">full<br>beans<br>radio</div>
       </div>
-      <div class="uk-width-expand uk-flex uk-flex-bottom">
-        <p class="font-size-xs text-neutral-50">{{- site.description | escape -}}</p>
+      <div class=" uk-flex uk-flex-bottom uk-width-2-3 uk-margin-remove-left uk-padding-remove-left">
+        <p class="font-size-xs text-neutral-75">{{- site.description | escape -}}</p>
+      </div>
+      <div class="uk-width-expand">
       </div>
     </div>
-    <div uk-grid>
-      <div class="uk-width-1-1">
+  
+    <div class="uk-flex-auto"></div>
+
+    <div class="uk-grid uk-margin-remove-left uk-flex ">
+
+      <div class="uk-width-1-3 uk-grid-medium uk-margin-remove-left uk-padding-remove-left">
+        {%- include footer_sitemap.html -%}
+      </div>
+      <div class="uk-width-1-3 uk-grid-medium uk-margin-remove-left uk-padding-remove-left">
         {%- include footer_social.html -%}
       </div>
+
+      <div class="uk-width-1-3 uk-grid-medium  uk-margin-remove-left uk-padding-remove-left">
+        {%- include footer_contact.html -%}
+      </div>
     </div>
+
+
+    <div class="uk-flex-auto"></div>
+
+    <div class="uk-grid uk-margin-remove-left uk-flex uk-flex-bottom">
+
+      <div class="uk-width-1-3 uk-margin-remove-left uk-padding-remove-left uk-padding-remove-left">
+        <h1 class=" font-size-m text-neutral-75">Impress</h1>
+      </div>
+      <div class="uk-width-1-3  uk-margin-remove-left uk-padding-remove-left uk-padding-remove-left">
+        <h1 class="  font-size-m text-neutral-75">Disclaimer</h1>
+      </div>
+
+      <div class="uk-width-1-3  uk-margin-remove-left uk-padding-remove-left uk-padding-remove-left">
+        <h1 class="  font-size-m text-neutral-75">&#xa9;2024</h1>
+      </div>
+    </div>
+
   </div>
 </footer>

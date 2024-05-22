@@ -8,7 +8,7 @@
 
 @mixin link-color {
     .social-media-list li a {
-      color: $color-neutral-100 !important;
+      color: $color-neutral-75 !important;
     }
   }
 
@@ -21,4 +21,8 @@
   align-items: flex-start;
   flex-direction: row;
   height: 33vh;
+}
+
+.uk-list-custom-divider > :nth-child(n+2) {
+  // Your custom styles here
 }
