@@ -9,4 +9,4 @@ tags:
   - Electro
   - Acid
 ---
-transmission from [rumble in the jungle festival at nordiy](https://www.instagram.com/betonfreude21/) in stuttgart /w philipp & marijana playing a vinyl-only selection of dance oriented avantgarde sounds.
+Transmission from [Rumble in the Jungle Festival at Nordiy](https://www.instagram.com/betonfreude21/) /w Philipp & Marijana playing a vinyl-only selection of dance oriented avantgarde sounds.
