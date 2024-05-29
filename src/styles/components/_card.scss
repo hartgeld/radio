@@ -42,7 +42,7 @@
       &::before {
           content: "";
           display: block;
-          padding-top: 85%; // 5:3 aspect ratio
+          padding-top: 85%; 
       }
 
       img {
@@ -63,7 +63,7 @@
   }
 
   .uk-card-header {
-    height: $layout-unit;
+    height: $layout-unit*1.5;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -74,7 +74,7 @@
   }
 
   .show-page {
-    margin: $base-unit;
+    margin: $base-unit*2;
   }
   
   .uk-card-body_custom-height {

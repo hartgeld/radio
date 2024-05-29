@@ -3,7 +3,7 @@
 
   <h1 class="font-size-xs text-neutral-75">social</h1>
 
-  <ul class="uk-list  social-media-list font-size-m ">
+  <ul class="uk-list  social-media-list font-size-s ">
     {%- if site.facebook_username -%}<li><a href="https://www.facebook.com/{{ site.facebook_username| cgi_escape | escape }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#facebook' | relative_url }}"></use></svg> <span class="username">{{ site.facebook_username| escape }}</span></a></li>{%- endif -%}
     {%- if site.github_username -%}
     <li>

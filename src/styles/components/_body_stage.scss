@@ -11,7 +11,7 @@
 .body-stage {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    //justify-content: space-between; 
     align-items: flex-end; // Add this line
     height: 33vh;
     position: relative;
@@ -53,23 +53,26 @@
 
     font-weight: 500;
     letter-spacing: -0.1rem;
-    
+    text-transform: uppercase;
+
+    //@include font-size-xl; 
 }
 
 .body-stage .body-stage-filter {
-    font-size: 1rem!important;
-    
+    @include font-size-m;    
 }
 
 
-.body-stage .search-container,
+.body-stage .search-container{
+    //padding: 0;
+}
+
 .body-stage .tags-container {
-    align-self: flex-end;
+    padding-top: 0.35rem;
 }
-
 .body-stage .bottom-container {
     display: flex;
-    justify-content: space-between;
+    //justify-content: space-between;
     width: 100%;
 
 }

@@ -15,6 +15,10 @@
     
 }
 
+.uk-search-default{
+  width: 100%;
+}
+
 .uk-search-default .uk-search-input {
     padding-left: 40px;
 }
@@ -30,20 +34,19 @@ body div .uk-search-default .uk-search-input:focus {
     border-left: none !important;
     border-right: none !important;
     border-bottom: 2px solid $color-neutral-25 !important;
-
- 
+    background-color: transparent !important;
+    
+    @include font-size-m;
 }
 
 #search-input::placeholder {
     color: $color-neutral-25 !important; 
-    font-size: 1.0rem;
-    line-height: 1.0rem;
-    letter-spacing: 0.05em;
-    font-weight: 500;
-    text-transform: uppercase;
+    
+    @include font-size-m;
 
-    @media (max-width: 600px) {
-        font-size: 1.0rem;
-        line-height: 1.0rem;
-    }
+
+}
+
+.uk-search-default .uk-search-input{
+    height: 30px;
 }
