@@ -40,6 +40,19 @@
     }
 }
 
+@mixin font-size-xl {
+    font-size: 3.0rem; // Adjust as needed
+    line-height: 3.0rem; // Adjust as needed
+    letter-spacing: 0.15em; // Adjust as needed
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @media (max-width: 600px) {
+        font-size: 2rem; // Adjust as needed
+        line-height: 2rem; // Adjust as needed
+    }
+}
+
 @mixin font-size-l_card-title {
     font-size: 1.0rem; 
     line-height: 1.0rem; 
@@ -89,5 +102,5 @@
 }
 
 .font-size-xl {
-    @include font-size-l;
+    @include font-size-xl;
 }

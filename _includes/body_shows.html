@@ -20,29 +20,43 @@
 
 
       <!-- stage -->
-      <div  class="uk-padding-small uk-padding-remove-vertical body-stage">
-        <div class="h1-container">
+      <div  class="uk-padding-small body-stage">
+        <div class="h1-container uk-margin-medium-top uk-margin-small-left">
           <div>
-              <h1 class="font-size-xl text-neutral-25 body-stage-title">Sho&VeryThinSpace;&mdash;<br>&VeryThinSpace;&mdash;&VeryThinSpace;ws</h1>
+              <h1 class="font-size-xl text-neutral-25 body-stage-title">Sho&ThinSpace;&mdash;<br>&ThinSpace;&mdash;&VeryThinSpace;ws</h1>
           </div>
 
         </div>
-        <div class="uk-padding-small uk-padding-remove-vertical">
+
+        <div class="bottom-container uk-margin-small-bottom ">
+
+          <div class=" search-container uk-width-1-2 uk-margin-right">
+            <form class="uk-search uk-search-default ">
+              <span class="uk-form-icon">
+                <i class="fas fa-search text-neutral-25"></i> 
+              </span>
+              <input class="uk-search-input text-neutral-25" type="search" id="search-input" placeholder="Search">
+            </form>
+            <div id="search-results"></div>
+        </div>
+
+        <div class="tags-container  uk-width-1-2 uk-margin-left">
           <button class="uk-button uk-button-default " type="button">
-            <h1 class="font-size-xl text-neutral-25 body-stage-filter" >
-              Genre &VeryThinSpace;&#9662;<br>
-              &mdash;
-              <span id="selected-tag">All</span>
-              <span id="selected-tag-count" class="text-neutral-50">[{{ sorted-shows | size }}]</span>
-            </h1>
+              <h1 class="font-size-xl text-neutral-25 body-stage-filter" >
+                  Genre &VeryThinSpace;&#9662;<br>
+                  &mdash;
+                  <span id="selected-tag">All</span>
+                  <span id="selected-tag-count" class="text-neutral-50">[{{ sorted-shows | size }}]</span>
+              </h1>
           </button>
           <div uk-dropdown="mode: click">
-            <ul class="uk-nav uk-dropdown-nav ">
-              <li><a href="#" id="all-shows" style="cursor: pointer;">All</a></li>
-              {% for tag in unique_tags %}
-                  <li><a href="#" data-tag="{{ tag | slugify }}" style="cursor: pointer;">{{ tag }}</a></li>
-              {% endfor %}
-            </ul>
+              <ul class="uk-nav uk-dropdown-nav ">
+                  <li><a href="#" id="all-shows" style="cursor: pointer;">All</a></li>
+                  {% for tag in unique_tags %}
+                      <li><a href="#" data-tag="{{ tag | slugify }}" style="cursor: pointer;">{{ tag }}</a></li>
+                  {% endfor %}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

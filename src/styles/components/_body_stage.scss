@@ -1,20 +1,39 @@
 // _body_stage.scss
+/*
 .body-stage {
     display: flex;
     align-items: flex-end; 
     flex-direction: row;
     height: 33vh;
-    position: relative;}
-
-.body-stage > :last-child {
-    position: absolute;
-    left: 50vw;
+    position: relative;
+}
+*/
+.body-stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: flex-end; // Add this line
+    height: 33vh;
+    position: relative;
 }
 
+.body-stage > :last-child {
+
+    //position: absolute;
+    //left: 50vw;
+}
+
+/*
 .body-stage .h1-container {
     display: flex;
-    align-items: flex-end; 
+    align-items: flex-start; 
     flex-direction: row;
+    height: 100%;
+}*/
+.body-stage .h1-container {
+    align-self: flex-start;
+    flex-grow: 1;
+
 }
 
 .body-stage h1,
@@ -29,13 +48,28 @@
 
 .body-stage .body-stage-title {
     
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.7rem;
+
+    font-weight: 500;
     letter-spacing: -0.1rem;
-    line-height: 2rem;
+    
 }
 
 .body-stage .body-stage-filter {
     font-size: 1rem!important;
     
+}
+
+
+.body-stage .search-container,
+.body-stage .tags-container {
+    align-self: flex-end;
+}
+
+.body-stage .bottom-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
 }

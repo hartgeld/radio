@@ -11,7 +11,9 @@ export function attachTagFilterEventListeners() {
 
     // Add a click event listener to each tag
     tags.forEach(function(tag) {
-        tag.addEventListener('click', function() {
+        tag.addEventListener('click', function(event) {
+            // Prevent the default action
+            event.preventDefault();
             // Get the selected tag
             var selectedTag = this.getAttribute('data-tag');
             selectedTagElement.textContent = selectedTag;
@@ -34,7 +36,8 @@ export function attachTagFilterEventListeners() {
 
     // Add a click event listener to 'All Shows' if it exists
     if (allShows) {
-        allShows.addEventListener('click', function() {
+        allShows.addEventListener('click', function(event) {
+            event.preventDefault();
             // Show all shows
             shows.forEach(function(show) {
                 show.style.display = 'block';
