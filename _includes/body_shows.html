@@ -1,7 +1,7 @@
 
   <!-- body_shows.html -->
   
-  <div class="uk-flex-auto bg-neutral-87" uk-height-viewport="expand: true" style="flex: 1;">
+  <div class="uk-flex-auto bg-neutral-81" uk-height-viewport="expand: true" style="flex: 1;">
 
     <div class="uk-container-expand uk-margin-medium-bottom">
       
@@ -21,19 +21,20 @@
 
       <!-- stage -->
       <div  class="uk-padding-small body-stage">
+        
         <div class="h1-container uk-margin-medium-top uk-grid">
           <div class="uk-width-1-2">
               <h1 class="text-neutral-25 body-stage-title">Sho<br>&ThinSpace;&mdash;&VeryThinSpace;ws</h1>
           </div>
           <div class="uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom uk-padding-remove-top">
-            <h1 class="text-neutral-25 font-size-xs">Transmissions<br>Archive</h1>
+            <h1 class="text-neutral-25 font-size-xs">Archived<br>Transmissions</h1>
           </div>
 
         </div>
 
         <div class="bottom-container uk-margin-small-bottom uk-grid">
 
-          <div class="search-container uk-width-1-2 uk-padding-small uk-padding-remove-left uk-padding-remove-vertical">
+          <div class="search-container uk-width-1-2 uk-padding-small  uk-padding-remove-vertical">
             <form class="uk-search uk-search-default ">
               <span class="uk-form-icon">
                 <i class="fas fa-search text-neutral-25"></i> 
@@ -44,23 +45,45 @@
         </div>
 
         <div class="tags-container uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom">
-          <button class="uk-button uk-button-default " type="button">
-              <h1 class="text-neutral-25 body-stage-filter" >
+          <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-tags">
+              <h1 class="text-neutral-25 body-stage-filter">
                   Genre &VeryThinSpace;&#9662;<br>
                   &mdash;
                   <span id="selected-tag">All</span>
                   <span id="selected-tag-count" class="text-neutral-50">[{{ sorted-shows | size }}]</span>
               </h1>
           </button>
-          <div uk-dropdown="mode: click">
-              <ul class="uk-nav uk-dropdown-nav ">
-                  <li><a href="#" id="all-shows" style="cursor: pointer;">All</a></li>
+        </div>
+      
+        <div id="modal-tags" class="uk-modal-full uk-padding-remove bg-neutral-25" uk-modal>
+          <div class="uk-modal-dialog uk-modal-body uk-padding-remove">
+            <button class="uk-modal-close-default uk-navbar-toggle button-navbar uk-cursor-pointer" type="button" style="cursor: pointer;">
+              <i class="fas fa-xmark text-neutral-25 fa-lg"></i>
+            </button>
+            <div class="uk-modal-header bg-neutral-25">
+              <h2 class=" site-title text-neutral-75 uk-padding-small">select<br>&ThinSpace;&mdash;&VeryThinSpace;genre </h2>
+              
+            </div>
+            <div class="uk-modal-body uk-margin-large-top">
+              <ul class="uk-list font-size-m uk-padding-small">
+                  <li class="pill-shape-m">
+                    <a href="#" id="all-shows" class="text-neutral-75 selected" style="cursor: pointer;">
+                      All
+                      <span id="selected-tag-count" class="text-neutral-37">[{{ sorted-shows | size }}]</span>
+                    </a>
+                  </li>
                   {% for tag in unique_tags %}
-                      <li><a href="#" data-tag="{{ tag | slugify }}" style="cursor: pointer;">{{ tag }}</a></li>
+                    <li class="pill-shape-m">
+                        <a class="text-neutral-75" data-tag="{{ tag | slugify }}" style="cursor: pointer;" >
+                            {{ tag }}
+                            <span id="tag-count-{{ tag | slugify }}" class="text-neutral-37"></span>
+                        </a>
+                    </li>
                   {% endfor %}
               </ul>
             </div>
           </div>
+      </div>
 
   
         </div>

@@ -38,7 +38,7 @@
 
 }
 
-.body-stage h1,
+.body-stage ,
 .body-stage button {
     margin: 0;  // Reset the margins
     padding: 0;  // Reset the padding
@@ -57,7 +57,7 @@
     letter-spacing: -0.1rem;
     text-transform: uppercase;
 
-    //@include font-size-xl; 
+    //@include font-size-l; 
 }
 
 .body-stage .body-stage-filter {

@@ -1,0 +1,88 @@
+// _modal.scss
+
+#modal-tags {
+    .uk-modal-dialog {
+        @include navbar-container-bg;
+        border-radius: 0; // Remove border radius
+    }
+
+    .uk-modal-header {
+        @include navbar-toggle;
+        background-color: $color-neutral-75;
+        width: auto;
+        height: $layout-unit;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: $base-unit;
+        border-bottom: none;
+    }
+
+    .uk-modal-body {
+        padding: 0;
+    }
+
+    .uk-nav {
+        margin-top: $base-unit * 3; // Add margin to the top of the list
+    }
+
+    .uk-nav li a {
+        @include offcanvas-nav-items;
+        @include font-size-m;
+        text-decoration: none; 
+    }
+
+    .uk-nav li a:hover {
+        color: $color-neutral-50; 
+    }
+
+    
+}
+
+
+#modal-tags .uk-modal-close-default {
+    background-color: $color-neutral-75;
+    width: $layout-unit;
+    height: $layout-unit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $base-unit;
+}
+
+
+#modal-tags .uk-modal-close-default {
+    position: absolute;
+    top: $base-unit;
+    right: $base-unit;
+}
+
+#modal-tags .uk-modal-dialog {
+    background-color: $color-neutral-25;
+    height: 100%;
+    //transition: none !important;
+}
+
+.uk-modal-dialog{
+    transition: none !important;
+}
+
+.uk-modal-header{
+    padding-top: $base-unit;
+    padding-bottom: $base-unit;
+    padding-left: 0;
+}
+
+.pill-shape-m{
+    display: inline-block;
+    padding: $base-unit;
+    margin-right: $base-unit;
+    background-color: $color-neutral-12!important;
+    color: $color-neutral-100;
+    border-radius: $base-unit; 
+}
+
+.selected {
+    color: $color-primary-100!important;
+    /* CSS properties to highlight the selected tag */
+}
