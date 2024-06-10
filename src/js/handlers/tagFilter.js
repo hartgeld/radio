@@ -27,7 +27,7 @@ export function attachTagFilterEventListeners() {
 
     // Check if selectedTagElement exists
     if (!selectedTagElement) {
-        console.error("Element with id 'selected-tag' does not exist.");
+        //console.error("Element with id 'selected-tag' does not exist.");
         return;
     }
     

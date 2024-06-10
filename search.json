@@ -1,0 +1,13 @@
+---
+layout: none
+---
+[
+  {% for show in site.shows %}
+    {
+      "title"    : "{{ show.title | escape }}",
+      "tags"     : "{{ show.tags | join: ', ' }}",
+      "url"      : "{{ show.baseurl }}{{ show.url }}",
+      "date"     : "{{ show.date | date: "%d.%m.%Y" }}"
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

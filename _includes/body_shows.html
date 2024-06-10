@@ -24,36 +24,80 @@
         
         <div class="h1-container uk-margin-medium-top uk-grid">
           <div class="uk-width-1-2">
-              <h1 class="text-neutral-25 body-stage-title">Sho<br>&ThinSpace;&mdash;&VeryThinSpace;ws</h1>
+              <h1 class="text-neutral-31 body-stage-title">&ThinSpace;<br>Sho<br>&ThinSpace;&mdash;&VeryThinSpace;ws</h1>
           </div>
           <div class="uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom uk-padding-remove-top">
-            <h1 class="text-neutral-25 font-size-xs">Archived<br>Transmissions</h1>
+            <h1 class="text-neutral-31 font-size-xs">Archived<br>Transmissions<br>2024&VeryThinSpace;&mdash;&VeryThinSpace;present<br></h1>
           </div>
 
         </div>
 
-        <div class="bottom-container uk-margin-small-bottom uk-grid">
 
+        <div class="bottom-container uk-margin-small-bottom uk-grid">
+          
+<!--
           <div class="search-container uk-width-1-2 uk-padding-small  uk-padding-remove-vertical">
             <form class="uk-search uk-search-default ">
               <span class="uk-form-icon">
-                <i class="fas fa-search text-neutral-25"></i> 
+                <i class="fas fa-search text-neutral-31"></i> 
               </span>
-              <input class="uk-search-input text-neutral-25" type="search" id="search-input" placeholder="Search">
+              <input class="uk-search-input text-neutral-31" type="search" id="search-input" placeholder="Search">
             </form>
             <div id="search-results"></div>
-        </div>
+          </div>
+-->
 
-        <div class="tags-container uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom">
-          <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-tags">
-              <h1 class="text-neutral-25 body-stage-filter">
-                  Genre &VeryThinSpace;&#9662;<br>
-                  &mdash;
-                  <span id="selected-tag">All</span>
-                  <span id="selected-tag-count" class="text-neutral-50">[{{ sorted-shows | size }}]</span>
-              </h1>
-          </button>
+      <div class="search-container uk-width-1-2 uk-padding-small  uk-padding-remove-vertical">
+        
+        <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-search-shows">
+
+          <form class="uk-search uk-search-default ">
+            <span class="uk-form-icon">
+              <i class="fas fa-search text-neutral-31"></i> 
+            </span>
+            <input class="uk-search-input text-neutral-31" type="search" placeholder="Search" id="custom-search-input">
+          </form>
+
+        </button>
+        
+        <div id="modal-search-shows" class="uk-modal-full uk-padding-remove bg-neutral-25" uk-modal>
+          <div class="uk-modal-dialog uk-modal-body uk-padding-remove">
+            <button class="uk-modal-close-default uk-navbar-toggle button-navbar uk-cursor-pointer" type="button" style="cursor: pointer;">
+              <i class="fas fa-xmark text-neutral-25 fa-lg"></i>
+            </button>
+            <div class="uk-modal-header bg-neutral-25">
+              <h2 class=" site-title text-neutral-75 uk-padding-small">search<br>&ThinSpace;&mdash;&VeryThinSpace;shows </h2>
+            </div>
+            
+            <div class="uk-modal-body uk-margin-large-top uk-padding-small">
+              <form class="uk-search uk-search-default bg-neutral-12 uk-padding-small custom-search-form-rounded-corners">
+                <div class="uk-flex uk-flex-middle">
+                  <div class="uk-position-relative">
+                    <span class="uk-form-icon">
+                      <i class="fas fa-search fa-2x text-neutral-62"></i> 
+                    </span>
+                  </div>
+                  <input class="uk-search-input font-size-l-search uk-margin-small-left" type="search" id="search-input" placeholder="Search">
+                </div>
+              </form>
+              <div id="search-results"></div>
+            </div>
+          </div>
         </div>
+      </div>
+
+
+
+          <div class="tags-container uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom">
+            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-tags">
+                <h1 class="text-neutral-31 body-stage-filter">
+                    Genre &VeryThinSpace;&#9662;<br>
+                    &mdash;
+                    <span id="selected-tag">All</span>
+                    <span id="selected-tag-count" class="text-neutral-50">[{{ sorted-shows | size }}]</span>
+                </h1>
+            </button>
+          </div>
       
         <div id="modal-tags" class="uk-modal-full uk-padding-remove bg-neutral-25" uk-modal>
           <div class="uk-modal-dialog uk-modal-body uk-padding-remove">
@@ -122,7 +166,7 @@
 
             <a href="{{ show.mp3Url}}" class="mp3Button">
               <div class="uk-card-header  uk-padding-small uk-padding-remove-vertical">
-                <h1 class="text-neutral-25">{{ show.title }}</h1>
+                <h1 class="text-neutral-31">{{ show.title }}</h1>
               </div>
             </a>
             

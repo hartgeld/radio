@@ -8,6 +8,7 @@ import { ButtonManager } from '../player/ButtonManager.js';
 import { handleMP3ButtonClick } from '../player/mp3PlayerHandlers.js';
 import { attachEventListener } from './content-handler.js';
 import { attachTagFilterEventListeners } from './tagFilter.js';
+import { initializeSearch } from './search-handler.js';
 
 
 const SHOW_PAGE_SELECTOR = '.show-page';
@@ -77,6 +78,7 @@ export function updateDOM(contentElement, url) {
 export function updateContent(contentElement) {
   const content = contentElement.innerHTML;
   document.querySelector(CONTENT_SELECTOR).innerHTML = content;
+  initializeSearch();
 }
 
 export function updateState(url) {

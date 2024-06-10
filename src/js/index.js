@@ -16,10 +16,16 @@ import { handleOnLoad } from './utils/preloader.js';
 import { handleDOMContentLoaded } from './handlers/eventHandlers.js';
 import './config/lazySizesConfig.js'; 
 import { fetch_player_metaInfo } from './player/player_meta-info.js';
+import { initializeSearch } from './handlers/search-handler.js';
+
 //import './handlers/tagFilter.js';
 
 // Event listeners
-document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
+document.addEventListener('DOMContentLoaded', () => {
+    handleDOMContentLoaded();
+    initializeSearch();
+  });
+
 window.onload = handleOnLoad;
 
 // Periodic tasks

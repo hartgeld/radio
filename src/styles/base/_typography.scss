@@ -58,6 +58,24 @@
     }
 }
 
+@mixin font-size-l-search {
+    font-size: 2.2rem; // Adjust as needed
+    line-height: 1.7rem; // Adjust as needed
+    //letter-spacing: -0.1em; // Adjust as needed
+    font-weight: 500;
+    //text-transform: uppercase;
+
+    @media (max-width: 600px) {
+        font-size: 2.2rem; // Adjust as needed
+        line-height: 1.7rem; // Adjust as needed
+        //letter-spacing: -0.1em; // Adjust as needed
+        font-weight: 500;
+        //text-transform: uppercase;
+        //font-size: 1.25rem; // Adjust as needed
+        //line-height: 1.25rem; // Adjust as needed
+    }
+}
+
 @mixin font-size-xl {
     font-size: 3.0rem; // Adjust as needed
     line-height: 3.0rem; // Adjust as needed
@@ -126,6 +144,10 @@
 
 .font-size-l {
     @include font-size-l;
+}
+
+.font-size-l-search {
+    @include font-size-l-search;
 }
 
 .font-size-xl {

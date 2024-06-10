@@ -1,8 +1,11 @@
+// search_input.scss
 .uk-form-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%; 
+    color: $color-neutral-31 !important; 
+
 }
 
 .uk-form-icon .fas {
@@ -12,11 +15,11 @@
 .uk-search-input {
     display: inline-block;
     vertical-align: middle;
-    
+    color: $color-neutral-62 !important;
 }
 
 .uk-search-default{
-  width: 100%;
+  width: auto;
 }
 
 .uk-search-default .uk-search-input {
@@ -28,25 +31,70 @@ body div .uk-search-default .uk-search-input:focus {
     outline: none !important;
 }
 
-#search-input {
-    color: $color-neutral-25 !important;
+#custom-search-input {
+    color: $color-neutral-31 !important;
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
-    border-bottom: 2px solid $color-neutral-25 !important;
+    border-bottom: 2px solid $color-neutral-31 !important;
+    border-color: $color-neutral-31 !important;
     background-color: transparent !important;
     
     @include font-size-m;
 }
 
-#search-input::placeholder {
-    color: $color-neutral-25 !important; 
+#custom-search-input::placeholder {
+    color: $color-neutral-31 !important; 
     
     @include font-size-m;
+}
 
-
+.custom-search-form-rounded-corners{
+    border-radius: $base-unit; 
 }
 
 .uk-search-default .uk-search-input{
     height: 30px;
+    border: none;
 }
+
+// preview text of search input: color adjust
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+#search-input::placeholder {
+    color: $color-neutral-37 !important; 
+    opacity: 1; /* Firefox */
+  }
+  
+  /* Internet Explorer 10-11 */
+  #search-input:-ms-input-placeholder {
+    color: $color-neutral-37 !important; 
+  }
+  
+  /* Edge */
+  #search-input::-ms-input-placeholder {
+    color: $color-neutral-37 !important; 
+  }
+
+
+  #search-results {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  
+    li {
+  
+      a {
+        text-decoration: none;
+
+        @include font-size-m;
+  
+        &:hover {
+        }
+      }
+  
+      .post-date {
+        color: #999;
+        font-size: 0.8em;
+      }
+    }
+  }

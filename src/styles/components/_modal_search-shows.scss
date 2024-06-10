@@ -1,0 +1,63 @@
+
+#modal-search-shows {
+    .uk-modal-dialog {
+        @include navbar-container-bg;
+        border-radius: 0; // Remove border radius
+    }
+
+    .uk-modal-header {
+        @include navbar-toggle;
+        background-color: $color-neutral-75;
+        width: auto;
+        height: $layout-unit;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: $base-unit;
+        border-bottom: none;
+    }
+
+    .uk-modal-body {
+        //padding: 0;
+    }
+
+    .uk-nav {
+        margin-top: $base-unit * 3; // Add margin to the top of the list
+    }
+
+    .uk-nav li a {
+        @include offcanvas-nav-items;
+        @include font-size-m;
+        text-decoration: none; 
+    }
+
+    .uk-nav li a:hover {
+        color: $color-neutral-50; 
+    }
+
+    
+}
+
+
+#modal-search-shows .uk-modal-close-default {
+    background-color: $color-neutral-75;
+    width: $layout-unit;
+    height: $layout-unit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $base-unit;
+}
+
+
+#modal-search-shows .uk-modal-close-default {
+    position: absolute;
+    top: $base-unit;
+    right: $base-unit;
+}
+
+#modal-search-shows .uk-modal-dialog {
+    background-color: $color-neutral-25;
+    height: 100%;
+    //transition: none !important;
+}
