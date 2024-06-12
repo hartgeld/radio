@@ -9,6 +9,12 @@
 @mixin link-color {
     .social-media-list li a {
       color: $color-neutral-75 !important;
+
+      //padding: $base-unit;
+
+      //background-color: $color-neutral-12;
+              //color: $color-neutral-100;
+             // border-radius: $base-unit; 
     }
   }
 
@@ -16,11 +22,12 @@
 @include divider-color;
 @include link-color;
 
-.footer{
+.footer {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  flex-direction: row;
   height: 65vh;
+  min-height: 20em;
 }
 
 .uk-list-custom-divider > :nth-child(n+2) {
