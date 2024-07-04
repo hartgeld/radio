@@ -75,12 +75,22 @@
     color: $color-neutral-75; 
     font-size: 4.5rem;
     line-height: 3.0rem; 
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: -0.05em; 
+    letter-spacing: 0.015em; 
+
+    border-radius: $base-unit * 2;
+    background-color: $color-neutral-12!important;
+    padding: $base-unit*5;
+    margin-bottom: $base-unit*2;
+    //flex: block !important;  // The item will grow to fill extra space, if available
+
 
 }
 
-#offcanvas-nav .uk-offcanvas-bar .uk-nav-primary > li > a {
+#offcanvas-nav .uk-offcanvas-bar .uk-nav.uk-nav-primary > li > a.offcanvas-link {
     @include offcanvas-nav-items;
+    display: inline-block !important;
+    width: auto!important;
+
 }
