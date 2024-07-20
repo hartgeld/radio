@@ -4,15 +4,22 @@
   
 // type sizes
 @mixin font-size-xs {
-    font-size: 0.5rem;
-    line-height: 0.5rem;
+    font-size: 0.70rem;
+    line-height: 0.70rem;
     letter-spacing: 0.2em;
     font-weight: 500;
     text-transform: uppercase;
 
+    @media (max-width: 1024px) {
+        font-size: 0.6rem;
+        line-height: 0.6rem;
+        letter-spacing: 0.2em;
+    }
+
     @media (max-width: 600px) {
         font-size: 0.5rem;
         line-height: 0.5rem;
+        letter-spacing: 0.2em;
     }
 }
 
@@ -43,20 +50,39 @@
 }
 
 @mixin font-size-l {
-    font-size: 2.2rem; // Adjust as needed
-    line-height: 1.7rem; // Adjust as needed
-    letter-spacing: -0.1em; // Adjust as needed
+    
+    font-size: 4.2rem; // Adjust as needed
+    line-height: 3.2rem; // Adjust as needed
+    letter-spacing: -0.085em; // Adjust as needed
     font-weight: 500;
     text-transform: uppercase;
+
+    @media (max-width: 1920px){
+        font-size: 3.9rem; // Adjust as needed
+        line-height: 2.95rem; // Adjust as needed
+        letter-spacing: -0.085em; // Adjust as needed
+ 
+    }
+
+    @media (max-width: 1600px){
+        font-size: 3.6rem; // Adjust as needed
+        line-height: 2.75rem; // Adjust as needed
+        letter-spacing: -0.085em; // Adjust as needed
+
+    }
+
+    @media (max-width: 1024px){
+    font-size: 3.6rem; // Adjust as needed
+    line-height: 2.75rem; // Adjust as needed
+    letter-spacing: -0.085em; // Adjust as needed
+
+    }
 
     @media (max-width: 600px) {
         font-size: 2.2rem; // Adjust as needed
         line-height: 1.7rem; // Adjust as needed
-        letter-spacing: -0.1em; // Adjust as needed
-        font-weight: 500;
-        text-transform: uppercase;
-        //font-size: 1.25rem; // Adjust as needed
-        //line-height: 1.25rem; // Adjust as needed
+        letter-spacing: -0.085em; // Adjust as needed
+
     }
 }
 
@@ -92,11 +118,21 @@
 }
 
 @mixin font-size-l_card-title {
-    font-size: 0.95rem; 
-    line-height: 1.35rem; 
+    font-size: 1.30rem; 
+    line-height: 1.60rem; 
     letter-spacing: 0.015em; // Adjust as needed
     font-weight: 500;
     text-transform: none;
+
+    @media (max-width: 1600px){
+        font-size: 1.25rem; 
+        line-height: 1.53rem;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 1.15rem; 
+        line-height: 1.45rem;
+    }
 
     @media (max-width: 600px) {
         font-size: 1.05rem; 
@@ -106,18 +142,38 @@
 }
 
 @mixin font-size-l_page-title($important: false) {
-    font-size: 3.0rem; // Adjust as needed
-    line-height: 3.0rem; // Adjust as needed
-    letter-spacing: -0.015em; // Adjust as needed
+    font-size: 2.0rem; // Adjust as needed
+    line-height: 2.0rem; // Adjust as needed
+    letter-spacing: 0.015em; // Adjust as needed
     font-weight: 500;
-    text-transform: uppercase;
+    //text-transform: uppercase;
 
     @if $important {
-        font-size: 3.0rem !important;
-        line-height: 3.0rem !important;
-        letter-spacing: -0.015em !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
+        font-size: 2.0rem !important;
+        line-height: 2.0rem !important;
+        //letter-spacing: 0.015em !important;
+        //font-weight: 500 !important;
+        //text-transform: uppercase !important;
+    }
+
+    @media (max-width: 1600px) {
+        font-size: 1.7rem; // Adjust as needed
+        line-height: 1.7rem; // Adjust as needed
+
+        @if $important {
+            font-size: 1.7rem !important;
+            line-height: 1.7rem !important;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 1.6rem; // Adjust as needed
+        line-height: 1.6rem; // Adjust as needed
+
+        @if $important {
+            font-size: 1.6rem !important;
+            line-height: 1.6rem !important;
+        }
     }
 
     @media (max-width: 600px) {

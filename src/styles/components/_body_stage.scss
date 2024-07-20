@@ -33,12 +33,7 @@
 
 .body-stage .body-stage-title {
     
-    font-size: 2.2rem;
-    line-height: 1.7rem;
-
-    font-weight: 500;
-    letter-spacing: -0.1rem;
-    text-transform: uppercase;
+    @include font-size-l;
 }
 
 .body-stage .body-stage-filter {

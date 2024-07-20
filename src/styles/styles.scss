@@ -12,6 +12,9 @@
 // Custom typography
 @import 'base/typography';
 
+
+
+
 // Component: Head
 @import 'components/head';
 @import 'components/head_nav';
@@ -45,3 +48,5 @@
 
 @import 'components/modal_tags';
 @import 'components/modal_search-shows';
+
+@import 'base/base-styles.scss';

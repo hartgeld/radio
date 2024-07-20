@@ -28,6 +28,11 @@
   align-items: flex-start;
   height: 65vh;
   min-height: 20em;
+
+  background-image: url('/img/full-beans_logo_l_darkest-dark.svg');
+  background-repeat: no-repeat;
+  background-position: center 40%;
+  background-size: 80%;
 }
 
 .uk-list-custom-divider > :nth-child(n+2) {

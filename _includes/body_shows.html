@@ -23,11 +23,12 @@
       <div  class="uk-padding-small body-stage">
         
         <div class="h1-container uk-margin-medium-top uk-grid">
-          <div class="uk-width-1-2">
-              <h1 class="text-neutral-31 body-stage-title">&ThinSpace;<br>Sho<br>&ThinSpace;&mdash;&VeryThinSpace;ws</h1>
+          <div class="uk-width-1-2 uk-width-1-2@s uk-width-1-2@m uk-width-1-3@l uk-width-1-5@xl"> 
+            <!--uk-child-width-1-2@s-->
+              <h1 class="text-neutral-31 body-stage-title">&ThinSpace;<br>Sho<br>&ThinSpace;&mdash;&ThinSpace;ws</h1>
           </div>
-          <div class="uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom uk-padding-remove-top">
-            <h1 class="text-neutral-31 font-size-xs">Archived<br>Transmissions<br>2024&VeryThinSpace;&mdash;&VeryThinSpace;present<br></h1>
+          <div class="uk-width-1-2 uk-width-1-2@s uk-width-1-2@m uk-width-1-3@l uk-width-1-5@xl uk-padding-small uk-padding-remove-right uk-padding-remove-bottom uk-padding-remove-top">
+            <h1 class="text-neutral-31 font-size-xs">Archived<br>Transmissions<br><br>2024&VeryThinSpace;&mdash;&VeryThinSpace;present<br></h1>
           </div>
 
         </div>
@@ -47,7 +48,7 @@
           </div>
 -->
 
-      <div class="search-container uk-width-1-2 uk-padding-small  uk-padding-remove-vertical">
+      <div class="search-container uk-width-1-2 uk-width-1-2@s uk-width-1-2@m uk-width-1-3@l uk-width-1-5@xl uk-padding-small  uk-padding-remove-vertical">
         
         <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-search-shows">
 
@@ -65,8 +66,14 @@
             <button class="uk-modal-close-default uk-navbar-toggle button-navbar uk-cursor-pointer" type="button" style="cursor: pointer;">
               <i class="fas fa-xmark text-neutral-25 fa-lg"></i>
             </button>
-            <div class="uk-modal-header bg-neutral-25">
-              <h2 class=" site-title text-neutral-75 uk-padding-small">search<br>&ThinSpace;&mdash;&VeryThinSpace;shows </h2>
+            
+            <div uk-navbar class=" uk-navbar-padding uk-padding-remove-left">
+              <div class="uk-navbar-left uk-padding-small uk-padding-remove-vertical modal-search-shows_header">
+                <div class="site-title text-neutral-25" rel="author" href="{{ "/" | relative_url }}">
+                  <img src="/img/full-beans_logo_s_white.svg" alt="Full Beans Radio" class="site-logo">
+                  <span class="text-neutral-87 font-size-xs">&ThinSpace;.radio<br>&ThinSpace;</span>
+                </div>
+              </div>
             </div>
             
             <div class="uk-modal-body uk-margin-large-top uk-padding-small">
@@ -88,7 +95,7 @@
 
 
 
-          <div class="tags-container uk-width-1-2 uk-padding-small uk-padding-remove-right uk-padding-remove-bottom">
+          <div class="tags-container uk-width-1-2 uk-width-1-2@s uk-width-1-2@m uk-width-1-3@l uk-width-1-5@xl uk-padding-small uk-padding-remove-right uk-padding-remove-bottom">
             <button class="uk-button uk-button-default" type="button" uk-toggle="target: #modal-tags">
                 <h1 class="text-neutral-31 body-stage-filter">
                     Genre &VeryThinSpace;&#9662;<br>
@@ -104,10 +111,18 @@
             <button class="uk-modal-close-default uk-navbar-toggle button-navbar uk-cursor-pointer" type="button" style="cursor: pointer;">
               <i class="fas fa-xmark text-neutral-25 fa-lg"></i>
             </button>
-            <div class="uk-modal-header bg-neutral-25">
-              <h2 class=" site-title text-neutral-75 uk-padding-small">select<br>&ThinSpace;&mdash;&VeryThinSpace;genre </h2>
-              
+            
+                        
+            <div uk-navbar class=" uk-navbar-padding uk-padding-remove-left">
+              <div class="uk-navbar-left uk-padding-small uk-padding-remove-vertical modal-search-shows_header">
+                <div class="site-title text-neutral-25" rel="author" href="{{ "/" | relative_url }}">
+                  <img src="/img/full-beans_logo_s_white.svg" alt="Full Beans Radio" class="site-logo">
+                  <span class="text-neutral-87 font-size-xs">&ThinSpace;.radio<br>&ThinSpace;</span>
+                </div>
+              </div>
             </div>
+            
+
             <div class="uk-modal-body uk-margin-large-top">
               <ul class="uk-list font-size-m uk-padding-small">
                   <li class="pill-shape-m">

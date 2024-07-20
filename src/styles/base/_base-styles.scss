@@ -1,0 +1,6 @@
+//set link color in paragraphs
+
+p a {
+    color: $color-primary-100;
+    text-decoration: none; // Removes the underline
+}

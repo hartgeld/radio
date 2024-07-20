@@ -32,11 +32,13 @@
 }
 
 .site-title {
+    display: flex;
+    align-items:flex-end;
     font-weight: 700;
     text-transform: uppercase;
-    line-height: 0.85rem;
+    line-height: 0.65rem;
     letter-spacing: -0.02em; 
-    font-size: 1rem; // Default font size
+    font-size: 0.75rem; // Default font size
     margin-bottom: 0;
     float: left;
     
@@ -80,7 +82,7 @@
     letter-spacing: 0.015em; 
 
     border-radius: $base-unit * 2;
-    background-color: $color-neutral-12!important;
+    background-color: $color-neutral-00!important;
     padding: $base-unit*5;
     margin-bottom: $base-unit*2;
     //flex: block !important;  // The item will grow to fill extra space, if available
@@ -93,4 +95,9 @@
     display: inline-block !important;
     width: auto!important;
 
+}
+
+.site-logo{
+    width: auto; // Adjust as needed
+    height: $layout-unit - 10px;
 }
