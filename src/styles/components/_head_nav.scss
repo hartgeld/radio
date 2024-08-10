@@ -82,10 +82,10 @@
     letter-spacing: 0.015em; 
 
     border-radius: $base-unit * 2;
-    background-color: $color-neutral-00!important;
+    background-color: $color-neutral-12!important;
     padding: $base-unit*5;
     margin-bottom: $base-unit*2;
-    //flex: block !important;  // The item will grow to fill extra space, if available
+    
 
 
 }
@@ -97,7 +97,11 @@
 
 }
 
+.offcanvas-nav-current-page{
+    color: $color-primary-100;
+}
+
 .site-logo{
-    width: auto; // Adjust as needed
+    width: auto; 
     height: $layout-unit - 10px;
 }

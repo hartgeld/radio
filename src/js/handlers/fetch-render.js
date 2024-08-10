@@ -9,6 +9,7 @@ import { handleMP3ButtonClick } from '../player/mp3PlayerHandlers.js';
 import { attachEventListener } from './content-handler.js';
 import { attachTagFilterEventListeners } from './tagFilter.js';
 import { initializeSearch } from './search-handler.js';
+//import { highlightCurrentPage } from './offcanvas-nav-highlight-current-page.js';
 
 
 const SHOW_PAGE_SELECTOR = '.show-page';
@@ -125,6 +126,10 @@ export function postUpdateActions() {
   });
     // Call the function to reattach the event listeners
     attachTagFilterEventListeners();
+
+    // in offcanvas nav highlight the current page
+    // highlightCurrentPage();
+
 }
 
 export function updateCurrentCardFromPlaylist() {
