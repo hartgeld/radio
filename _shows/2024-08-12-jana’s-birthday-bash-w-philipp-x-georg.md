@@ -6,6 +6,5 @@ mp3Url: https://radio-shows.fra1.cdn.digitaloceanspaces.com/recordings/Jana/stre
 tags:
   - house
   - techno
-  - ""
 ---
 Jana lit another candle at Heinatland with a celebratory house and techno set by Philipp and Georg delivering a remarkable spaced out groove experience.
