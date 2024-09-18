@@ -7,6 +7,5 @@ tags:
   - rock
   - funk
   - rnb
-  - ""
 ---
 Unearthed classy cuts and blues affine indie-rock jams
