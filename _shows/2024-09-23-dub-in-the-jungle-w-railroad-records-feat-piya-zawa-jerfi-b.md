@@ -11,4 +11,4 @@ tags:
 ---
 [Railroad Records Crew](https://www.instagram.com/railroad_records/) featuring [Piya Zawa](https://www.instagram.com/piyazawa/) (Live Flute) and Jerfi B. (Live Trumpet) hit you with the power of infamous KING CRUCIAL SOUNDSYSTEM for the third edition of DUB IN THE JUNGLE Sessions at [Nordiy](https://www.instagram.com/betonfreude21/). 
 
-_In lovin memory of our brother CRUCIAL B._
+In lovin memory of our brother CRUCIAL B.
