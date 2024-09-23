@@ -1,7 +1,7 @@
 ---
 layout: show
 title: Dub in the Jungle /w Railroad Records feat. Piya Zawa & Jerfi B.
-image: /img/img_20230709_032254.jpg
+image: /img/untitled12.jpg
 mp3Url: https://radio-shows.fra1.cdn.digitaloceanspaces.com/recordings/railroad-records/stream_20240921-192014_railroad-records_dubinthejungle_edit.mp3
 tags:
   - roots reggae
