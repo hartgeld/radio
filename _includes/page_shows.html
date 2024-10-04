@@ -1,0 +1,24 @@
+
+  <!-- body_shows.html -->
+  
+  <!-- add .tiled-background for dots -->
+  <div class="uk-flex-auto bg-neutral-12 " uk-height-viewport="expand: true" style="flex: 1;">
+    <div class="uk-container-expand uk-margin-medium-bottom">
+      
+      {% assign sorted-shows = site.shows | sort: 'date' | reverse %}
+
+      <!-- sort for tags -->
+      {% assign all_tags = "" | split: "," %}
+      {% for show in site.shows %}
+          {% assign all_tags = all_tags | concat: show.tags %}
+      {% endfor %}
+      {% assign unique_tags = all_tags | uniq %}
+
+      <!-- include head-->
+      {%- include page_shows_head.html -%}
+      
+      <!-- include body-->
+      {%- include page_shows_body.html -%}
+      
+    </div>
+  </div>

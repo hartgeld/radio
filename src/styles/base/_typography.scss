@@ -192,6 +192,11 @@
     @include font-size-xs;
 }
 
+.font-size-xs-bold {
+    @include font-size-xs;
+    font-weight: 700;
+}
+
 .font-size-s {
     @include font-size-s;
 }

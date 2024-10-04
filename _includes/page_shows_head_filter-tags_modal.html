@@ -1,0 +1,39 @@
+<div id="modal-tags" class="uk-modal-full uk-padding-remove bg-neutral-25" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-padding-remove">
+      
+      <button class="uk-modal-close-default uk-navbar-toggle button-navbar uk-cursor-pointer" type="button" style="cursor: pointer;">
+        <i class="fas fa-xmark text-neutral-25 fa-lg"></i>
+      </button>
+      
+                  
+      <div uk-navbar class=" uk-navbar-padding uk-padding-remove-left">
+        <div class="uk-navbar-left uk-padding-small uk-padding-remove-vertical modal-search-shows_header">
+          <div class="site-title text-neutral-25" rel="author" href="{{ "/" | relative_url }}">
+            <img src="/img/full-beans_logo_s_white.svg" alt="Full Beans Radio" class="site-logo">
+            <span class="text-neutral-87 font-size-xs">&ThinSpace;.radio<br>&ThinSpace;</span>
+          </div>
+        </div>
+      </div>
+      
+  
+      <div class="uk-modal-body uk-margin-large-top">
+        <ul class="uk-list font-size-m uk-padding-small">
+            <li class="pill-shape-m">
+              <a href="#" id="all-shows" class="text-neutral-75 selected" style="cursor: pointer;">
+                All
+                <span id="selected-tag-count" class="text-neutral-37">[{{ sorted-shows | size }}]</span>
+              </a>
+            </li>
+            {% for tag in unique_tags %}
+              <li class="pill-shape-m">
+                  <a class="text-neutral-75" data-tag="{{ tag | slugify }}" style="cursor: pointer;" >
+                      {{ tag }}
+                      <span id="tag-count-{{ tag | slugify }}" class="text-neutral-37"></span>
+                  </a>
+              </li>
+            {% endfor %}
+        </ul>
+      </div>
+      
+    </div>
+  </div>

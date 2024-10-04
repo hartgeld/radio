@@ -1,4 +1,4 @@
-// neutral colors
+// neutrals
 $color-neutral-00: #0F0E12;
 $color-neutral-12: #171619;
 $color-neutral-25: #272727;
@@ -12,12 +12,7 @@ $color-neutral-87: #DEE2E2;
 $color-neutral-93: #eaedec;
 $color-neutral-100: #F6F8F7;
 
-// primary colors
-$color-primary-100: #F15A22;
-$color-secondary-100: #006837;
-$color-secondary-75: #27A268;
-$color-secondary-50: #4DDB99;
-
+// neutrals in classes
 .bg-neutral-00 { background-color: $color-neutral-00!important; }
 .bg-neutral-12 { background-color: $color-neutral-12!important; }
 .bg-neutral-25 { background-color: $color-neutral-25!important; }
@@ -28,7 +23,6 @@ $color-secondary-50: #4DDB99;
 .bg-neutral-81 { background-color: $color-neutral-81!important; }
 .bg-neutral-87 { background-color: $color-neutral-87!important; }
 .bg-neutral-100 { background-color: $color-neutral-100!important; }
-
 .text-neutral-00 { color: $color-neutral-00!important; }
 .text-neutral-12 { color: $color-neutral-12!important; }
 .text-neutral-25 { color: $color-neutral-25!important; }
@@ -39,8 +33,41 @@ $color-secondary-50: #4DDB99;
 .text-neutral-87 { color: $color-neutral-87!important; }
 .text-neutral-100 { color: $color-neutral-100!important; }
 
+// red
+$color-primary-150: #FFB88C;
+$color-primary-100: #F15A22;
+$color-primary-50: #C24712;
+// teal
+$color-secondary-100: #5FC1B1;
+$color-secondary-75: #2A9D8F;
+$color-secondary-50: #1F7B68;
+// mustard
+$color-tertiary-100: #E8B347;
+$color-tertiary-75: #D89500;
+$color-tertiary-50: #A87300;
+// purple
+$color-quaternary-100: #BB88FF;
+$color-quaternary-75: #933DFF;
+$color-quaternary-50: #722EDB;
+
+// red
+.bg-primary-150 { background-color: $color-primary-150!important; }
 .bg-primary-100 { background-color: $color-primary-100!important; }
+.bg-primary-50 { background-color: $color-primary-50!important; }
+.text-primary-150 { color: $color-primary-150!important; }
+.text-primary-100 { color: $color-primary-100!important; }
+.text-primary-50 { color: $color-primary-50!important; }
+// teal
 .bg-secondary-100 { background-color: $color-secondary-100!important; }
 .bg-secondary-75 { background-color: $color-secondary-75!important; }
 .bg-secondary-50 { background-color: $color-secondary-50!important; }
+// mustard
+.bg-tertiary-100 { background-color: $color-tertiary-100!important; }
+.bg-tertiary-75 { background-color: $color-tertiary-75!important; }
+.bg-tertiary-50 { background-color: $color-tertiary-50!important; }
+.text-tertiary-75 { color: $color-tertiary-75!important; }
+//purple
+.bg-quaternary-100 { background-color: $color-quaternary-100!important; }
+.bg-quaternary-75 { background-color: $color-quaternary-75!important; }
+.bg-quaternary-50 { background-color: $color-quaternary-50!important; }
 

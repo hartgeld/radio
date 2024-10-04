@@ -1,0 +1,57 @@
+
+      <!-- stage -->
+      <div class="uk-container  uk-width-1-1 uk-padding-small uk-padding-remove-bottom">
+        <div class="uk-grid-match uk-flex uk-margin-remove uk-padding uk-padding-remove-horizontal uk-padding-remove-bottom" uk-grid>
+          
+          <div class="uk-width-0  uk-width-1-5@xl"></div>
+
+          <div class=" page_shows_head_stage_finger-lickin  uk-width-1-5@xs uk-width-1-5@s uk-width-1-5@m uk-width-1-5@l uk-width-1-5@xl uk-padding-remove">
+            <div class="page_shows_head_stage_badge uk-position-top-right">
+              <img src="/assets/graphics/page_shows_head/page_shows_head_badge.svg" alt="Description of the SVG">
+            </div>
+          </div>
+
+          <div class=" page_shows_head_stage_title uk-width-1-5@xs uk-width-4-5@s uk-width-4-5@m uk-width-4-5@l uk-width-1-2@xl  uk-margin-remove ">
+            <img           uk-img data-src="/assets/graphics/page_shows_head/page_shows_head_title.svg" data-srcset="/assets/graphics/page_shows_head/page_shows_head_title_small.svg 640w, /assets/graphics/page_shows_head/page_shows_head_title.svg 641w"
+            alt="shows">
+          </div>
+
+
+          <div class="uk-width-0  uk-width-1-5@xl uk-padding-remove uk-margin-remove"></div>
+          <div class="uk-width-1-5@xs uk-width-1-5@s uk-width-1-5@m uk-width-1-5@l uk-width-1-5@xl uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom uk-margin-remove ">
+            <h1 class="font-size-xs-bold text-neutral-87 page_shows_head_stage_meta-title" >Full Beans Radio</h1>
+          </div>
+
+          <div class="uk-width-1-5@xs uk-width-4-5@s uk-width-4-5@m uk-width-4-5@l uk-width-1-2@xl uk-padding-small uk-padding-remove-horizontal uk-margin-remove ">
+            <h1 class="font-size-xs text-neutral-87 page_shows_head_stage_meta-info">Digital&nbsp;Audio Broadcasting based&nbsp;in&nbsp;Europe </h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- info / search / filter -->
+      <div  class=" body-stage uk-container  uk-width-1-1 ">
+      
+        <div class="info-container uk-grid-match uk-flex  uk-flex-bottom uk-padding-remove" uk-grid>
+          
+          <div class="uk-width-0 uk-width-1-5@xl"></div>
+
+          <div class="uk-width-1-1@xs uk-width-1-1@s uk-width-1-1@m uk-width-1-3@l uk-width-1-5@xl uk-padding-remove bg-neutral-87">
+            <h1 class="text-neutral-12 font-size-xs-bold uk-padding-small ">Archived Transmissions<br><span class="font-size-xs"><br>2024&VeryThinSpace;&mdash;&VeryThinSpace;present</span></h1>
+          </div>
+          
+          <div class="uk-padding-remove uk-margin-remove uk-grid-match uk-flex  uk-flex-bottom uk-width-1-1@xs uk-width-1-1@s uk-width-1-1@m uk-width-2-3@l uk-width-2-5@xl" uk-grid>
+            <div class="bg-neutral-87  search-container uk-width-1-2 uk-padding-small uk-flex  uk-flex-bottom ">
+              {%- include page_shows_head_search.html -%}
+            </div>
+
+            <div class="tags-container uk-width-1-2 uk-padding-small uk-flex  uk-flex-bottom bg-neutral-87">
+              {%- include page_shows_head_filter-tags.html -%}
+            </div>
+          </div>          
+        
+        </div>
+
+      </div>
+
+      {%- include page_shows_head_search_modal.html -%}
+      {%- include page_shows_head_filter-tags_modal.html -%}

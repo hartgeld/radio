@@ -6,7 +6,7 @@
 
 // Moved mixin
 @mixin navbar-container-bg {
-    background-color: $color-neutral-93; 
+    background-color: $color-neutral-00; 
 }
 
 .uk-navbar-container.uk-navbar-container  {
@@ -15,7 +15,7 @@
 
 .button-navbar, .uk-navbar-toggle {
     @include navbar-toggle;
-    background-color: $color-neutral-75; 
+    background-color: $color-neutral-00; 
     width: $layout-unit; 
     height: $layout-unit;
     display: flex; 
@@ -105,3 +105,10 @@
     width: auto; 
     height: $layout-unit - 10px;
 }
+
+.uk-navbar-nav > li.font-size-m > a {
+    @include font-size-m;
+    color: $color-neutral-87;
+    
+}
+
