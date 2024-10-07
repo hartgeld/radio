@@ -82,6 +82,7 @@
 }
 
 .page_shows_head_stage_title {
+    position: relative;
     padding-left: 1vw;
 }
 
@@ -170,5 +171,34 @@
 }
 @media (min-width: 1200px) {
     .page_shows_head_stage_info-container_search-and-tags{
+    }
+}
+
+// beand badge
+.page_shows_head_stage_bean{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translate(95%, 40%);
+}
+.page_shows_head_stage_title .page_shows_head_stage_bean img{
+    height: 75%;
+
+}
+
+@media (max-width: 1599px) {
+    .page_shows_head_stage_bean{
+        transform: translate(90%, 55%);
+
+    }
+}
+
+@media (max-width: 639px) {
+    .page_shows_head_stage_bean{
+        transform: scaleX(-1) translate(85%, 82%);
+
+
+
     }
 }
