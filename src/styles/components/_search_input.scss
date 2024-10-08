@@ -15,7 +15,7 @@
 .uk-search-input {
     display: inline-block;
     vertical-align: middle;
-    color: $color-neutral-12 !important;
+    color: $color-neutral-87 !important;
 }
 
 .uk-search-default{
@@ -32,19 +32,19 @@ body div .uk-search-default .uk-search-input:focus {
 }
 
 #custom-search-input {
-    color: $color-neutral-12 !important;
+    color: $color-neutral-87 !important;
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
-    border-bottom: 2px solid $color-neutral-12 !important;
-    border-color: $color-neutral-12 !important;
+    border-bottom: 1px solid $color-neutral-50 !important;
+    border-color: $color-neutral-50 !important;
     background-color: transparent !important;
     
     @include font-size-m;
 }
 
 #custom-search-input::placeholder {
-    color: $color-neutral-12 !important; 
+    color: $color-neutral-87 !important; 
     
     @include font-size-m;
 }
@@ -61,18 +61,18 @@ body div .uk-search-default .uk-search-input:focus {
 // preview text of search input: color adjust
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 #search-input::placeholder {
-    color: $color-neutral-12 !important; 
+    color: $color-neutral-87 !important; 
     opacity: 1; /* Firefox */
   }
   
   /* Internet Explorer 10-11 */
   #search-input:-ms-input-placeholder {
-    color: $color-neutral-12 !important; 
+    color: $color-neutral-87 !important; 
   }
   
   /* Edge */
   #search-input::-ms-input-placeholder {
-    color: $color-neutral-12 !important; 
+    color: $color-neutral-87 !important; 
   }
 
 
