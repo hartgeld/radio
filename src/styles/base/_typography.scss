@@ -118,26 +118,31 @@
 }
 
 @mixin font-size-l_card-title {
-    font-size: 1.30rem; 
-    line-height: 1.60rem; 
-    letter-spacing: 0.015em; // Adjust as needed
-    font-weight: 500;
-    text-transform: none;
-
-    @media (max-width: 1600px){
-        font-size: 1.25rem; 
-        line-height: 1.53rem;
+    font-size: 1.1rem; 
+    line-height: 1.3rem; 
+    font-weight: 700;
+    letter-spacing: 0.0em; 
+    text-transform: uppercase;
+ 
+    @media (max-width: 1920px){
+        font-size: 0.95rem; 
+        line-height: 1.15rem;
     }
 
+    @media (max-width: 1600px){
+        font-size: 1.05rem; 
+        line-height: 1.25rem;
+
+    }
     @media (max-width: 1024px) {
-        font-size: 1.15rem; 
-        line-height: 1.45rem;
+        font-size: 1.00rem; 
+        line-height: 1.20rem;
+
     }
 
     @media (max-width: 600px) {
-        font-size: 1.05rem; 
-        line-height: 1.35rem;
-         font-weight: 500;
+        font-size: 0.95rem; 
+        line-height: 1.15rem;
     }
 }
 

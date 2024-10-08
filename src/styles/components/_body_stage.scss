@@ -1,4 +1,9 @@
 // _body_stage.scss
+.body-container{
+    overflow: hidden;
+}
+
+
 .body-stage {
     display: flex;
     flex-direction: column;
@@ -188,6 +193,7 @@
     top: 0;
     left: 0;
     height: 100%;
+
     transform: translate(95%, 40%);
 }
 .page_shows_head_stage_title .page_shows_head_stage_bean img{

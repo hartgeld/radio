@@ -1,7 +1,7 @@
 
 .uk-card {
 
-  background-color: $color-neutral-93;
+  background-color: $color-neutral-12;
   border-radius: $base-unit;
   overflow: hidden;
   
@@ -42,7 +42,7 @@
       &::before {
           content: "";
           display: block;
-          padding-top: 85%; 
+          padding-top: 60%; 
       }
 
       img {
@@ -67,7 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-color: $color-neutral-62;
+    border-color: $color-neutral-50;
 
     h1 {
         @include font-size-l_card-title;
@@ -106,8 +106,8 @@
               display: inline-block;
               padding: $base-unit;
               margin-right: $base-unit;
-              background-color: $color-neutral-25;
-              color: $color-neutral-100;
+              background-color: $color-neutral-87;
+              color: $color-neutral-12;
               border-radius: $base-unit; // pill shape
 
               @include font-size-xs;
@@ -115,10 +115,10 @@
       }
 
       .uk-card-footer {
-        border-color: $color-neutral-62;
+        border-color: $color-neutral-50;
           h5 {
               @include font-size-xs;
-              color: $color-neutral-25;
+              color: $color-neutral-87;
           }
       }
   }
