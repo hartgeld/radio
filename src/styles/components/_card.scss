@@ -9,6 +9,12 @@
   }
 
   &.uk-card-default {
+    &.uk-card-hover {
+      &:hover {
+        background-color: $color-neutral-00;
+        box-shadow: none;
+      }
+    }
   }
 
   &.uk-card-hover {
@@ -106,9 +112,10 @@
               display: inline-block;
               padding: $base-unit;
               margin-right: $base-unit;
-              background-color: $color-neutral-87;
-              color: $color-neutral-12;
+              background-color: none;
+              color: $color-neutral-87;
               border-radius: $base-unit; // pill shape
+              border: 1px solid $color-neutral-50;
 
               @include font-size-xs;
           }

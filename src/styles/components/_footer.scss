@@ -8,7 +8,7 @@
 
 @mixin link-color {
     .social-media-list li a {
-      color: $color-neutral-75 !important;
+      color: $color-neutral-12 !important;
 
       //padding: $base-unit;
 
@@ -29,10 +29,10 @@
   height: 65vh;
   min-height: 20em;
 
-  background-image: url('/img/full-beans_logo_l_darkest-dark.svg');
+  background-image: url('/assets/graphics/bean 1 and 6.svg');
   background-repeat: no-repeat;
-  background-position: center 40%;
-  background-size: 80%;
+  background-position: 95% 95%;
+  background-size: 65% 65%;
 }
 
 .uk-list-custom-divider > :nth-child(n+2) {
