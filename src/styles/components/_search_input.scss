@@ -51,6 +51,8 @@ body div .uk-search-default .uk-search-input:focus {
 
 .custom-search-form-rounded-corners{
     border-radius: $base-unit; 
+    border: 1px solid $color-neutral-50;
+
 }
 
 .uk-search-default .uk-search-input{

@@ -40,13 +40,15 @@
 
 
 #modal-tags .uk-modal-close-default {
-    background-color: $color-neutral-75;
+    background-color: none;
     width: $layout-unit;
     height: $layout-unit;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: $base-unit;
+    border: 1px solid $color-neutral-50;
+
 }
 
 
@@ -57,7 +59,7 @@
 }
 
 #modal-tags .uk-modal-dialog {
-    background-color: $color-neutral-25;
+    background-color: rgba($color-neutral-00, 0.95);
     height: 100%;
     //transition: none !important;
 }
@@ -66,7 +68,9 @@
     display: inline-block;
     padding: $base-unit*2;
     margin-right: $base-unit;
-    background-color: $color-neutral-12!important;
+    background-color: none;
     color: $color-neutral-100;
     border-radius: $base-unit; 
+    border: 1px solid $color-neutral-50;
+
 }

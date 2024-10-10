@@ -1,10 +1,10 @@
 <div id="offcanvas-nav" uk-offcanvas=" mode: none; overlay: true">
-  <div class="uk-offcanvas-bar bg-neutral-00">
+  <div class="uk-offcanvas-bar uk-animation-fade uk-animation-fast">
 
     <div uk-navbar class=" uk-navbar-padding uk-padding-remove-left">
     
       <div class="uk-navbar-left uk-padding-small uk-padding-remove-vertical uk-flex uk-flex-center uk-flex-column uk-width-2-5">
-        <h1 class="font-size-s text-neutral-87  uk-margin-remove-vertical head_nav_tag-line" >Steamin&#x2019; Hot!</h1>
+        <h1 class="font-size-s   uk-margin-remove-vertical head_nav_tag-line" >Steamin&#x2019; Hot!</h1>
       </div>
       <div class="uk-navbar-center uk-padding-small uk-padding-remove-vertical ">
         <a class="site-title text-neutral-25" rel="author" href="{{ "/" | relative_url }}">
@@ -18,17 +18,32 @@
         </a>
       </div>
     </div>
-    <ul class="uk-nav uk-nav-primary uk-padding-small uk-margin-large-top">
-     <li><a class="offcanvas-link" rel="author" href="{{ "/" | relative_url }}">Shows</a></li>
-      {%- assign default_paths = site.pages | map: "path" -%}
-      {%- assign page_paths = site.header_pages | default: default_paths -%}
-      {%- for path in page_paths -%}
-        {%- assign my_page = site.pages | where: "path", path | first -%}
-        {%- if my_page.title -%}
-          <li><a class="offcanvas-link"  href="{{ my_page.url | relative_url }}" >{{ my_page.title | escape }}</a></li>
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
+
+    <div class="uk-container  uk-width-1-1 uk-padding-small uk-padding-remove-vertical ">
+      <div class="uk-grid-match uk-flex uk-margin-remove uk-padding uk-padding-remove-horizontal uk-padding-remove-bottom" uk-grid>
+      
+        <div class="uk-width-0 uk-width-1-5@s uk-width-1-5@m uk-width-1-5@l uk-width-1-3@xl"></div>
+
+
+        <div class="uk-width-3-5@s uk-width-3-5@m uk-width-3-5@l uk-width-1-3@xl uk-padding-remove">
+
+          <div class="uk-flex uk-flex-center">
+            <ul class="uk-nav uk-nav-primary uk-padding-small uk-margin-large-top uk-padding-remove">
+            <li class="uk-text-center"><a class="offcanvas-link" rel="author" href="{{ "/" | relative_url }}">Shows</a></li>
+              {%- assign default_paths = site.pages | map: "path" -%}
+              {%- assign page_paths = site.header_pages | default: default_paths -%}
+              {%- for path in page_paths -%}
+                {%- assign my_page = site.pages | where: "path", path | first -%}
+                {%- if my_page.title -%}
+                  <li class="uk-text-center"><a class="offcanvas-link"  href="{{ my_page.url | relative_url }}" >{{ my_page.title | escape }}</a></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     
   </div>

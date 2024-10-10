@@ -7,7 +7,7 @@
 
     .uk-modal-header {
         @include navbar-toggle;
-        background-color: $color-neutral-75;
+        background-color: $color-neutral-00;
         width: auto;
         height: $layout-unit;
         display: flex;
@@ -40,24 +40,32 @@
 
 
 #modal-search-shows .uk-modal-close-default {
-    background-color: $color-neutral-75;
+    position: absolute;
+    top: $base-unit;
+    right: $base-unit;
+    background-color: $color-neutral-00;
     width: $layout-unit;
     height: $layout-unit;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: $base-unit;
+    border: 1px solid $color-neutral-50;
+}
+
+@media (min-width: 1200px) {
+    #modal-search-shows .uk-modal-close-default {
+
+        //top: $base-unit*10;
+        //right: 20vw;
+
+    }
 }
 
 
-#modal-search-shows .uk-modal-close-default {
-    position: absolute;
-    top: $base-unit;
-    right: $base-unit;
-}
 
 #modal-search-shows .uk-modal-dialog {
-    background-color: $color-neutral-25;
+    background-color: rgba($color-neutral-00, 0.95);
     height: 100%;
     //transition: none !important;
 }
