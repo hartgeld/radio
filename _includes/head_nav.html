@@ -1,7 +1,7 @@
 <nav class="uk-navbar-container uk-box-shadow-medium">
   <div uk-navbar class=" uk-navbar-padding uk-padding-remove-left uk-flex uk-flex-middle">
     <div class="uk-navbar-left uk-padding-small uk-padding-remove-vertical uk-flex uk-flex-center uk-flex-column uk-width-2-5">
-      <h1 class="font-size-s text-neutral-87  uk-margin-remove-vertical " style="font-style: italic; text-transform: none; letter-spacing: 0;">Steamin&#x2019; Hot!</h1>
+      <h1 class="head_nav_tag-line font-size-s text-neutral-87  uk-margin-remove-vertical " >Steamin&#x2019; Hot!</h1>
     </div>
     <div class="uk-navbar-center uk-padding-small uk-padding-remove-vertical uk-width-1-5">
       <a class="site-title text-neutral-25" rel="author" href="{{ "/" | relative_url }}">
@@ -10,6 +10,7 @@
     </div>
     <div class="uk-navbar-right uk-visible@m uk-padding-small-right uk-width-2-5">
       <ul class="uk-navbar-nav">
+        <li class="font-size-m"><a  rel="author" href="{{ "/" | relative_url }}">Shows</a></li>
         {%- assign default_paths = site.pages | map: "path" -%}
         {%- assign page_paths = site.header_pages | default: default_paths -%}
         {%- for path in page_paths -%}

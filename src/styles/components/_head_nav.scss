@@ -112,3 +112,20 @@
     
 }
 
+.head_nav_tag-line{
+    font-style: italic; 
+    text-transform: none; 
+    letter-spacing: 0;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 959px) {
+.head_nav_tag-line{
+    font-style: italic; 
+    text-transform: none; 
+    letter-spacing: 0;
+    font-weight: 300;
+    font-size: 1.0rem;
+    }
+}

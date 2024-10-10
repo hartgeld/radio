@@ -35,6 +35,21 @@
   background-size: 45% 40%;
 }
 
+@media (max-width: 639px) {
+  .footer {
+    background-position: 102% 83%;
+    background-size: 37% 37%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .footer {
+    background-position: 102% 83%;
+    background-size: 37% 37%;
+  }
+}
+
+
 .uk-list-custom-divider > :nth-child(n+2) {
   // Your custom styles here
 }
