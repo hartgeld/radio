@@ -27,27 +27,32 @@
               </div>
             </a>
 
-            <div class="uk-card-header uk-padding-remove-vertical uk-flex uk-flex-between">
-              <h5 class="font-size-xs text-neutral-87 ">
-                {{ page.date | date: "%d.%m.%y" }}
-              </h5>
-            </div>
-
-            
-            <div class="uk-card-header page_content uk-padding-medium">
-              <h1 class="text-neutral-87  ">{{ page.title }}</h1>
-              {{ page.content | markdownify }}
-            </div>
-
-            <div class="uk-flex uk-flex-between">
-              <div class="uk-width-expand">
-                  <div class="uk-card-body ">
-                    {% for tag in page.tags %}
-                    <span class="">{{ tag }}</span>
-                    {% endfor %}
+            <div class="uk-grid-match uk-flex uk-margin-remove uk-padding uk-padding-small  uk-padding-remove-bottom" uk-grid>
+              <div class="uk-width-0 uk-width-1-5@m uk-width-1-5@l uk-width-1-5@xl"></div>
+              <div class="uk-width-1 uk-width-4-5@s  uk-width-3-5@m uk-width-3-5@l uk-width-2-5@xl uk-padding-remove">
+                <div class="uk-card-header uk-padding-remove uk-flex uk-flex-between">
+                  <h5 class="font-size-xs text-neutral-87 ">
+                    {{ page.date | date: "%d.%m.%y" }}
+                  </h5>
+                </div>
+                <div class="uk-card-header page_content uk-padding-remove">
+                  <h1 class="text-neutral-87  ">{{ page.title }}</h1>
+                  <div class="text-neutral-87">
+                    {{ page.content | markdownify }}
                   </div>
+                </div>
+                <div class="uk-flex uk-flex-between">
+                  <div class="uk-width-expand">
+                      <div class="uk-card-body uk-padding-remove">
+                        {% for tag in page.tags %}
+                        <span>{{ tag }}</span>
+                        {% endfor %}
+                      </div>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
