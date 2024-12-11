@@ -1,6 +1,6 @@
 have_builtin_func: checking for __builtin_clz()... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -11,7 +11,7 @@ checked program was:
 6: }
 /* end */
 
-"gcc -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC   -c conftest.c"
+"gcc -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -24,7 +24,7 @@ checked program was:
 
 have_builtin_func: checking for __builtin_clzl()... -------------------- yes
 
-"gcc -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC   -c conftest.c"
+"gcc -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -37,7 +37,7 @@ checked program was:
 
 have_builtin_func: checking for __builtin_clzll()... -------------------- yes
 
-"gcc -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC   -c conftest.c"
+"gcc -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -50,7 +50,7 @@ checked program was:
 
 have_header: checking for float.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -62,7 +62,7 @@ checked program was:
 
 have_header: checking for math.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -74,7 +74,7 @@ checked program was:
 
 have_header: checking for stdbool.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -86,7 +86,7 @@ checked program was:
 
 have_header: checking for stdlib.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -98,7 +98,7 @@ checked program was:
 
 have_header: checking for x86intrin.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -110,9 +110,9 @@ checked program was:
 
 have_func: checking for _lzcnt_u32() in x86intrin.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
-/usr/bin/ld: /tmp/cc2gLa87.o: in function `t':
-/run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/bigdecimal-3.1.5/ext/bigdecimal/conftest.c:16:(.text+0x7): undefined reference to `_lzcnt_u32'
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
+/usr/bin/ld: /tmp/ccMtoX5a.o: in function `t':
+/home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/bigdecimal-3.1.5/ext/bigdecimal/conftest.c:16:(.text+0x3): undefined reference to `_lzcnt_u32'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -134,16 +134,19 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))_lzcnt_u32; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:16:13: error: conflicting types for ‘_lzcnt_u32’; have ‘void()’
    16 | extern void _lzcnt_u32();
       |             ^~~~~~~~~~
-In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/x86gprintrin.h:61,
-                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/x86intrin.h:27,
+In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86gprintrin.h:61,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86intrin.h:27,
                  from conftest.c:3:
-/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/lzcntintrin.h:51:1: note: previous definition of ‘_lzcnt_u32’ with type ‘unsigned int(unsigned int)’
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:51:1: note: previous definition of ‘_lzcnt_u32’ with type ‘unsigned int(unsigned int)’
    51 | _lzcnt_u32 (unsigned int __X)
       | ^~~~~~~~~~
+cc1: note: unrecognized command-line option ‘-Wno-self-assign’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-parentheses-equality’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-constant-logical-operand’ may have been intended to silence earlier diagnostics
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -169,9 +172,9 @@ checked program was:
 
 have_func: checking for _lzcnt_u64() in x86intrin.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
-/usr/bin/ld: /tmp/ccCVg9UY.o: in function `t':
-/run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/bigdecimal-3.1.5/ext/bigdecimal/conftest.c:16:(.text+0x7): undefined reference to `_lzcnt_u64'
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
+/usr/bin/ld: /tmp/ccM2uzV2.o: in function `t':
+/home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/bigdecimal-3.1.5/ext/bigdecimal/conftest.c:16:(.text+0x3): undefined reference to `_lzcnt_u64'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -193,16 +196,19 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))_lzcnt_u64; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:16:13: error: conflicting types for ‘_lzcnt_u64’; have ‘void()’
    16 | extern void _lzcnt_u64();
       |             ^~~~~~~~~~
-In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/x86gprintrin.h:61,
-                 from /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/x86intrin.h:27,
+In file included from /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86gprintrin.h:61,
+                 from /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/x86intrin.h:27,
                  from conftest.c:3:
-/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/lzcntintrin.h:64:1: note: previous definition of ‘_lzcnt_u64’ with type ‘long long unsigned int(long long unsigned int)’
+/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include/lzcntintrin.h:64:1: note: previous definition of ‘_lzcnt_u64’ with type ‘long long unsigned int(long long unsigned int)’
    64 | _lzcnt_u64 (unsigned long long __X)
       | ^~~~~~~~~~
+cc1: note: unrecognized command-line option ‘-Wno-self-assign’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-parentheses-equality’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-constant-logical-operand’ may have been intended to silence earlier diagnostics
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -228,7 +234,7 @@ checked program was:
 
 have_header: checking for intrin.h... -------------------- no
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -244,7 +250,7 @@ checked program was:
 
 have_func: checking for __lzcnt() in intrin.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -269,7 +275,7 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))__lzcnt; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -299,7 +305,7 @@ checked program was:
 
 have_func: checking for __lzcnt64() in intrin.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -324,7 +330,7 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))__lzcnt64; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -354,7 +360,7 @@ checked program was:
 
 have_func: checking for _BitScanReverse() in intrin.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -379,7 +385,7 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))_BitScanReverse; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -409,7 +415,7 @@ checked program was:
 
 have_func: checking for _BitScanReverse64() in intrin.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -434,7 +440,7 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))_BitScanReverse64; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c:3:10: fatal error: intrin.h: No such file or directory
     3 | #include <intrin.h>
       |          ^~~~~~~~~~
@@ -464,7 +470,7 @@ checked program was:
 
 have_func: checking for labs() in stdlib.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -489,7 +495,7 @@ checked program was:
 
 have_func: checking for llabs() in stdlib.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -514,7 +520,7 @@ checked program was:
 
 have_func: checking for finite() in math.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -539,13 +545,17 @@ checked program was:
 
 have_func: checking for isfinite() in math.h... -------------------- no
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:16:57: error: ‘isfinite’ undeclared (first use in this function); did you mean ‘finite’?
    16 | int t(void) { void ((*volatile p)()); p = (void ((*)()))isfinite; return !p; }
       |                                                         ^~~~~~~~
       |                                                         finite
 conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+At top level:
+cc1: note: unrecognized command-line option ‘-Wno-self-assign’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-parentheses-equality’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-constant-logical-operand’ may have been intended to silence earlier diagnostics
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -566,9 +576,9 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))isfinite; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
-/usr/bin/ld: /tmp/ccyOhYiD.o: in function `t':
-/run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/bigdecimal-3.1.5/ext/bigdecimal/conftest.c:17:(.text+0xc): undefined reference to `__builtin_isfinite'
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
+/usr/bin/ld: /tmp/ccXZRoco.o: in function `t':
+/home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/bigdecimal-3.1.5/ext/bigdecimal/conftest.c:17:(.text+0x7): undefined reference to `__builtin_isfinite'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -595,7 +605,7 @@ checked program was:
 
 have_header: checking for ruby/atomic.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -607,7 +617,7 @@ checked program was:
 
 have_header: checking for ruby/internal/has/builtin.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -619,7 +629,7 @@ checked program was:
 
 have_header: checking for ruby/internal/static_assert.h... -------------------- yes
 
-"gcc -E -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC  conftest.c -o conftest.i"
+"gcc -E -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -631,7 +641,7 @@ checked program was:
 
 have_func: checking for rb_rational_num() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -656,7 +666,7 @@ checked program was:
 
 have_func: checking for rb_rational_den() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -681,7 +691,7 @@ checked program was:
 
 have_func: checking for rb_complex_real() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -706,7 +716,7 @@ checked program was:
 
 have_func: checking for rb_complex_imag() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -731,13 +741,17 @@ checked program was:
 
 have_func: checking for rb_opts_exception_p() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:16:57: error: ‘rb_opts_exception_p’ undeclared (first use in this function); did you mean ‘rb_make_exception’?
    16 | int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_opts_exception_p; return !p; }
       |                                                         ^~~~~~~~~~~~~~~~~~~
       |                                                         rb_make_exception
 conftest.c:16:57: note: each undeclared identifier is reported only once for each function it appears in
+At top level:
+cc1: note: unrecognized command-line option ‘-Wno-self-assign’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-parentheses-equality’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-constant-logical-operand’ may have been intended to silence earlier diagnostics
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -758,7 +772,7 @@ checked program was:
 16: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_opts_exception_p; return !p; }
 /* end */
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -784,7 +798,7 @@ checked program was:
 
 have_func: checking for rb_category_warn() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,--no-as-needed     -lruby  -lm   -lc"
+"gcc -o conftest -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/hartgeld/.rbenv/versions/3.0.0/lib -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/hartgeld/.rbenv/versions/3.0.0/lib -L/home/hartgeld/.rbenv/versions/3.0.0/lib -lruby  -lm   -lc"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -809,7 +823,7 @@ checked program was:
 
 have_const: checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... -------------------- yes
 
-"gcc -I/usr/include/ruby-3.0.0/x86_64-linux -I/usr/include/ruby-3.0.0/ruby/backward -I/usr/include/ruby-3.0.0 -I.    -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/ruby/src=/usr/src/debug/ruby -fPIC   -c conftest.c"
+"gcc -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/x86_64-linux -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0/ruby/backward -I/home/hartgeld/.rbenv/versions/3.0.0/include/ruby-3.0.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"

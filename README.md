@@ -71,21 +71,55 @@ Visualität/Branding sind noch völlig offen.
 ## Installation
 
 ```bash
+
+# Clone the repository
 git clone <repository-url>
 
 # Navigate into the project directory
 cd <project-name>
 
+# Install Node.js version using nvm
+nvm install 20.11.0
+nvm use 20.11.0
+
 # Install Node.js dependencies
 npm install
 
+# Install Ruby version using rvm
+\curl -sSL https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm install 3.0.0
+rvm use 3.0.0 --default
+
+# On Arch Linux, install additional package needed for Ruby
+sudo pacman -S ruby-stdlib --noconfirm
+
+# Alternative to rvm: Install Ruby version using rbenv
+yay -S rbenv ruby-build
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+rbenv install 3.0.0
+rbenv global 3.0.0
+
+# Verify the Ruby installation
+ruby -v
+
+# Install Bundler
+gem install bundler
+
 # Install Ruby dependencies
 bundle install
+
+# Install missing/broken packages and gems (if necessary)
+gem uninstall sassc
+gem install sassc
+sudo pacman -S imagemagick
+gem install rmagick
 
 # Build the project with Webpack
 npm run build
 
 # Serve the project
 npm run serve
-## Usage
 

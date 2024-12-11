@@ -1,12 +1,12 @@
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
-/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
+/home/hartgeld/.rbenv/versions/3.0.0/bin/ruby -I /home/hartgeld/.rbenv/versions/3.0.0/lib/ruby/3.0.0 -r ./siteconf20241211-390621-zqj3es.rb extconf.rb
 creating Makefile
 
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240116-106477-1oul5c sitelibdir\=./.gem.20240116-106477-1oul5c clean
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
+make "DESTDIR=" clean
 
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240116-106477-1oul5c sitelibdir\=./.gem.20240116-106477-1oul5c
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
+make "DESTDIR="
 compiling ./libsass/src/ast.cpp
 compiling ./libsass/src/ast2c.cpp
 compiling ./libsass/src/ast_fwd_decl.cpp
@@ -75,6 +75,6 @@ compiling ./libsass/src/util_string.cpp
 compiling ./libsass/src/values.cpp
 linking shared-object sassc/libsass.so
 
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
-make DESTDIR\= sitearchdir\=./.gem.20240116-106477-1oul5c sitelibdir\=./.gem.20240116-106477-1oul5c install
-/usr/bin/install -c -m 0755 libsass.so ./.gem.20240116-106477-1oul5c/sassc
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/sassc-2.4.0/ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 libsass.so ./.gem.20241211-390621-ivjr4z/sassc

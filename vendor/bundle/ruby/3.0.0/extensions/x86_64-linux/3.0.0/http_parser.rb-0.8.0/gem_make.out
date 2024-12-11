@@ -1,16 +1,24 @@
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-/usr/bin/ruby -I /usr/lib/ruby/3.0.0 extconf.rb
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/home/hartgeld/.rbenv/versions/3.0.0/bin/ruby -I /home/hartgeld/.rbenv/versions/3.0.0/lib/ruby/3.0.0 -r ./siteconf20241211-390621-fs3w7v.rb extconf.rb
 creating Makefile
 
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20240116-106477-k7krl5 sitelibdir\=./.gem.20240116-106477-k7krl5 clean
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make "DESTDIR=" clean
 
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20240116-106477-k7krl5 sitelibdir\=./.gem.20240116-106477-k7krl5
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make "DESTDIR="
 compiling ruby_http_parser.c
+ruby_http_parser.c: In function ‘Parser_execute’:
+ruby_http_parser.c:365:17: warning: comparison of integer expressions of different signedness: ‘size_t’ {aka ‘long unsigned int’} and ‘long int’ [-Wsign-compare]
+  365 |     if (nparsed < len)
+      |                 ^
+At top level:
+cc1: note: unrecognized command-line option ‘-Wno-self-assign’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-parentheses-equality’ may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option ‘-Wno-constant-logical-operand’ may have been intended to silence earlier diagnostics
 compiling ryah_http_parser.c
 linking shared-object ruby_http_parser.so
 
-current directory: /run/media/hartgeld/5dfe4964-a512-4c80-9869-ff341ed24d79/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20240116-106477-k7krl5 sitelibdir\=./.gem.20240116-106477-k7krl5 install
-/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20240116-106477-k7krl5
+current directory: /home/hartgeld/Projects/radio/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20241211-390621-vcgr55
